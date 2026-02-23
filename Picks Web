@@ -1,0 +1,464 @@
+"""
+NBA Model — Public Picks Page Generator
+=========================================
+Generates a polished dark-themed HTML page from today's picks CSV
+and bet_results.csv. Auto-commits and pushes to GitHub so Netlify
+updates automatically every morning.
+
+Usage:
+  python generate_picks_page.py
+
+Setup:
+  1. Set GITHUB_REPO_DIR below to the local folder of your GitHub repo
+  2. Make sure git is installed and the repo is already cloned/initialized
+  3. Netlify should be linked to that GitHub repo — it auto-deploys on push
+
+Output: index.html  (written to GITHUB_REPO_DIR, then auto-pushed)
+"""
+
+import os, glob, json, subprocess
+import pandas as pd
+from datetime import datetime
+
+OUTPUT_DIR   = r"C:\Users\Kctob\OneDrive\Documents\NBA Model Files\ML and Spread"
+
+# ── Set this to your local GitHub repo folder ─────────────────────────────────
+# This is the folder you cloned your repo into, e.g.:
+#   C:\Users\Kctob\Documents\nba-picks-site
+# The index.html will be written here and auto-pushed to GitHub
+GITHUB_REPO_DIR = r"C:\Users\Kctob\OneDrive\Documents\NBA Model Files\nba-picks-site"
+# ──────────────────────────────────────────────────────────────────────────────
+
+RESULTS_FILE = os.path.join(OUTPUT_DIR, "bet_results.csv")
+HTML_OUT     = os.path.join(GITHUB_REPO_DIR, "index.html")
+
+def load_results():
+    if not os.path.exists(RESULTS_FILE):
+        return pd.DataFrame()
+    df = pd.read_csv(RESULTS_FILE)
+    return df[df["RESULT"].isin(["WIN","LOSS","PUSH"])].copy()
+
+def parse_signal(signal):
+    if not signal or signal == "No edge":
+        return []
+    bets = []
+    for part in signal.split("|"):
+        part = part.strip()
+        if "BET" not in part: continue
+        bet_part  = part.split("[")[0].strip().replace("BET ","")
+        tier_part = part[part.index("[")+1:part.index("]")].strip() if "[" in part else ""
+        bets.append({"label": bet_part, "tier": tier_part})
+    return bets
+
+def get_today_picks():
+    today_str  = datetime.now().strftime("%Y%m%d")
+    picks_path = os.path.join(OUTPUT_DIR, f"picks_{today_str}.csv")
+    if not os.path.exists(picks_path):
+        all_picks = sorted(glob.glob(os.path.join(OUTPUT_DIR, "picks_????????.csv")))
+        if not all_picks: return pd.DataFrame(), ""
+        picks_path = all_picks[-1]
+    try:
+        df = pd.read_csv(picks_path)
+        date_label = os.path.basename(picks_path).replace("picks_","").replace(".csv","")
+        date_label = f"{date_label[:4]}-{date_label[4:6]}-{date_label[6:]}"
+        return df, date_label
+    except:
+        return pd.DataFrame(), ""
+
+def calc_stats(results):
+    if results.empty:
+        return {"record": "0W - 0L", "win_pct": 0, "roi": 0, "pnl": 0, "total": 0,
+                "streak": "—", "last10": "—"}
+    wins   = (results["RESULT"] == "WIN").sum()
+    losses = (results["RESULT"] == "LOSS").sum()
+    total  = wins + losses
+    roi    = results["PNL"].mean() * 100 if total > 0 else 0
+    pnl    = results["PNL"].sum()
+    win_pct = wins / total * 100 if total > 0 else 0
+
+    # Streak
+    res_list = results["RESULT"].tolist()
+    cur_val  = res_list[-1] if res_list else ""
+    streak   = 0
+    for r in reversed(res_list):
+        if r == cur_val: streak += 1
+        else: break
+    streak_str = f"{streak}{'W' if cur_val=='WIN' else 'L'} streak" if res_list else "—"
+
+    # Last 10
+    last10 = results.tail(10)
+    w10 = (last10["RESULT"] == "WIN").sum()
+    l10 = (last10["RESULT"] == "LOSS").sum()
+
+    return {
+        "record":  f"{wins}W - {losses}L",
+        "win_pct": round(win_pct, 1),
+        "roi":     round(roi, 2),
+        "pnl":     round(float(pnl), 3),
+        "total":   int(total),
+        "streak":  streak_str,
+        "last10":  f"{w10}W - {l10}L (last 10)",
+    }
+
+def generate_html(picks_df, date_label, results, stats):
+    # Build picks rows HTML
+    bets_html = ""
+    no_bets_html = ""
+
+    if not picks_df.empty:
+        for _, game in picks_df.iterrows():
+            signal = str(game.get("BET_SIGNAL",""))
+            bets   = parse_signal(signal)
+            try:   pred = f"{float(game.get('PRED_MARGIN',0)):+.1f}"
+            except: pred = "—"
+
+            if bets:
+                for bet in bets:
+                    tier      = bet["tier"]
+                    label     = bet["label"]
+                    if "HIGH"   in tier.upper(): tier_class, star = "high",   "★★★"
+                    elif "MEDIUM" in tier.upper(): tier_class, star = "medium", "★★"
+                    else:                          tier_class, star = "low",    "★"
+
+                    bets_html += f"""
+                    <div class="pick-card {tier_class}">
+                        <div class="pick-matchup">{game.get('MATCHUP','—')}</div>
+                        <div class="pick-bet">{label}</div>
+                        <div class="pick-meta">
+                            <span class="pick-line">Line: {game.get('VEGAS_SPREAD','—')}</span>
+                            <span class="pick-edge">Edge: {game.get('SPREAD_EDGE','—')}</span>
+                            <span class="pick-margin">Model: {pred} pts</span>
+                        </div>
+                        <div class="pick-confidence {tier_class}">{tier} {star}</div>
+                    </div>"""
+            else:
+                sprd = game.get('VEGAS_SPREAD','—')
+                no_bets_html += f"""
+                    <div class="no-bet-row">
+                        <span class="nb-matchup">{game.get('MATCHUP','—')}</span>
+                        <span class="nb-line">Line: {sprd}</span>
+                        <span class="nb-label">No edge</span>
+                    </div>"""
+
+    if not bets_html:
+        bets_html = '<div class="no-picks">No qualifying picks today.</div>'
+
+    # Recent results table
+    recent_html = ""
+    if not results.empty:
+        recent = results.tail(15).sort_values("DATE", ascending=False)
+        for _, row in recent.iterrows():
+            result   = str(row.get("RESULT",""))
+            res_cls  = "win" if result=="WIN" else ("loss" if result=="LOSS" else "push")
+            pnl      = float(row.get("PNL",0))
+            pnl_str  = f"{pnl:+.3f}u"
+            clv      = row.get("CLV")
+            clv_str  = f"{float(clv):+.2f}" if pd.notna(clv) else "—"
+            date_str = str(row.get("DATE",""))[:10]
+            recent_html += f"""
+                <tr class="result-row">
+                    <td>{date_str}</td>
+                    <td class="matchup-cell">{row.get('MATCHUP','—')}</td>
+                    <td class="bet-cell">{str(row.get('BET',''))[:30]}</td>
+                    <td><span class="result-badge {res_cls}">{result}</span></td>
+                    <td class="pnl-cell {'pos' if pnl>0 else 'neg'}">{pnl_str}</td>
+                    <td class="clv-cell">{clv_str}</td>
+                </tr>"""
+
+    roi_color = "#22C55E" if stats["roi"] >= 0 else "#EF4444"
+    pnl_color = "#22C55E" if stats["pnl"] >= 0 else "#EF4444"
+    generated = datetime.now().strftime("%B %d, %Y at %I:%M %p")
+
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NBA Picks — {date_label}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {{
+    --bg:       #0D1117;
+    --card:     #161B22;
+    --card2:    #1C2128;
+    --border:   #30363D;
+    --accent:   #F97316;
+    --green:    #22C55E;
+    --red:      #EF4444;
+    --gold:     #EAB308;
+    --blue:     #3B82F6;
+    --purple:   #A855F7;
+    --muted:    #8B949E;
+    --white:    #F0F6FC;
+    --font:     'Space Grotesk', sans-serif;
+    --mono:     'JetBrains Mono', monospace;
+  }}
+  * {{ margin:0; padding:0; box-sizing:border-box; }}
+  body {{ background:var(--bg); color:var(--white); font-family:var(--font); min-height:100vh; }}
+
+  /* ── Header ── */
+  .header {{
+    background: linear-gradient(135deg, #161B22 0%, #0D1117 60%, #1a0a00 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 0 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }}
+  .header::before {{
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(249,115,22,0.12) 0%, transparent 70%);
+  }}
+  .header-inner {{ position: relative; z-index: 1; }}
+  .logo {{ font-size: 2.4rem; font-weight: 700; letter-spacing: -1px; }}
+  .logo span {{ color: var(--accent); }}
+  .tagline {{ color: var(--muted); font-size: 0.9rem; margin-top: 0.3rem; letter-spacing: 0.05em; }}
+  .date-badge {{
+    display: inline-block; margin-top: 0.8rem;
+    background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.3);
+    color: var(--accent); padding: 0.3rem 1rem; border-radius: 999px;
+    font-size: 0.85rem; font-family: var(--mono); font-weight: 600;
+  }}
+
+  /* ── Layout ── */
+  .container {{ max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }}
+
+  /* ── Stat cards ── */
+  .stats-grid {{
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2.5rem;
+  }}
+  @media (max-width: 600px) {{ .stats-grid {{ grid-template-columns: repeat(2,1fr); }} }}
+  .stat-card {{
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.2rem; text-align: center;
+    transition: border-color 0.2s;
+  }}
+  .stat-card:hover {{ border-color: var(--accent); }}
+  .stat-value {{ font-size: 1.8rem; font-weight: 700; font-family: var(--mono); line-height: 1; }}
+  .stat-label {{ color: var(--muted); font-size: 0.75rem; text-transform: uppercase;
+                 letter-spacing: 0.08em; margin-top: 0.4rem; }}
+
+  /* ── Section headers ── */
+  .section-header {{
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--accent); margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+  }}
+
+  /* ── Pick cards ── */
+  .picks-grid {{ display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; }}
+  .pick-card {{
+    background: var(--card); border-radius: 12px; padding: 1.2rem 1.4rem;
+    border-left: 4px solid var(--border);
+    display: grid; grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto;
+    gap: 0.3rem 1rem;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }}
+  .pick-card:hover {{ transform: translateX(3px); box-shadow: 0 4px 24px rgba(0,0,0,0.4); }}
+  .pick-card.high   {{ border-left-color: var(--green); background: linear-gradient(135deg, #162616 0%, var(--card) 40%); }}
+  .pick-card.medium {{ border-left-color: var(--gold);  background: linear-gradient(135deg, #1f1a0a 0%, var(--card) 40%); }}
+  .pick-card.low    {{ border-left-color: var(--muted); }}
+  .pick-matchup     {{ font-size: 1.05rem; font-weight: 600; grid-column:1; }}
+  .pick-confidence  {{ grid-column:2; grid-row:1/3; align-self:center; text-align:right;
+                       font-family:var(--mono); font-size:0.8rem; font-weight:600; }}
+  .pick-confidence.high   {{ color: var(--green); }}
+  .pick-confidence.medium {{ color: var(--gold); }}
+  .pick-confidence.low    {{ color: var(--muted); }}
+  .pick-bet {{ font-size: 1.15rem; font-weight: 700; color: var(--accent); font-family:var(--mono); }}
+  .pick-meta {{ grid-column:1/3; display:flex; gap:1.2rem; flex-wrap:wrap; margin-top:0.2rem; }}
+  .pick-meta span {{ font-size:0.78rem; color:var(--muted); font-family:var(--mono); }}
+  .pick-meta span::before {{ margin-right:0.2rem; }}
+
+  /* ── No bets table ── */
+  .no-bets-section {{ margin-bottom: 2.5rem; }}
+  .no-bet-row {{
+    display: flex; align-items: center; gap: 1rem; padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(48,54,61,0.5); font-size: 0.85rem;
+  }}
+  .nb-matchup {{ flex: 1; color: var(--muted); }}
+  .nb-line    {{ color: var(--muted); font-family:var(--mono); font-size:0.8rem; }}
+  .nb-label   {{ color: #444; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; }}
+
+  /* ── Results table ── */
+  .results-table {{ width:100%; border-collapse:collapse; font-size:0.85rem; margin-bottom:2.5rem; }}
+  .results-table th {{
+    text-align:left; padding:0.5rem 0.75rem; color:var(--muted);
+    font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em;
+    border-bottom: 1px solid var(--border); font-weight:500;
+  }}
+  .result-row td {{ padding:0.6rem 0.75rem; border-bottom:1px solid rgba(48,54,61,0.4); }}
+  .result-row:hover td {{ background: rgba(249,115,22,0.04); }}
+  .matchup-cell {{ color:var(--white); font-weight:500; }}
+  .bet-cell     {{ color:var(--muted); font-family:var(--mono); font-size:0.78rem; }}
+  .result-badge {{
+    display:inline-block; padding:0.15rem 0.5rem; border-radius:4px;
+    font-size:0.72rem; font-weight:700; font-family:var(--mono);
+  }}
+  .result-badge.win  {{ background:rgba(34,197,94,0.15);  color:var(--green); }}
+  .result-badge.loss {{ background:rgba(239,68,68,0.15);  color:var(--red); }}
+  .result-badge.push {{ background:rgba(234,179,8,0.15);  color:var(--gold); }}
+  .pnl-cell  {{ font-family:var(--mono); font-weight:600; }}
+  .pnl-cell.pos {{ color:var(--green); }}
+  .pnl-cell.neg {{ color:var(--red); }}
+  .clv-cell  {{ font-family:var(--mono); font-size:0.78rem; color:var(--blue); }}
+
+  /* ── No picks ── */
+  .no-picks {{ text-align:center; color:var(--muted); padding:2rem; font-style:italic; }}
+
+  /* ── Footer ── */
+  .footer {{
+    text-align:center; padding:2rem; color:var(--muted);
+    font-size:0.78rem; border-top:1px solid var(--border); margin-top:2rem;
+    line-height: 1.8;
+  }}
+  .footer strong {{ color:var(--accent); }}
+  .disclaimer {{
+    background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.2);
+    border-radius: 8px; padding: 0.8rem 1.2rem; margin: 1.5rem 0;
+    font-size: 0.75rem; color: var(--muted); text-align: center;
+  }}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="logo">🏀 <span>NBA</span> MODEL PICKS</div>
+    <div class="tagline">Machine Learning · Daily Picks · Full Transparency</div>
+    <div class="date-badge">{date_label}</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- STAT CARDS -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-value">{stats['record']}</div>
+      <div class="stat-label">All-Time Record</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" style="color:{roi_color}">{stats['roi']:+.1f}%</div>
+      <div class="stat-label">ROI / Bet</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" style="color:{pnl_color}">{stats['pnl']:+.2f}u</div>
+      <div class="stat-label">Total P&L (units)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">{stats['win_pct']:.1f}%</div>
+      <div class="stat-label">Win Rate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" style="color:var(--gold)">{stats['streak']}</div>
+      <div class="stat-label">Current Streak</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" style="font-size:1.1rem">{stats['last10']}</div>
+      <div class="stat-label">Last 10 Bets</div>
+    </div>
+  </div>
+
+  <!-- TODAY'S PICKS -->
+  <div class="section-header">
+    <span>🎯</span> Today's Picks — {date_label}
+  </div>
+  <div class="picks-grid">
+    {bets_html}
+  </div>
+
+  <!-- OTHER GAMES -->
+  {'<div class="no-bets-section"><div class="section-header"><span>📋</span> Other Games — No Edge Found</div>' + no_bets_html + '</div>' if no_bets_html else ''}
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    ⚠️ For entertainment purposes only. This model uses publicly available data and machine learning.
+    Past performance does not guarantee future results. Bet responsibly.
+  </div>
+
+  <!-- RECENT RESULTS -->
+  {'<div class="section-header"><span>📊</span> Recent Results (Last 15 Bets)</div><table class="results-table"><thead><tr><th>Date</th><th>Matchup</th><th>Bet</th><th>Result</th><th>P&L</th><th>CLV</th></tr></thead><tbody>' + recent_html + '</tbody></table>' if recent_html else ''}
+
+  <div class="footer">
+    Generated by NBA Model v3 · <strong>AI-powered sports analytics</strong><br>
+    Updated: {generated}<br>
+    All picks generated by machine learning model · {stats['total']} graded bets tracked
+  </div>
+
+</div>
+</body>
+</html>"""
+    return html
+
+
+def git_push(repo_dir: str, date_label: str):
+    """Commit index.html and push to GitHub so Netlify auto-deploys."""
+    try:
+        # Check git is available
+        subprocess.run(["git", "--version"], capture_output=True, check=True)
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        print("  [warn] git not found — skipping auto-push. Push manually to trigger Netlify.")
+        return
+
+    try:
+        subprocess.run(["git", "add", "index.html"], cwd=repo_dir, check=True, capture_output=True)
+        msg = f"picks update {date_label}"
+        result = subprocess.run(["git", "commit", "-m", msg],
+                                cwd=repo_dir, capture_output=True, text=True)
+        if "nothing to commit" in result.stdout:
+            print("  -> No changes to commit (page unchanged)")
+            return
+        subprocess.run(["git", "push"], cwd=repo_dir, check=True, capture_output=True)
+        print("  -> Pushed to GitHub — Netlify will redeploy in ~30 seconds")
+    except subprocess.CalledProcessError as e:
+        print(f"  [warn] Git push failed: {e}")
+        print(f"         Push manually: cd {repo_dir} && git add index.html && git push")
+
+
+def main():
+    print("Generating public picks page...")
+
+    # Ensure GitHub repo dir exists
+    if not os.path.exists(GITHUB_REPO_DIR):
+        print(f"  [!] GitHub repo folder not found: {GITHUB_REPO_DIR}")
+        print(f"      Create it by cloning your repo, then update GITHUB_REPO_DIR in this script.")
+        print(f"      Saving to model folder as fallback...")
+        fallback = os.path.join(OUTPUT_DIR, "index.html")
+        picks_df, date_label = get_today_picks()
+        results = load_results()
+        stats   = calc_stats(results)
+        if picks_df.empty:
+            picks_df   = pd.DataFrame()
+            date_label = datetime.now().strftime("%Y-%m-%d")
+        html = generate_html(picks_df, date_label, results, stats)
+        with open(fallback, "w", encoding="utf-8") as f:
+            f.write(html)
+        print(f"  -> Saved to {fallback} — upload this file manually to Netlify Drop")
+        return
+
+    picks_df, date_label = get_today_picks()
+    results              = load_results()
+    stats                = calc_stats(results)
+
+    if picks_df.empty:
+        print("  [warn] No picks file found — generating stats-only page")
+        picks_df   = pd.DataFrame()
+        date_label = datetime.now().strftime("%Y-%m-%d")
+
+    html = generate_html(picks_df, date_label, results, stats)
+
+    with open(HTML_OUT, "w", encoding="utf-8") as f:
+        f.write(html)
+
+    print(f"  -> index.html saved to {GITHUB_REPO_DIR}")
+    print(f"     {stats['record']} all-time  |  ROI: {stats['roi']:+.1f}%")
+
+    git_push(GITHUB_REPO_DIR, date_label)
+
+
+if __name__ == "__main__":
+    main()
