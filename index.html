@@ -3,1270 +3,448 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NBA Picks — 2026-02-24</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<title>NBA Picks · 2026-02-25</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg:       #0D1117;
-    --card:     #161B22;
-    --card2:    #1C2128;
-    --border:   #30363D;
-    --accent:   #F97316;
-    --green:    #22C55E;
-    --red:      #EF4444;
-    --gold:     #EAB308;
-    --blue:     #3B82F6;
-    --purple:   #A855F7;
-    --muted:    #8B949E;
-    --white:    #F0F6FC;
-    --font:     'Space Grotesk', sans-serif;
-    --mono:     'JetBrains Mono', monospace;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { background:var(--bg); color:var(--white); font-family:var(--font); min-height:100vh; }
+:root {
+  --bg:     #0D1117;
+  --card:   #161B22;
+  --card2:  #1C2128;
+  --border: #30363D;
+  --accent: #F97316;
+  --green:  #22C55E;
+  --red:    #EF4444;
+  --gold:   #EAB308;
+  --muted:  #8B949E;
+  --white:  #F0F6FC;
+  --font:   'Space Grotesk', sans-serif;
+  --mono:   'JetBrains Mono', monospace;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--white); font-family:var(--font); }
 
-  /* ── Header ── */
-  .header {
-    background: linear-gradient(135deg, #161B22 0%, #0D1117 60%, #1a0a00 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 2rem 0 1.5rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 0%, rgba(249,115,22,0.12) 0%, transparent 70%);
-  }
-  .header-inner { position: relative; z-index: 1; }
-  .logo { font-size: 2.4rem; font-weight: 700; letter-spacing: -1px; }
-  .logo span { color: var(--accent); }
-  .tagline { color: var(--muted); font-size: 0.9rem; margin-top: 0.3rem; letter-spacing: 0.05em; }
-  .date-badge {
-    display: inline-block; margin-top: 0.8rem;
-    background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.3);
-    color: var(--accent); padding: 0.3rem 1rem; border-radius: 999px;
-    font-size: 0.85rem; font-family: var(--mono); font-weight: 600;
-  }
+/* HEADER */
+.hdr {
+  background: linear-gradient(135deg, #161B22, #0D1117 55%, #180e00);
+  border-bottom: 1px solid var(--border);
+  padding: 1.1rem 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  position: relative; overflow: hidden;
+}
+.hdr::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(249,115,22,0.09), transparent 60%);
+}
+.hdr-l { position:relative; z-index:1; }
+.logo { font-size:1.5rem; font-weight:700; letter-spacing:-0.5px; }
+.logo b { color:var(--accent); }
+.tagline { font-size:0.72rem; color:var(--muted); margin-top:0.1rem; }
+.hdr-r { position:relative; z-index:1; text-align:right; }
+.date-pill {
+  display:inline-block;
+  background:rgba(249,115,22,0.1); border:1px solid rgba(249,115,22,0.25);
+  color:var(--accent); padding:0.2rem 0.8rem; border-radius:999px;
+  font-size:0.75rem; font-family:var(--mono); font-weight:600;
+}
+.upd { font-size:0.65rem; color:var(--muted); margin-top:0.25rem; }
 
-  /* ── Layout ── */
-  .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+/* LAYOUT */
+.wrap { max-width:960px; margin:0 auto; padding:1.25rem; }
 
-  /* ── Stat cards ── */
-  .stats-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2.5rem;
-  }
-  @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2,1fr); } }
-  .stat-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.2rem; text-align: center;
-    transition: border-color 0.2s;
-  }
-  .stat-card:hover { border-color: var(--accent); }
-  .stat-value { font-size: 1.8rem; font-weight: 700; font-family: var(--mono); line-height: 1; }
-  .stat-label { color: var(--muted); font-size: 0.75rem; text-transform: uppercase;
-                 letter-spacing: 0.08em; margin-top: 0.4rem; }
+/* STATS BAR */
+.stats-bar {
+  display:grid; grid-template-columns:repeat(6,1fr);
+  background:var(--card); border:1px solid var(--border);
+  border-radius:10px; overflow:hidden; margin-bottom:1.5rem;
+}
+.sc { padding:0.7rem 0.4rem; text-align:center; border-right:1px solid var(--border); }
+.sc:last-child { border-right:none; }
+.sv { font-size:1rem; font-weight:700; font-family:var(--mono); line-height:1; }
+.sl { font-size:0.58rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; margin-top:0.2rem; }
+@media(max-width:600px) {
+  .stats-bar { grid-template-columns:repeat(3,1fr); }
+  .sc:nth-child(3) { border-right:none; }
+  .sc:nth-child(4),.sc:nth-child(5),.sc:nth-child(6) { border-top:1px solid var(--border); }
+  .sc:nth-child(6) { border-right:none; }
+}
 
-  /* ── Section headers ── */
-  .section-header {
-    display: flex; align-items: center; gap: 0.6rem;
-    font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.12em; color: var(--accent); margin-bottom: 1rem;
-    padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
-  }
+/* SECTION LABEL */
+.section-header {
+  display:flex; align-items:center; gap:0.4rem;
+  font-size:0.68rem; font-weight:600; text-transform:uppercase;
+  letter-spacing:0.12em; color:var(--accent);
+  margin-bottom:0.8rem; padding-bottom:0.4rem;
+  border-bottom:1px solid var(--border);
+}
 
-  /* ── Pick cards ── */
-  .picks-grid { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; }
-  .pick-card {
-    background: var(--card); border-radius: 12px; padding: 1.2rem 1.4rem;
-    border-left: 4px solid var(--border);
-    display: grid; grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto auto;
-    gap: 0.3rem 1rem;
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .pick-card:hover { transform: translateX(3px); box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
-  .pick-card.high   { border-left-color: var(--green); background: linear-gradient(135deg, #162616 0%, var(--card) 40%); }
-  .pick-card.medium { border-left-color: var(--gold);  background: linear-gradient(135deg, #1f1a0a 0%, var(--card) 40%); }
-  .pick-card.low    { border-left-color: var(--muted); }
-  .pick-matchup     { font-size: 1.05rem; font-weight: 600; grid-column:1; }
-  .pick-confidence  { grid-column:2; grid-row:1/3; align-self:center; text-align:right;
-                       font-family:var(--mono); font-size:0.8rem; font-weight:600; }
-  .pick-confidence.high   { color: var(--green); }
-  .pick-confidence.medium { color: var(--gold); }
-  .pick-confidence.low    { color: var(--muted); }
-  .pick-bet { font-size: 1.15rem; font-weight: 700; color: var(--accent); font-family:var(--mono); }
-  .pick-meta { grid-column:1/3; display:flex; gap:1.2rem; flex-wrap:wrap; margin-top:0.2rem; }
-  .pick-meta span { font-size:0.78rem; color:var(--muted); font-family:var(--mono); }
-  .pick-meta span::before { margin-right:0.2rem; }
+/* MATCHUP CARDS — horizontal scroll */
+.mc-scroll {
+  display:flex; gap:0.75rem;
+  overflow-x:auto; padding-bottom:0.75rem; margin-bottom:1.75rem;
+  scrollbar-width:thin; scrollbar-color:var(--border) transparent;
+  -webkit-overflow-scrolling:touch;
+}
+.mc-scroll::-webkit-scrollbar { height:3px; }
+.mc-scroll::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+.mc-card {
+  flex: 0 0 300px;
+  background:var(--card); border:1px solid var(--border);
+  border-radius:14px; overflow:hidden;
+  display:grid; grid-template-columns:1fr 48px 1fr;
+  transition:border-color 0.18s, transform 0.15s;
+}
+.mc-card:hover { border-color:rgba(249,115,22,0.4); transform:translateY(-2px); }
+.mc-team-side {
+  display:flex; flex-direction:column; align-items:center;
+  padding:1rem 0.55rem 0.85rem; text-align:center; gap:0.28rem;
+}
+.mc-left  { background:linear-gradient(160deg,#181d26,var(--card) 70%); }
+.mc-right { background:linear-gradient(200deg,#181d26,var(--card) 70%); border-left:1px solid var(--border); }
+.mc-photo-ring {
+  width:68px; height:68px; border-radius:50%;
+  overflow:hidden; border:2px solid var(--border);
+  background:#0d1219; flex-shrink:0; margin-bottom:0.35rem;
+}
+.mc-photo-ring img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
+.mc-no-img { line-height:68px; font-size:1.4rem; color:var(--muted); }
+.mc-tname { font-size:0.68rem; font-weight:700; color:var(--white); line-height:1.2; }
+.mc-pname { font-size:0.6rem; color:var(--accent); line-height:1.2; }
+.mc-pos { color:var(--muted); }
+.mc-stats {
+  display:flex; align-items:center; width:100%;
+  background:rgba(0,0,0,0.3); border:1px solid var(--border);
+  border-radius:5px; overflow:hidden; margin-top:0.2rem;
+}
+.mc-st {
+  flex:1; display:flex; flex-direction:column; align-items:center; padding:0.22rem 0; gap:0.06rem;
+}
+.mc-sv { font-size:0.72rem; font-weight:700; font-family:var(--mono); color:var(--white); }
+.mc-sl { font-size:0.5rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em; }
+.mc-sdiv { width:1px; height:20px; background:var(--border); flex-shrink:0; }
+.mc-middle {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:0.08rem; background:var(--card2);
+  border-left:1px solid var(--border); border-right:1px solid var(--border);
+  padding:0.5rem 0.15rem;
+}
+.mc-abbr { font-size:0.68rem; font-weight:800; font-family:var(--mono); color:var(--white); }
+.mc-vs   { font-size:0.5rem; color:var(--muted); font-weight:600; letter-spacing:0.1em; padding:0.1rem 0; }
+.mc-tip  { font-size:0.52rem; color:var(--accent); font-family:var(--mono); text-align:center; margin-top:0.3rem; line-height:1.3; }
 
-  /* ── No bets table ── */
-  .no-bets-section { margin-bottom: 2.5rem; }
-  .no-bet-row {
-    display: flex; align-items: center; gap: 1rem; padding: 0.6rem 0;
-    border-bottom: 1px solid rgba(48,54,61,0.5); font-size: 0.85rem;
-  }
-  .nb-matchup { flex: 1; color: var(--muted); }
-  .nb-line    { color: var(--muted); font-family:var(--mono); font-size:0.8rem; }
-  .nb-label   { color: #444; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; }
+/* TWO COLUMN */
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem; align-items:start; }
+@media(max-width:680px) { .two-col { grid-template-columns:1fr; } }
 
-  /* ── Results table ── */
-  .results-table { width:100%; border-collapse:collapse; font-size:0.85rem; margin-bottom:2.5rem; }
-  .results-table th {
-    text-align:left; padding:0.5rem 0.75rem; color:var(--muted);
-    font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em;
-    border-bottom: 1px solid var(--border); font-weight:500;
-  }
-  .result-row td { padding:0.6rem 0.75rem; border-bottom:1px solid rgba(48,54,61,0.4); }
-  .result-row:hover td { background: rgba(249,115,22,0.04); }
-  .matchup-cell { color:var(--white); font-weight:500; }
-  .bet-cell     { color:var(--muted); font-family:var(--mono); font-size:0.78rem; }
-  .result-badge {
-    display:inline-block; padding:0.15rem 0.5rem; border-radius:4px;
-    font-size:0.72rem; font-weight:700; font-family:var(--mono);
-  }
-  .result-badge.win  { background:rgba(34,197,94,0.15);  color:var(--green); }
-  .result-badge.loss { background:rgba(239,68,68,0.15);  color:var(--red); }
-  .result-badge.push { background:rgba(234,179,8,0.15);  color:var(--gold); }
-  .pnl-cell  { font-family:var(--mono); font-weight:600; }
-  .pnl-cell.pos { color:var(--green); }
-  .pnl-cell.neg { color:var(--red); }
-  .clv-cell  { font-family:var(--mono); font-size:0.78rem; color:var(--blue); }
+/* PICK CARDS */
+.pick {
+  background:var(--card); border-radius:10px; padding:0.85rem 1rem;
+  border-left:3px solid var(--border); margin-bottom:0.6rem;
+  transition:transform 0.15s;
+}
+.pick:hover { transform:translateX(2px); }
+.pick.high { border-left-color:var(--green); background:linear-gradient(135deg,#14221a,var(--card) 55%); }
+.pick.med  { border-left-color:var(--gold);  background:linear-gradient(135deg,#1e1a09,var(--card) 55%); }
+.pick.low  { border-left-color:var(--muted); }
+.pick-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.25rem; }
+.pick-game { font-size:0.82rem; font-weight:600; }
+.pick-tier { font-size:0.62rem; font-family:var(--mono); font-weight:700; white-space:nowrap; }
+.pick-tier.high { color:var(--green); }
+.pick-tier.med  { color:var(--gold); }
+.pick-tier.low  { color:var(--muted); }
+.pick-bet { font-size:0.92rem; font-weight:700; color:var(--accent); font-family:var(--mono); margin-bottom:0.3rem; }
+.pick-meta { display:flex; gap:0.7rem; flex-wrap:wrap; }
+.pick-meta span { font-size:0.65rem; color:var(--muted); font-family:var(--mono); }
+.no-picks { color:var(--muted); font-style:italic; font-size:0.82rem; padding:0.5rem 0; }
 
-  /* ── No picks ── */
-  .no-picks { text-align:center; color:var(--muted); padding:2rem; font-style:italic; }
+/* COLLAPSIBLE RESULTS */
+.results-toggle {
+  width:100%; background:none; border:1px solid var(--border);
+  border-radius:7px; padding:0.45rem 0.85rem;
+  color:var(--muted); font-family:var(--font); font-size:0.68rem;
+  font-weight:600; text-transform:uppercase; letter-spacing:0.09em;
+  cursor:pointer; display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:0; transition:border-color 0.15s, color 0.15s;
+}
+.results-toggle:hover { border-color:var(--accent); color:var(--accent); }
+.rt-arrow { transition:transform 0.2s; display:inline-block; }
+.results-body { display:none; padding-top:0.5rem; }
+.results-body.open { display:block; }
 
-  /* ══════════════════════════════════════════════
-     MATCHUP CARDS
-  ══════════════════════════════════════════════ */
-  .matchups-wrap {
-    display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 2.5rem;
-  }
-  .mc-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    display: grid;
-    grid-template-columns: 1fr 72px 1fr;
-    overflow: hidden;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .mc-card:hover {
-    border-color: rgba(249,115,22,0.35);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-  }
+/* RECENT RESULTS */
+.rr {
+  display:grid; grid-template-columns:auto 1fr auto auto;
+  gap:0.5rem; align-items:center;
+  padding:0.5rem 0; border-bottom:1px solid rgba(48,54,61,0.5); font-size:0.75rem;
+}
+.rr:last-child { border-bottom:none; }
+.rr-date  { color:var(--muted); font-family:var(--mono); font-size:0.65rem; white-space:nowrap; }
+.rr-match { font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.rr-badge { padding:0.1rem 0.35rem; border-radius:4px; font-size:0.62rem; font-weight:700; font-family:var(--mono); white-space:nowrap; }
+.rr-badge.win  { background:rgba(34,197,94,0.15);  color:var(--green); }
+.rr-badge.loss { background:rgba(239,68,68,0.15);  color:var(--red); }
+.rr-badge.push { background:rgba(234,179,8,0.15);  color:var(--gold); }
+.rr-pnl { font-family:var(--mono); font-size:0.72rem; font-weight:600; text-align:right; white-space:nowrap; }
+.rr-pnl.pos { color:var(--green); }
+.rr-pnl.neg { color:var(--red); }
 
-  /* Away side left-aligned, home side right-aligned */
-  .mc-side {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.5rem 1rem 1.25rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .mc-away { background: linear-gradient(160deg, #1a1f28 0%, var(--card) 60%); }
-  .mc-home { background: linear-gradient(200deg, #1a1f28 0%, var(--card) 60%); }
+/* NO-EDGE CHIPS */
+.chips { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1.5rem; }
+.chip {
+  background:var(--card2); border:1px solid var(--border);
+  border-radius:6px; padding:0.28rem 0.6rem;
+  font-size:0.7rem; color:var(--muted); display:flex; align-items:center; gap:0.4rem;
+}
+.chip-line { font-family:var(--mono); color:#3d4450; font-size:0.65rem; }
 
-  /* Player photo */
-  .mc-photo-wrap {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid var(--border);
-    background: #111820;
-    margin-bottom: 0.75rem;
-    position: relative;
-    flex-shrink: 0;
-  }
-  .mc-photo-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
-    display: block;
-  }
-  .mc-photo-bg {
-    position: absolute; inset: 0;
-    background: radial-gradient(circle at 50% 30%, rgba(249,115,22,0.08), transparent 70%);
-  }
-
-  /* Team name */
-  .mc-team-name {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--white);
-    text-align: center;
-    letter-spacing: 0.01em;
-    margin-bottom: 0.2rem;
-  }
-
-  /* Player name */
-  .mc-player-name {
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: var(--accent);
-    text-align: center;
-    margin-bottom: 0.1rem;
-  }
-  .mc-player-pos {
-    font-size: 0.65rem;
-    color: var(--muted);
-    font-family: var(--mono);
-    margin-bottom: 0.75rem;
-  }
-
-  /* Stats row */
-  .mc-stats {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    background: rgba(0,0,0,0.25);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    width: 100%;
-    max-width: 160px;
-  }
-  .mc-stat {
-    flex: 1;
-    padding: 0.4rem 0.3rem;
-    text-align: center;
-  }
-  .mc-stat-val {
-    font-size: 0.9rem;
-    font-weight: 700;
-    font-family: var(--mono);
-    color: var(--white);
-    line-height: 1;
-  }
-  .mc-stat-lbl {
-    font-size: 0.58rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-top: 0.15rem;
-  }
-  .mc-stat-divider {
-    width: 1px;
-    height: 28px;
-    background: var(--border);
-    flex-shrink: 0;
-  }
-
-  /* Center VS column */
-  .mc-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.15rem;
-    background: var(--card2);
-    border-left: 1px solid var(--border);
-    border-right: 1px solid var(--border);
-    padding: 0.5rem 0;
-  }
-  .mc-abbr-away, .mc-abbr-home {
-    font-size: 0.85rem;
-    font-weight: 800;
-    font-family: var(--mono);
-    color: var(--white);
-    letter-spacing: 0.04em;
-  }
-  .mc-vs {
-    font-size: 0.6rem;
-    font-weight: 700;
-    color: var(--muted);
-    letter-spacing: 0.12em;
-    padding: 0.2rem 0;
-  }
-  .mc-tipoff {
-    font-size: 0.62rem;
-    color: var(--accent);
-    font-family: var(--mono);
-    text-align: center;
-    margin-top: 0.4rem;
-    padding: 0 0.3rem;
-    line-height: 1.3;
-  }
-
-  @media (max-width: 540px) {
-    .mc-card { grid-template-columns: 1fr 56px 1fr; }
-    .mc-photo-wrap { width: 72px; height: 72px; }
-    .mc-team-name { font-size: 0.78rem; }
-    .mc-player-name { font-size: 0.7rem; }
-    .mc-stat-val { font-size: 0.78rem; }
-    .mc-side { padding: 1rem 0.5rem; }
-  }
-
-  /* ── Footer ── */
-  .footer {
-    text-align:center; padding:2rem; color:var(--muted);
-    font-size:0.78rem; border-top:1px solid var(--border); margin-top:2rem;
-    line-height: 1.8;
-  }
-  .footer strong { color:var(--accent); }
-  .disclaimer {
-    background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.2);
-    border-radius: 8px; padding: 0.8rem 1.2rem; margin: 1.5rem 0;
-    font-size: 0.75rem; color: var(--muted); text-align: center;
-  }
+/* DISCLAIMER + FOOTER */
+.disc {
+  background:rgba(239,68,68,0.05); border:1px solid rgba(239,68,68,0.12);
+  border-radius:8px; padding:0.55rem 1rem; margin-bottom:1.25rem;
+  font-size:0.67rem; color:var(--muted); text-align:center;
+}
+.footer { text-align:center; padding:1.25rem; color:var(--muted); font-size:0.68rem; border-top:1px solid var(--border); line-height:1.8; }
+.footer b { color:var(--accent); }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="header-inner">
-    <div class="logo">🏀 <span>NBA</span> MODEL PICKS</div>
+<div class="hdr">
+  <div class="hdr-l">
+    <div class="logo">🏀 <b>NBA</b> MODEL</div>
     <div class="tagline">Machine Learning · Daily Picks · Full Transparency</div>
-    <div class="date-badge">2026-02-24</div>
+  </div>
+  <div class="hdr-r">
+    <div class="date-pill">2026-02-25</div>
+    <div class="upd">Updated Feb 25 · 01:16 AM</div>
   </div>
 </div>
 
-<div class="container">
+<div class="wrap">
 
-  <!-- STAT CARDS -->
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-value">12W - 10L</div>
-      <div class="stat-label">All-Time Record</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value" style="color:#22C55E">+26.6%</div>
-      <div class="stat-label">ROI / Bet</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value" style="color:#22C55E">+5.86u</div>
-      <div class="stat-label">Total P&L (units)</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value">54.5%</div>
-      <div class="stat-label">Win Rate</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value" style="color:var(--gold)">4L streak</div>
-      <div class="stat-label">Current Streak</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value" style="font-size:1.1rem">3W - 7L (last 10)</div>
-      <div class="stat-label">Last 10 Bets</div>
-    </div>
+  <div class="stats-bar">
+    <div class="sc"><div class="sv">15W - 14L</div><div class="sl">Record</div></div>
+    <div class="sc"><div class="sv" style="color:#22C55E">+15.8%</div><div class="sl">ROI</div></div>
+    <div class="sc"><div class="sv" style="color:#22C55E">+4.58u</div><div class="sl">P&L</div></div>
+    <div class="sc"><div class="sv">51.7%</div><div class="sl">Win %</div></div>
+    <div class="sc"><div class="sv" style="color:var(--gold)">15W streak</div><div class="sl">Streak</div></div>
+    <div class="sc"><div class="sv" style="font-size:0.82rem">3W - 7L</div><div class="sl">Last 10</div></div>
   </div>
 
-  <!-- TODAY'S MATCHUPS -->
-  
-    <div class="section-header"><span>🏟️</span> Tonight's Matchups</div>
-    <div class="matchups-wrap">
+  <div class="section-header"><span>🏟</span> Tonight's Games</div><div class="mc-scroll">
         <div class="mc-card">
-            
-            <div class="mc-side mc-away">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4870562.png" alt="Dominick Barlow" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Philadelphia 76ers</div>
-                <div class="mc-player-name">Dominick Barlow</div>
-                <div class="mc-player-pos">F</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
+          <div class="mc-team-side mc-left">
+            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4684208.png" alt="Brooks Barnhizer" onerror="this.parentNode.style.display='none'"></div>
+            <div class="mc-tname">Oklahoma City Thunder</div>
+            <div class="mc-pname">Brooks Barnhizer <span class="mc-pos">F</span></div>
+            <div class="mc-stats">
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">PTS</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
             </div>
-            <div class="mc-center">
-                <div class="mc-abbr-away">PHI</div>
-                <div class="mc-vs">VS</div>
-                <div class="mc-abbr-home">IND</div>
-                <div class="mc-tipoff">Final</div>
+          </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">OKC</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">DET</div>
+            <div class="mc-tip">2/25 - 7:30 PM EST</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4432166.png" alt="Cade Cunningham" onerror="this.parentNode.style.display='none'"></div>
+            <div class="mc-tname">Detroit Pistons</div>
+            <div class="mc-pname">Cade Cunningham <span class="mc-pos">G</span></div>
+            <div class="mc-stats">
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">PTS</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
             </div>
-            
-            <div class="mc-side mc-home">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4431752.png" alt="Kobe Brown" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Indiana Pacers</div>
-                <div class="mc-player-name">Kobe Brown</div>
-                <div class="mc-player-pos">G</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
         <div class="mc-card">
-            
-            <div class="mc-side mc-away">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4395650.png" alt="Leaky Black" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Washington Wizards</div>
-                <div class="mc-player-name">Leaky Black</div>
-                <div class="mc-player-pos">F</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
+          <div class="mc-team-side mc-left">
+            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/6578.png" alt="Harrison Barnes" onerror="this.parentNode.style.display='none'"></div>
+            <div class="mc-tname">San Antonio Spurs</div>
+            <div class="mc-pname">Harrison Barnes <span class="mc-pos">F</span></div>
+            <div class="mc-stats">
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">PTS</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
             </div>
-            <div class="mc-center">
-                <div class="mc-abbr-away">WSH</div>
-                <div class="mc-vs">VS</div>
-                <div class="mc-abbr-home">ATL</div>
-                <div class="mc-tipoff">Final</div>
+          </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">SA</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">TOR</div>
+            <div class="mc-tip">2/25 - 7:30 PM EST</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4433134.png" alt="Scottie Barnes" onerror="this.parentNode.style.display='none'"></div>
+            <div class="mc-tname">Toronto Raptors</div>
+            <div class="mc-pname">Scottie Barnes <span class="mc-pos">F</span></div>
+            <div class="mc-stats">
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">PTS</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
             </div>
-            
-            <div class="mc-side mc-home">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4278039.png" alt="Nickeil Alexander-Walker" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Atlanta Hawks</div>
-                <div class="mc-player-name">Nickeil Alexander-Walker</div>
-                <div class="mc-player-pos">G</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
         <div class="mc-card">
-            
-            <div class="mc-side mc-away">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4277848.png" alt="Marvin Bagley III" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Dallas Mavericks</div>
-                <div class="mc-player-name">Marvin Bagley III</div>
-                <div class="mc-player-pos">F</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
+          <div class="mc-team-side mc-left">
+            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/6430.png" alt="Jimmy Butler III" onerror="this.parentNode.style.display='none'"></div>
+            <div class="mc-tname">Golden State Warriors</div>
+            <div class="mc-pname">Jimmy Butler III <span class="mc-pos">F</span></div>
+            <div class="mc-stats">
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">PTS</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
             </div>
-            <div class="mc-center">
-                <div class="mc-abbr-away">DAL</div>
-                <div class="mc-vs">VS</div>
-                <div class="mc-abbr-home">BKN</div>
-                <div class="mc-tipoff">Final</div>
+          </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">GS</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">MEM</div>
+            <div class="mc-tip">2/25 - 7:30 PM EST</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4593125.png" alt="Santi Aldama" onerror="this.parentNode.style.display='none'"></div>
+            <div class="mc-tname">Memphis Grizzlies</div>
+            <div class="mc-pname">Santi Aldama <span class="mc-pos">F</span></div>
+            <div class="mc-stats">
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">PTS</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
             </div>
-            
-            <div class="mc-side mc-home">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4397018.png" alt="Ochai Agbaji" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Brooklyn Nets</div>
-                <div class="mc-player-name">Ochai Agbaji</div>
-                <div class="mc-player-pos">G</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
         <div class="mc-card">
-            
-            <div class="mc-side mc-away">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4684208.png" alt="Brooks Barnhizer" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Oklahoma City Thunder</div>
-                <div class="mc-player-name">Brooks Barnhizer</div>
-                <div class="mc-player-pos">F</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
+          <div class="mc-team-side mc-left">
+            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4431679.png" alt="Precious Achiuwa" onerror="this.parentNode.style.display='none'"></div>
+            <div class="mc-tname">Sacramento Kings</div>
+            <div class="mc-pname">Precious Achiuwa <span class="mc-pos">PF</span></div>
+            <div class="mc-stats">
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">PTS</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
             </div>
-            <div class="mc-center">
-                <div class="mc-abbr-away">OKC</div>
-                <div class="mc-vs">VS</div>
-                <div class="mc-abbr-home">TOR</div>
-                <div class="mc-tipoff">Final</div>
+          </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">SAC</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">HOU</div>
+            <div class="mc-tip">2/25 - 8:00 PM EST</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/2991235.png" alt="Steven Adams" onerror="this.parentNode.style.display='none'"></div>
+            <div class="mc-tname">Houston Rockets</div>
+            <div class="mc-pname">Steven Adams <span class="mc-pos">C</span></div>
+            <div class="mc-stats">
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">PTS</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
             </div>
-            
-            <div class="mc-side mc-home">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4433134.png" alt="Scottie Barnes" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Toronto Raptors</div>
-                <div class="mc-player-name">Scottie Barnes</div>
-                <div class="mc-player-pos">F</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
         <div class="mc-card">
-            
-            <div class="mc-side mc-away">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4277869.png" alt="Jose Alvarado" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">New York Knicks</div>
-                <div class="mc-player-name">Jose Alvarado</div>
-                <div class="mc-player-pos">G</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
+          <div class="mc-team-side mc-left">
+            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4066328.png" alt="Jarrett Allen" onerror="this.parentNode.style.display='none'"></div>
+            <div class="mc-tname">Cleveland Cavaliers</div>
+            <div class="mc-pname">Jarrett Allen <span class="mc-pos">C</span></div>
+            <div class="mc-stats">
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">PTS</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
             </div>
-            <div class="mc-center">
-                <div class="mc-abbr-away">NY</div>
-                <div class="mc-vs">VS</div>
-                <div class="mc-abbr-home">CLE</div>
-                <div class="mc-tipoff">Final</div>
+          </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">CLE</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">MIL</div>
+            <div class="mc-tip">2/25 - 8:00 PM EST</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-photo-ring"><div class="mc-no-img">?</div></div>
+            <div class="mc-tname">Milwaukee Bucks</div>
+            <div class="mc-pname">Alex Antetokounmpo <span class="mc-pos">F</span></div>
+            <div class="mc-stats">
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">PTS</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
             </div>
-            
-            <div class="mc-side mc-home">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4066328.png" alt="Jarrett Allen" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Cleveland Cavaliers</div>
-                <div class="mc-player-name">Jarrett Allen</div>
-                <div class="mc-player-pos">C</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
         <div class="mc-card">
-            
-            <div class="mc-side mc-away">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4432816.png" alt="LaMelo Ball" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Charlotte Hornets</div>
-                <div class="mc-player-name">LaMelo Ball</div>
-                <div class="mc-player-pos">G</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
+          <div class="mc-team-side mc-left">
+            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4397885.png" alt="Dalano Banton" onerror="this.parentNode.style.display='none'"></div>
+            <div class="mc-tname">Boston Celtics</div>
+            <div class="mc-pname">Dalano Banton <span class="mc-pos">F</span></div>
+            <div class="mc-stats">
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">PTS</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
             </div>
-            <div class="mc-center">
-                <div class="mc-abbr-away">CHA</div>
-                <div class="mc-vs">VS</div>
-                <div class="mc-abbr-home">CHI</div>
-                <div class="mc-tipoff">Final</div>
+          </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">BOS</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">DEN</div>
+            <div class="mc-tip">2/25 - 10:00 PM EST</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4683933.png" alt="Tamar Bates" onerror="this.parentNode.style.display='none'"></div>
+            <div class="mc-tname">Denver Nuggets</div>
+            <div class="mc-pname">Tamar Bates <span class="mc-pos">G</span></div>
+            <div class="mc-stats">
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">PTS</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
+              <div class="mc-sdiv"></div>
+              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
             </div>
-            
-            <div class="mc-side mc-home">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4711294.png" alt="Matas Buzelis" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Chicago Bulls</div>
-                <div class="mc-player-name">Matas Buzelis</div>
-                <div class="mc-player-pos">F</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mc-card">
-            
-            <div class="mc-side mc-away">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4066261.png" alt="Bam Adebayo" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Miami Heat</div>
-                <div class="mc-player-name">Bam Adebayo</div>
-                <div class="mc-player-pos">C</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
-            </div>
-            <div class="mc-center">
-                <div class="mc-abbr-away">MIA</div>
-                <div class="mc-vs">VS</div>
-                <div class="mc-abbr-home">MIL</div>
-                <div class="mc-tipoff">Final</div>
-            </div>
-            
-            <div class="mc-side mc-home">
-                <div class="mc-photo-wrap">
-                    
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Milwaukee Bucks</div>
-                <div class="mc-player-name">Alex Antetokounmpo</div>
-                <div class="mc-player-pos">F</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mc-card">
-            
-            <div class="mc-side mc-away">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/6430.png" alt="Jimmy Butler III" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Golden State Warriors</div>
-                <div class="mc-player-name">Jimmy Butler III</div>
-                <div class="mc-player-pos">F</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
-            </div>
-            <div class="mc-center">
-                <div class="mc-abbr-away">GS</div>
-                <div class="mc-vs">VS</div>
-                <div class="mc-abbr-home">NO</div>
-                <div class="mc-tipoff">Final</div>
-            </div>
-            
-            <div class="mc-side mc-home">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4433268.png" alt="Trey Alexander" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">New Orleans Pelicans</div>
-                <div class="mc-player-name">Trey Alexander</div>
-                <div class="mc-player-pos">G</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mc-card">
-            
-            <div class="mc-side mc-away">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4397885.png" alt="Dalano Banton" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Boston Celtics</div>
-                <div class="mc-player-name">Dalano Banton</div>
-                <div class="mc-player-pos">F</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
-            </div>
-            <div class="mc-center">
-                <div class="mc-abbr-away">BOS</div>
-                <div class="mc-vs">VS</div>
-                <div class="mc-abbr-home">PHX</div>
-                <div class="mc-tipoff">Final</div>
-            </div>
-            
-            <div class="mc-side mc-home">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/3135045.png" alt="Grayson Allen" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Phoenix Suns</div>
-                <div class="mc-player-name">Grayson Allen</div>
-                <div class="mc-player-pos">G</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mc-card">
-            
-            <div class="mc-side mc-away">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/5279133.png" alt="Joan Beringer" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Minnesota Timberwolves</div>
-                <div class="mc-player-name">Joan Beringer</div>
-                <div class="mc-player-pos">F</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
-            </div>
-            <div class="mc-center">
-                <div class="mc-abbr-away">MIN</div>
-                <div class="mc-vs">VS</div>
-                <div class="mc-abbr-home">POR</div>
-                <div class="mc-tipoff">9:27 - 3rd</div>
-            </div>
-            
-            <div class="mc-side mc-home">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4683021.png" alt="Deni Avdija" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Portland Trail Blazers</div>
-                <div class="mc-player-name">Deni Avdija</div>
-                <div class="mc-player-pos">F</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mc-card">
-            
-            <div class="mc-side mc-away">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4432573.png" alt="Paolo Banchero" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Orlando Magic</div>
-                <div class="mc-player-name">Paolo Banchero</div>
-                <div class="mc-player-pos">F</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
-            </div>
-            <div class="mc-center">
-                <div class="mc-abbr-away">ORL</div>
-                <div class="mc-vs">VS</div>
-                <div class="mc-abbr-home">LAL</div>
-                <div class="mc-tipoff">2:10 - 2nd</div>
-            </div>
-            
-            <div class="mc-side mc-home">
-                <div class="mc-photo-wrap">
-                    <img src="https://a.espncdn.com/i/headshots/nba/players/full/4278129.png" alt="Deandre Ayton" onerror="this.style.opacity='0'">
-                    <div class="mc-photo-bg"></div>
-                </div>
-                <div class="mc-team-name">Los Angeles Lakers</div>
-                <div class="mc-player-name">Deandre Ayton</div>
-                <div class="mc-player-pos">C</div>
-                <div class="mc-stats">
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">PTS</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">REB</div>
-                    </div>
-                    <div class="mc-stat-divider"></div>
-                    <div class="mc-stat">
-                        <div class="mc-stat-val">0.0</div>
-                        <div class="mc-stat-lbl">AST</div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div></div>
-    
 
-  <!-- TODAY'S PICKS -->
-  <div class="section-header">
-    <span>🎯</span> Today's Picks — 2026-02-24
-  </div>
-  <div class="picks-grid">
-    
-                    <div class="pick-card high">
-                        <div class="pick-matchup">PHI @ IND</div>
-                        <div class="pick-bet">HOME ATS (IND +10.5)</div>
-                        <div class="pick-meta">
-                            <span class="pick-line">Line: 10.5</span>
-                            <span class="pick-edge">Edge: 4.85</span>
-                            <span class="pick-margin">Model: -5.7 pts</span>
-                        </div>
-                        <div class="pick-confidence high">HIGH   ★★★ ★★★</div>
-                    </div>
-                    <div class="pick-card high">
-                        <div class="pick-matchup">PHI @ IND</div>
-                        <div class="pick-bet">HOME ML (IND  +350)</div>
-                        <div class="pick-meta">
-                            <span class="pick-line">Line: 10.5</span>
-                            <span class="pick-edge">Edge: 4.85</span>
-                            <span class="pick-margin">Model: -5.7 pts</span>
-                        </div>
-                        <div class="pick-confidence high">HIGH   ★★★ ★★★</div>
-                    </div>
-                    <div class="pick-card high">
-                        <div class="pick-matchup">WAS @ ATL</div>
-                        <div class="pick-bet">AWAY ATS (WAS +13.5)</div>
-                        <div class="pick-meta">
-                            <span class="pick-line">Line: -13.5</span>
-                            <span class="pick-edge">Edge: -5.44</span>
-                            <span class="pick-margin">Model: +8.1 pts</span>
-                        </div>
-                        <div class="pick-confidence high">HIGH   ★★★ ★★★</div>
-                    </div>
-                    <div class="pick-card high">
-                        <div class="pick-matchup">WAS @ ATL</div>
-                        <div class="pick-bet">AWAY ML (WAS  +525)</div>
-                        <div class="pick-meta">
-                            <span class="pick-line">Line: -13.5</span>
-                            <span class="pick-edge">Edge: -5.44</span>
-                            <span class="pick-margin">Model: +8.1 pts</span>
-                        </div>
-                        <div class="pick-confidence high">HIGH   ★★★ ★★★</div>
-                    </div>
-                    <div class="pick-card medium">
-                        <div class="pick-matchup">BOS @ PHX</div>
-                        <div class="pick-bet">AWAY ATS (BOS -6.5)</div>
-                        <div class="pick-meta">
-                            <span class="pick-line">Line: 6.5</span>
-                            <span class="pick-edge">Edge: -4.09</span>
-                            <span class="pick-margin">Model: -10.6 pts</span>
-                        </div>
-                        <div class="pick-confidence medium">MEDIUM ★★ ★★</div>
-                    </div>
-                    <div class="pick-card high">
-                        <div class="pick-matchup">MIN @ POR</div>
-                        <div class="pick-bet">HOME ATS (POR +6.5)</div>
-                        <div class="pick-meta">
-                            <span class="pick-line">Line: 6.5</span>
-                            <span class="pick-edge">Edge: 4.01</span>
-                            <span class="pick-margin">Model: -2.5 pts</span>
-                        </div>
-                        <div class="pick-confidence high">HIGH   ★★★ ★★★</div>
-                    </div>
-                    <div class="pick-card high">
-                        <div class="pick-matchup">ORL @ LAL</div>
-                        <div class="pick-bet">AWAY ATS (ORL +5.5)</div>
-                        <div class="pick-meta">
-                            <span class="pick-line">Line: -5.5</span>
-                            <span class="pick-edge">Edge: -5.57</span>
-                            <span class="pick-margin">Model: -0.1 pts</span>
-                        </div>
-                        <div class="pick-confidence high">HIGH   ★★★ ★★★</div>
-                    </div>
+  <div class="two-col">
+    <div>
+      <div class="section-header"><span>🎯</span> Today's Picks</div>
+      <p class="no-picks">No qualifying picks today.</p>
+    </div>
+    <div>
+      <div class="section-header"><span>📊</span> Recent Results</div>
+      <button class="results-toggle" onclick="var b=document.getElementById('rr-body');var open=b.classList.toggle('open');this.querySelector('.rt-arrow').style.transform=open?'rotate(180deg)':'';">
+        Last 8 bets &nbsp;·&nbsp; 15W - 14L all-time
+        <span class="rt-arrow">▾</span>
+      </button>
+      <div class="results-body" id="rr-body">
+        <div class="rr"><span class="rr-date">2026-02-24</span><span class="rr-match">PHI @ IND</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-02-24</span><span class="rr-match">PHI @ IND</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-02-24</span><span class="rr-match">WAS @ ATL</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-02-24</span><span class="rr-match">WAS @ ATL</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-02-24</span><span class="rr-match">BOS @ PHX</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+0.909u</span></div><div class="rr"><span class="rr-date">2026-02-24</span><span class="rr-match">MIN @ POR</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+0.909u</span></div><div class="rr"><span class="rr-date">2026-02-24</span><span class="rr-match">ORL @ LAL</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+0.909u</span></div><div class="rr"><span class="rr-date">2026-02-23</span><span class="rr-match">UTA @ HOU</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div>
+      </div>
+    </div>
   </div>
 
-  <!-- OTHER GAMES -->
-  <div class="no-bets-section"><div class="section-header"><span>📋</span> Other Games — No Edge Found</div>
-                    <div class="no-bet-row">
-                        <span class="nb-matchup">DAL @ BKN</span>
-                        <span class="nb-line">Line: 2.5</span>
-                        <span class="nb-label">No edge</span>
-                    </div>
-                    <div class="no-bet-row">
-                        <span class="nb-matchup">NYK @ CLE</span>
-                        <span class="nb-line">Line: -4.5</span>
-                        <span class="nb-label">No edge</span>
-                    </div>
-                    <div class="no-bet-row">
-                        <span class="nb-matchup">OKC @ TOR</span>
-                        <span class="nb-line">Line: -1.5</span>
-                        <span class="nb-label">No edge</span>
-                    </div>
-                    <div class="no-bet-row">
-                        <span class="nb-matchup">CHA @ CHI</span>
-                        <span class="nb-line">Line: 8.5</span>
-                        <span class="nb-label">No edge</span>
-                    </div>
-                    <div class="no-bet-row">
-                        <span class="nb-matchup">GSW @ NOP</span>
-                        <span class="nb-line">Line: 1.5</span>
-                        <span class="nb-label">No edge</span>
-                    </div>
-                    <div class="no-bet-row">
-                        <span class="nb-matchup">MIA @ MIL</span>
-                        <span class="nb-line">Line: 6.5</span>
-                        <span class="nb-label">No edge</span>
-                    </div></div>
+  <div class="section-header"><span>📋</span> Other Games — No Edge</div><div class="chips"><div class="chip">OKC @ DET<span class="chip-line">-7.5</span></div><div class="chip">GSW @ MEM<span class="chip-line">3.5</span></div><div class="chip">SAS @ TOR<span class="chip-line">6.5</span></div><div class="chip">CLE @ MIL<span class="chip-line">8.5</span></div><div class="chip">SAC @ HOU<span class="chip-line">-14.5</span></div><div class="chip">BOS @ DEN<span class="chip-line">-3.5</span></div></div>
 
-  <!-- DISCLAIMER -->
-  <div class="disclaimer">
-    ⚠️ For entertainment purposes only. This model uses publicly available data and machine learning.
-    Past performance does not guarantee future results. Bet responsibly.
-  </div>
-
-  <!-- RECENT RESULTS -->
-  <div class="section-header"><span>📊</span> Recent Results (Last 15 Bets)</div><table class="results-table"><thead><tr><th>Date</th><th>Matchup</th><th>Bet</th><th>Result</th><th>P&L</th><th>CLV</th></tr></thead><tbody>
-                <tr class="result-row">
-                    <td>2026-02-23</td>
-                    <td class="matchup-cell">SAS @ DET</td>
-                    <td class="bet-cell">HOME ML (DET -118)</td>
-                    <td><span class="result-badge loss">LOSS</span></td>
-                    <td class="pnl-cell neg">-1.000u</td>
-                    <td class="clv-cell">-0.83</td>
-                </tr>
-                <tr class="result-row">
-                    <td>2026-02-23</td>
-                    <td class="matchup-cell">SAC @ MEM</td>
-                    <td class="bet-cell">HOME ML (MEM -175)</td>
-                    <td><span class="result-badge loss">LOSS</span></td>
-                    <td class="pnl-cell neg">-1.000u</td>
-                    <td class="clv-cell">+3.96</td>
-                </tr>
-                <tr class="result-row">
-                    <td>2026-02-23</td>
-                    <td class="matchup-cell">UTA @ HOU</td>
-                    <td class="bet-cell">AWAY ATS (UTA +12.5)</td>
-                    <td><span class="result-badge loss">LOSS</span></td>
-                    <td class="pnl-cell neg">-1.000u</td>
-                    <td class="clv-cell">+0.00</td>
-                </tr>
-                <tr class="result-row">
-                    <td>2026-02-23</td>
-                    <td class="matchup-cell">UTA @ HOU</td>
-                    <td class="bet-cell">AWAY ML (UTA +550)</td>
-                    <td><span class="result-badge loss">LOSS</span></td>
-                    <td class="pnl-cell neg">-1.000u</td>
-                    <td class="clv-cell">+0.00</td>
-                </tr>
-                <tr class="result-row">
-                    <td>2026-02-22</td>
-                    <td class="matchup-cell">TOR @ MIL</td>
-                    <td class="bet-cell">HOME ML (MIL +140)</td>
-                    <td><span class="result-badge loss">LOSS</span></td>
-                    <td class="pnl-cell neg">-1.000u</td>
-                    <td class="clv-cell">-1.81</td>
-                </tr>
-                <tr class="result-row">
-                    <td>2026-02-22</td>
-                    <td class="matchup-cell">PHI @ MIN</td>
-                    <td class="bet-cell">AWAY ML (PHI +285)</td>
-                    <td><span class="result-badge win">WIN</span></td>
-                    <td class="pnl-cell pos">+2.850u</td>
-                    <td class="clv-cell">+0.00</td>
-                </tr>
-                <tr class="result-row">
-                    <td>2026-02-22</td>
-                    <td class="matchup-cell">POR @ PHX</td>
-                    <td class="bet-cell">HOME ATS (PHX +3.5)</td>
-                    <td><span class="result-badge loss">LOSS</span></td>
-                    <td class="pnl-cell neg">-1.000u</td>
-                    <td class="clv-cell">+0.00</td>
-                </tr>
-                <tr class="result-row">
-                    <td>2026-02-22</td>
-                    <td class="matchup-cell">POR @ PHX</td>
-                    <td class="bet-cell">HOME ML (PHX +136)</td>
-                    <td><span class="result-badge loss">LOSS</span></td>
-                    <td class="pnl-cell neg">-1.000u</td>
-                    <td class="clv-cell">-1.11</td>
-                </tr>
-                <tr class="result-row">
-                    <td>2026-02-22</td>
-                    <td class="matchup-cell">ORL @ LAC</td>
-                    <td class="bet-cell">AWAY ATS (ORL +1.5)</td>
-                    <td><span class="result-badge win">WIN</span></td>
-                    <td class="pnl-cell pos">+0.909u</td>
-                    <td class="clv-cell">+1.00</td>
-                </tr>
-                <tr class="result-row">
-                    <td>2026-02-22</td>
-                    <td class="matchup-cell">ORL @ LAC</td>
-                    <td class="bet-cell">AWAY ML (ORL +110)</td>
-                    <td><span class="result-badge win">WIN</span></td>
-                    <td class="pnl-cell pos">+1.100u</td>
-                    <td class="clv-cell">+0.89</td>
-                </tr>
-                <tr class="result-row">
-                    <td>2026-02-21</td>
-                    <td class="matchup-cell">ORL @ PHX</td>
-                    <td class="bet-cell">HOME ML (PHX -135)</td>
-                    <td><span class="result-badge win">WIN</span></td>
-                    <td class="pnl-cell pos">+0.741u</td>
-                    <td class="clv-cell">—</td>
-                </tr>
-                <tr class="result-row">
-                    <td>2026-02-21</td>
-                    <td class="matchup-cell">PHI @ NOP</td>
-                    <td class="bet-cell">HOME ML (NOP +142)</td>
-                    <td><span class="result-badge win">WIN</span></td>
-                    <td class="pnl-cell pos">+1.420u</td>
-                    <td class="clv-cell">—</td>
-                </tr>
-                <tr class="result-row">
-                    <td>2026-02-21</td>
-                    <td class="matchup-cell">DET @ CHI</td>
-                    <td class="bet-cell">AWAY ATS (DET -10.5)</td>
-                    <td><span class="result-badge win">WIN</span></td>
-                    <td class="pnl-cell pos">+0.909u</td>
-                    <td class="clv-cell">—</td>
-                </tr>
-                <tr class="result-row">
-                    <td>2/22/2026</td>
-                    <td class="matchup-cell">ORL @ LAC</td>
-                    <td class="bet-cell">AWAY ATS (ORL +1.5)</td>
-                    <td><span class="result-badge win">WIN</span></td>
-                    <td class="pnl-cell pos">+0.909u</td>
-                    <td class="clv-cell">+1.00</td>
-                </tr>
-                <tr class="result-row">
-                    <td>2/22/2026</td>
-                    <td class="matchup-cell">ORL @ LAC</td>
-                    <td class="bet-cell">AWAY ML (ORL +110)</td>
-                    <td><span class="result-badge win">WIN</span></td>
-                    <td class="pnl-cell pos">+1.100u</td>
-                    <td class="clv-cell">+0.89</td>
-                </tr></tbody></table>
-
-  <div class="footer">
-    Generated by NBA Model v3 · <strong>AI-powered sports analytics</strong><br>
-    Updated: February 24, 2026 at 11:43 PM<br>
-    All picks generated by machine learning model · 22 graded bets tracked
-  </div>
+  <div class="disc">⚠️ For entertainment only. Past performance does not guarantee future results. Bet responsibly.</div>
+  <div class="footer">NBA Model v3 · <b>AI-powered analytics</b> · 29 graded bets tracked</div>
 
 </div>
 </body>
