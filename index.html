@@ -206,6 +206,115 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 .pick-meta span { font-size:0.65rem; color:var(--muted); font-family:var(--mono); }
 .no-picks { color:var(--muted); font-style:italic; font-size:0.82rem; padding:0.5rem 0; }
 
+/* BET SLIP BUTTON */
+.slip-btn {
+  margin-top: 0.6rem;
+  width: 100%;
+  background: rgba(249,115,22,0.08);
+  border: 1px solid rgba(249,115,22,0.3);
+  border-radius: 6px;
+  color: var(--accent);
+  font-family: var(--font);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+  text-align: center;
+}
+.slip-btn:hover {
+  background: rgba(249,115,22,0.18);
+  border-color: rgba(249,115,22,0.6);
+  transform: translateY(-1px);
+}
+.slip-btn:active { transform: translateY(0); }
+
+/* BET SLIP MODAL */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  align-items: center; justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: #161B22;
+  border: 1px solid #30363D;
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: 90%; max-width: 420px;
+  position: relative;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+  animation: modal-in 0.18s ease;
+}
+@keyframes modal-in {
+  from { opacity:0; transform:translateY(12px) scale(0.97); }
+  to   { opacity:1; transform:translateY(0)   scale(1); }
+}
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem;
+  background: none; border: none; color: var(--muted);
+  font-size: 1.2rem; cursor: pointer; line-height: 1;
+  transition: color 0.15s;
+}
+.modal-close:hover { color: var(--white); }
+.modal-title {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.4rem;
+}
+.modal-matchup {
+  font-size: 1rem; font-weight: 700; margin-bottom: 0.15rem;
+}
+.modal-bet {
+  font-size: 0.85rem; font-family: var(--mono); color: var(--accent);
+  margin-bottom: 0.1rem;
+}
+.modal-line {
+  font-size: 0.72rem; color: var(--muted); font-family: var(--mono);
+  margin-bottom: 1.1rem;
+}
+.modal-label {
+  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--muted); font-weight: 600; margin-bottom: 0.5rem;
+}
+.book-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0.5rem; margin-bottom: 1rem;
+}
+.book-btn {
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 0.6rem 0.5rem;
+  cursor: pointer; transition: border-color 0.15s, background 0.15s;
+  display: flex; flex-direction: column; align-items: center; gap: 0.25rem;
+}
+.book-btn:hover { border-color: var(--accent); background: rgba(249,115,22,0.06); }
+.book-logo { font-size: 1.1rem; }
+.book-name { font-size: 0.65rem; font-weight: 700; color: var(--white); letter-spacing: 0.04em; }
+.modal-divider {
+  border: none; border-top: 1px solid var(--border); margin: 0.85rem 0;
+}
+.copy-row {
+  display: flex; gap: 0.5rem;
+}
+.copy-box {
+  flex: 1; background: #0d1117; border: 1px solid var(--border);
+  border-radius: 6px; padding: 0.45rem 0.6rem;
+  font-size: 0.72rem; font-family: var(--mono); color: var(--muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.copy-btn {
+  background: var(--card2); border: 1px solid var(--border);
+  border-radius: 6px; padding: 0.45rem 0.75rem;
+  color: var(--white); font-size: 0.72rem; font-weight: 600;
+  cursor: pointer; white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s;
+}
+.copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+.copy-btn.copied { border-color: var(--green); color: var(--green); }
+
 /* COLLAPSIBLE RESULTS */
 .results-toggle {
   width:100%; background:none; border:1px solid var(--border);
@@ -265,7 +374,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   </div>
   <div class="hdr-r">
     <div class="date-pill">2026-02-26</div>
-    <div class="upd">Updated Feb 26 · 12:06 PM</div>
+    <div class="upd">Updated Feb 26 · 12:13 PM</div>
   </div>
 </div>
 
@@ -629,7 +738,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   <div class="two-col">
     <div>
       <div class="section-header"><span>🎯</span> Today's Picks</div>
-      <div class="pick med"><div class="pick-top"><div class="pick-game">CHA @ IND</div><div class="pick-tier med">MEDIUM ★★ ★★</div></div><div class="pick-bet">HOME ATS (IND +12.5)</div><div class="pick-meta"><span>Line: 12.5</span><span>Edge: 5.97</span><span>Model: -6.5 pts</span></div></div><div class="pick med"><div class="pick-top"><div class="pick-game">MIA @ PHI</div><div class="pick-tier med">MEDIUM ★★ ★★</div></div><div class="pick-bet">AWAY ATS (MIA +2.5)</div><div class="pick-meta"><span>Line: -2.5</span><span>Edge: -4.8</span><span>Model: -2.3 pts</span></div></div><div class="pick med"><div class="pick-top"><div class="pick-game">HOU @ ORL</div><div class="pick-tier med">MEDIUM ★★ ★★</div></div><div class="pick-bet">HOME ATS (ORL +2.5)</div><div class="pick-meta"><span>Line: 2.5</span><span>Edge: 4.87</span><span>Model: +2.4 pts</span></div></div><div class="pick med"><div class="pick-top"><div class="pick-game">LAL @ PHX</div><div class="pick-tier med">MEDIUM ★★ ★★</div></div><div class="pick-bet">HOME ATS (PHX +5.5)</div><div class="pick-meta"><span>Line: 5.5</span><span>Edge: 5.4</span><span>Model: -0.1 pts</span></div></div><div class="pick med"><div class="pick-top"><div class="pick-game">NOP @ UTA</div><div class="pick-tier med">MEDIUM ★★ ★★</div></div><div class="pick-bet">HOME ATS (UTA +5.5)</div><div class="pick-meta"><span>Line: 5.5</span><span>Edge: 4.6</span><span>Model: -0.9 pts</span></div></div>
+      <div class="pick med"><div class="pick-top"><div class="pick-game">CHA @ IND</div><div class="pick-tier med">MEDIUM ★★ ★★</div></div><div class="pick-bet">HOME ATS (IND +12.5)</div><div class="pick-meta"><span>Line: 12.5</span><span>Edge: 5.97</span><span>Model: -6.5 pts</span></div><button class="slip-btn" data-matchup="CHA @ IND" data-bet="HOME ATS (IND +12.5)" data-line="12.5" onclick="openSlip(this)">＋ Add to Bet Slip</button></div><div class="pick med"><div class="pick-top"><div class="pick-game">MIA @ PHI</div><div class="pick-tier med">MEDIUM ★★ ★★</div></div><div class="pick-bet">AWAY ATS (MIA +2.5)</div><div class="pick-meta"><span>Line: -2.5</span><span>Edge: -4.8</span><span>Model: -2.3 pts</span></div><button class="slip-btn" data-matchup="MIA @ PHI" data-bet="AWAY ATS (MIA +2.5)" data-line="-2.5" onclick="openSlip(this)">＋ Add to Bet Slip</button></div><div class="pick med"><div class="pick-top"><div class="pick-game">HOU @ ORL</div><div class="pick-tier med">MEDIUM ★★ ★★</div></div><div class="pick-bet">HOME ATS (ORL +2.5)</div><div class="pick-meta"><span>Line: 2.5</span><span>Edge: 4.87</span><span>Model: +2.4 pts</span></div><button class="slip-btn" data-matchup="HOU @ ORL" data-bet="HOME ATS (ORL +2.5)" data-line="2.5" onclick="openSlip(this)">＋ Add to Bet Slip</button></div><div class="pick med"><div class="pick-top"><div class="pick-game">LAL @ PHX</div><div class="pick-tier med">MEDIUM ★★ ★★</div></div><div class="pick-bet">HOME ATS (PHX +5.5)</div><div class="pick-meta"><span>Line: 5.5</span><span>Edge: 5.4</span><span>Model: -0.1 pts</span></div><button class="slip-btn" data-matchup="LAL @ PHX" data-bet="HOME ATS (PHX +5.5)" data-line="5.5" onclick="openSlip(this)">＋ Add to Bet Slip</button></div><div class="pick med"><div class="pick-top"><div class="pick-game">NOP @ UTA</div><div class="pick-tier med">MEDIUM ★★ ★★</div></div><div class="pick-bet">HOME ATS (UTA +5.5)</div><div class="pick-meta"><span>Line: 5.5</span><span>Edge: 4.6</span><span>Model: -0.9 pts</span></div><button class="slip-btn" data-matchup="NOP @ UTA" data-bet="HOME ATS (UTA +5.5)" data-line="5.5" onclick="openSlip(this)">＋ Add to Bet Slip</button></div>
     </div>
     <div>
       <div class="section-header"><span>📊</span> Recent Results</div>
@@ -648,6 +757,159 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   <div class="disc">⚠️ For entertainment only. Past performance does not guarantee future results. Bet responsibly.</div>
   <div class="footer">NBA Model v3 · <b>AI-powered analytics</b> · 29 graded bets tracked</div>
 
+</div><!-- /wrap -->
+
+<!-- BET SLIP MODAL -->
+<div class="modal-overlay" id="slipOverlay" onclick="if(event.target===this)closeSlip()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeSlip()">✕</button>
+    <div class="modal-title">Add to Bet Slip</div>
+    <div class="modal-matchup" id="slipMatchup"></div>
+    <div class="modal-bet"     id="slipBet"></div>
+    <div class="modal-line"    id="slipLine"></div>
+
+    <div class="modal-label">Choose Your Sportsbook</div>
+    <div class="book-grid">
+      <button class="book-btn" onclick="openBook('draftkings')">
+        <span class="book-logo">🟢</span>
+        <span class="book-name">DraftKings</span>
+      </button>
+      <button class="book-btn" onclick="openBook('fanduel')">
+        <span class="book-logo">🔵</span>
+        <span class="book-name">FanDuel</span>
+      </button>
+      <button class="book-btn" onclick="openBook('betmgm')">
+        <span class="book-logo">🟡</span>
+        <span class="book-name">BetMGM</span>
+      </button>
+      <button class="book-btn" onclick="openBook('caesars')">
+        <span class="book-logo">⚔️</span>
+        <span class="book-name">Caesars</span>
+      </button>
+      <button class="book-btn" onclick="openBook('pointsbet')">
+        <span class="book-logo">🔴</span>
+        <span class="book-name">PointsBet</span>
+      </button>
+      <button class="book-btn" onclick="openBook('barstool')">
+        <span class="book-logo">🐷</span>
+        <span class="book-name">ESPN Bet</span>
+      </button>
+    </div>
+
+    <hr class="modal-divider">
+    <div class="modal-label">Or copy bet details</div>
+    <div class="copy-row">
+      <div class="copy-box" id="copyText"></div>
+      <button class="copy-btn" id="copyBtn" onclick="copyBet()">Copy</button>
+    </div>
+  </div>
 </div>
+
+<script>
+// Active pick data
+let _slip = {};
+
+// Sportsbook NBA deep links — open directly to NBA game betting page
+const BOOKS = {
+  draftkings: {
+    name: 'DraftKings',
+    url:  'https://sportsbook.draftkings.com/leagues/basketball/nba',
+  },
+  fanduel: {
+    name: 'FanDuel',
+    url:  'https://sportsbook.fanduel.com/navigation/nba',
+  },
+  betmgm: {
+    name: 'BetMGM',
+    url:  'https://sports.betmgm.com/en/sports/basketball-7/betting/usa-9/nba-6004',
+  },
+  caesars: {
+    name: 'Caesars',
+    url:  'https://sportsbook.caesars.com/us/mi/bet/basketball/nba',
+  },
+  pointsbet: {
+    name: 'PointsBet',
+    url:  'https://mi.pointsbet.com/sports/basketball/NBA',
+  },
+  barstool: {
+    name: 'ESPN Bet',
+    url:  'https://espnbet.com/sport/basketball/league/nba',
+  },
+};
+
+function openSlip(btn) {
+  _slip.matchup = btn.dataset.matchup;
+  _slip.bet     = btn.dataset.bet;
+  _slip.line    = btn.dataset.line;
+
+  document.getElementById('slipMatchup').textContent = _slip.matchup;
+  document.getElementById('slipBet').textContent     = _slip.bet;
+  document.getElementById('slipLine').textContent    = _slip.line ? 'Line: ' + _slip.line : '';
+
+  const clipText = _slip.matchup + ' — ' + _slip.bet + (_slip.line ? ' (' + _slip.line + ')' : '');
+  document.getElementById('copyText').textContent = clipText;
+  _slip.clipText = clipText;
+
+  // Reset copy button
+  const cb = document.getElementById('copyBtn');
+  cb.textContent = 'Copy';
+  cb.classList.remove('copied');
+
+  document.getElementById('slipOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSlip() {
+  document.getElementById('slipOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function openBook(bookKey) {
+  const book = BOOKS[bookKey];
+  if (!book) return;
+
+  // Copy bet to clipboard first so user can paste into the sportsbook
+  if (navigator.clipboard && _slip.clipText) {
+    navigator.clipboard.writeText(_slip.clipText).catch(() => {});
+  }
+
+  // Open sportsbook NBA page in new tab
+  window.open(book.url, '_blank', 'noopener');
+
+  // Show brief confirmation in the modal
+  const btns = document.querySelectorAll('.book-btn');
+  btns.forEach(b => b.style.borderColor = '');
+  event.currentTarget.style.borderColor = 'var(--green)';
+  setTimeout(() => { event.currentTarget.style.borderColor = ''; }, 1200);
+}
+
+function copyBet() {
+  if (!_slip.clipText) return;
+  navigator.clipboard.writeText(_slip.clipText).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✓ Copied';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copy';
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(() => {
+    // Fallback for older browsers
+    const ta = document.createElement('textarea');
+    ta.value = _slip.clipText;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✓ Copied'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// Close on Escape key
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSlip(); });
+</script>
+
 </body>
 </html>
