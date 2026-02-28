@@ -260,10 +260,19 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 .pick.low  { border-left-color:var(--muted); }
 .pick-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.25rem; }
 .pick-game { font-size:0.82rem; font-weight:600; }
-.pick-tier { font-size:0.62rem; font-family:var(--mono); font-weight:700; white-space:nowrap; }
+.pick-tier {
+  font-size:0.62rem; font-family:var(--mono); font-weight:700; white-space:nowrap;
+  border-bottom: 1px dotted currentColor;
+  padding-bottom: 1px;
+  cursor: help;
+}
 .pick-tier.high { color:var(--green); }
 .pick-tier.med  { color:var(--gold); }
 .pick-tier.low  { color:var(--muted); }
+.tier-info {
+  font-size: 0.62rem; margin-left: 3px; opacity: 0.6;
+  vertical-align: middle; font-style: normal;
+}
 .pick-bet { font-size:0.92rem; font-weight:700; color:var(--accent); font-family:var(--mono); margin-bottom:0.3rem; }
 .pick-meta { display:flex; gap:0.7rem; flex-wrap:wrap; }
 .pick-meta span { font-size:0.65rem; color:var(--muted); font-family:var(--mono); }
@@ -509,7 +518,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   </div>
   <div class="hdr-r">
     <div class="date-pill">2026-02-28</div>
-    <div class="upd">Updated Feb 28 · 01:28 AM</div>
+    <div class="upd">Updated Feb 28 · 01:41 AM</div>
     <a class="x-handle" href="https://x.com/iMightBetThat" target="_blank" rel="noopener">
       <svg class="x-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       @iMightBetThat
@@ -717,7 +726,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   <div class="two-col">
     <div>
       <div class="section-header"><span>🎯</span> Today's Picks</div>
-      <div class="pick med"><div class="pick-top"><div class="pick-game">HOU @ MIA</div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★ ★★</div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Spread edge &gt;5.5pts + ML edge &gt;6% in same direction. Strongest signal — rare.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Spread edge 4–5.5pts + both models agree. Solid edge, normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Spread edge 4–5pts, weaker ML confirmation. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ATS (MIA +3.5)</div><div class="pick-meta"><span>Line: 3.5</span><span>Edge: 4.69</span><span>Model: +1.2 pts</span></div><button class="slip-btn" data-matchup="HOU @ MIA" data-bet="HOME ATS (MIA +3.5)" data-line="3.5" onclick="openSlip(this)">＋ Add to Bet Slip</button></div>
+      <div class="pick med"><div class="pick-top"><div class="pick-game">HOU @ MIA</div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★ ★★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Spread edge &gt;5.5pts + ML edge &gt;6% in same direction. Strongest signal — rare.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Spread edge 4–5.5pts + both models agree. Solid edge, normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Spread edge 4–5pts, weaker ML confirmation. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ATS (MIA +3.5)</div><div class="pick-meta"><span>Line: 3.5</span><span>Edge: 4.69</span><span>Model: +1.2 pts</span></div><button class="slip-btn" data-matchup="HOU @ MIA" data-bet="HOME ATS (MIA +3.5)" data-line="3.5" onclick="openSlip(this)">＋ Add to Bet Slip</button></div>
     </div>
     <div>
       <div class="section-header"><span>📊</span> Recent Results</div>
