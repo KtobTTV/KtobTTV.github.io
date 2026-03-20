@@ -200,7 +200,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 .mc-scroll::-webkit-scrollbar { height:3px; }
 .mc-scroll::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
 .mc-card {
-  flex: 0 0 300px;
+  flex: 0 0 310px;
   background:var(--card); border:1px solid var(--border);
   border-radius:14px; overflow:hidden;
   display:grid; grid-template-columns:1fr 48px 1fr;
@@ -220,7 +220,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 }
 .mc-photo-ring img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
 .mc-no-img { line-height:68px; font-size:1.4rem; color:var(--muted); }
-.mc-tname { font-size:0.68rem; font-weight:700; color:var(--white); line-height:1.2; }
+.mc-tname { font-size:0.68rem; font-weight:700; color:var(--white); line-height:1.2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
 .mc-pname { font-size:0.6rem; color:var(--accent); line-height:1.2; }
 .mc-pos { color:var(--muted); }
 .mc-stats {
@@ -526,7 +526,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   </div>
   <div class="hdr-r">
     <div class="date-pill">2026-03-20</div>
-    <div class="upd">Updated Mar 20 · 01:18 AM</div>
+    <div class="upd">Updated Mar 20 · 01:25 AM</div>
     <a class="x-handle" href="https://x.com/iMightBetThat" target="_blank" rel="noopener">
       <svg class="x-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       @iMightBetThat
@@ -568,7 +568,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
         <div class="mc-card">
           <div class="mc-team-side mc-left">
             <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/3934719.png" alt="Jalen Brunson" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">New York Knicks</div>
+            <div class="mc-tname">New York</div>
             <div class="mc-pname">Jalen Brunson <span class="mc-pos">PG</span></div>
             <div class="mc-stats">
               <div class="mc-st"><div class="mc-sv">25.1</div><div class="mc-sl">PTS</div></div>
@@ -586,7 +586,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4432815.png" alt="Cam Thomas" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Brooklyn Nets</div>
+            <div class="mc-tname">Brooklyn</div>
             <div class="mc-pname">Cam Thomas <span class="mc-pos">SG</span></div>
             <div class="mc-stats">
               <div class="mc-st"><div class="mc-sv">23.5</div><div class="mc-sl">PTS</div></div>
@@ -600,7 +600,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
         <div class="mc-card">
           <div class="mc-team-side mc-left">
             <div class="mc-photo-ring"><img src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1631108.png" alt="Brandin Podziemski" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Golden State Warriors</div>
+            <div class="mc-tname">Golden State</div>
             <div class="mc-pname">Brandin Podziemski <span class="mc-pos">SG</span></div>
             <div class="mc-stats">
               <div class="mc-st"><div class="mc-sv">13.1</div><div class="mc-sl">PTS</div></div>
@@ -618,7 +618,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-photo-ring"><img src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1630595.png" alt="Cade Cunningham" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Detroit Pistons</div>
+            <div class="mc-tname">Detroit</div>
             <div class="mc-pname">Cade Cunningham <span class="mc-pos">PG</span></div>
             <div class="mc-stats">
               <div class="mc-st"><div class="mc-sv">25.3</div><div class="mc-sl">PTS</div></div>
@@ -632,7 +632,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
         <div class="mc-card">
           <div class="mc-team-side mc-left">
             <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/3934672.png" alt="Trae Young" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Atlanta Hawks</div>
+            <div class="mc-tname">Atlanta</div>
             <div class="mc-pname">Trae Young <span class="mc-pos">PG</span></div>
             <div class="mc-stats">
               <div class="mc-st"><div class="mc-sv">23.5</div><div class="mc-sl">PTS</div></div>
@@ -650,7 +650,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4683023.png" alt="Alperen Sengun" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Houston Rockets</div>
+            <div class="mc-tname">Houston</div>
             <div class="mc-pname">Alperen Sengun <span class="mc-pos">C</span></div>
             <div class="mc-stats">
               <div class="mc-st"><div class="mc-sv">21.1</div><div class="mc-sl">PTS</div></div>
@@ -664,7 +664,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
         <div class="mc-card">
           <div class="mc-team-side mc-left">
             <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4065648.png" alt="Jayson Tatum" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Boston Celtics</div>
+            <div class="mc-tname">Boston</div>
             <div class="mc-pname">Jayson Tatum <span class="mc-pos">SF</span></div>
             <div class="mc-stats">
               <div class="mc-st"><div class="mc-sv">26.7</div><div class="mc-sl">PTS</div></div>
@@ -682,7 +682,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4279888.png" alt="Ja Morant" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Memphis Grizzlies</div>
+            <div class="mc-tname">Memphis</div>
             <div class="mc-pname">Ja Morant <span class="mc-pos">PG</span></div>
             <div class="mc-stats">
               <div class="mc-st"><div class="mc-sv">25.1</div><div class="mc-sl">PTS</div></div>
@@ -696,7 +696,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
         <div class="mc-card">
           <div class="mc-team-side mc-left">
             <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4431780.png" alt="Deni Avdija" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Portland Trail Blazers</div>
+            <div class="mc-tname">Portland</div>
             <div class="mc-pname">Deni Avdija <span class="mc-pos">SF</span></div>
             <div class="mc-stats">
               <div class="mc-st"><div class="mc-sv">19.8</div><div class="mc-sl">PTS</div></div>
@@ -714,7 +714,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4594268.png" alt="Anthony Edwards" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Minnesota Timberwolves</div>
+            <div class="mc-tname">Minnesota</div>
             <div class="mc-pname">Anthony Edwards <span class="mc-pos">SG</span></div>
             <div class="mc-stats">
               <div class="mc-st"><div class="mc-sv">26.4</div><div class="mc-sl">PTS</div></div>
@@ -728,7 +728,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
         <div class="mc-card">
           <div class="mc-team-side mc-left">
             <div class="mc-photo-ring"><img src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1630567.png" alt="Scottie Barnes" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Toronto Raptors</div>
+            <div class="mc-tname">Toronto</div>
             <div class="mc-pname">Scottie Barnes <span class="mc-pos">SF</span></div>
             <div class="mc-stats">
               <div class="mc-st"><div class="mc-sv">19.9</div><div class="mc-sl">PTS</div></div>
@@ -746,7 +746,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/3112335.png" alt="Nikola Jokic" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Denver Nuggets</div>
+            <div class="mc-tname">Denver</div>
             <div class="mc-pname">Nikola Jokic <span class="mc-pos">C</span></div>
             <div class="mc-stats">
               <div class="mc-st"><div class="mc-sv">29.6</div><div class="mc-sl">PTS</div></div>
