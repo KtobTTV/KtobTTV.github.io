@@ -30,6 +30,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   background: #0a0e14;
   border-bottom: 1px solid var(--border);
   overflow-x: auto;
+  overflow-y: visible;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   position: sticky;
@@ -69,6 +70,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   position: relative;
   display: flex;
   flex: 1;
+  overflow: visible;
 }
 .sport-nav-soccer-wrap .sport-nav-btn {
   width: 100%;
@@ -89,14 +91,28 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 160px;
+  min-width: 170px;
   background: #0f1318;
   border: 1px solid var(--border);
   border-top: none;
   border-radius: 0 0 10px 10px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-  z-index: 200;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  z-index: 9999;
   overflow: hidden;
+}
+/* Bridge gap between button and dropdown so hover doesn't break */
+.sport-nav-soccer-wrap::after {
+  content: '';
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  z-index: 9999;
+}
+.sport-nav-soccer-wrap:hover::after {
+  display: block;
 }
 .sport-nav-soccer-wrap:hover .soccer-dropdown {
   display: block;
@@ -130,6 +146,45 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 .soccer-dd-item.active {
   color: var(--accent);
   background: rgba(192,192,192,0.05);
+}
+
+/* ── SOCCER UNDER CONSTRUCTION BANNER ── */
+.soccer-wip-banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(234,179,8,0.07),
+    rgba(234,179,8,0.07) 10px,
+    rgba(0,0,0,0) 10px,
+    rgba(0,0,0,0) 20px
+  );
+  border: 2px solid var(--gold);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.soccer-wip-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+.soccer-wip-text {
+  flex: 1;
+}
+.soccer-wip-title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+.soccer-wip-sub {
+  font-size: 0.68rem;
+  color: var(--muted);
+  line-height: 1.4;
 }
 
 /* ── SOCCER LEAGUE PICKS ── */
@@ -585,7 +640,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   </div>
   <div class="hdr-r">
     <div class="date-pill" id="hdr-date">2026-03-21</div>
-    <div class="upd">Updated Mar 21 · 03:22 PM</div>
+    <div class="upd">Updated Mar 21 · 03:31 PM</div>
     <a class="x-handle" href="https://x.com/iMightBetThat" target="_blank" rel="noopener">
       <svg class="x-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       @iMightBetThat
@@ -1499,8 +1554,8 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-abbr">WPG</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">PIT</div>
-            <div class="mc-score">1 – 2</div>
-            <div class="mc-tip">20:00 - 2nd</div>
+            <div class="mc-score">4 – 3</div>
+            <div class="mc-tip">9:23 - 3rd</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/pit.png" alt="PIT" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1518,8 +1573,8 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-abbr">VGK</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">NSH</div>
-            <div class="mc-score">0 – 0</div>
-            <div class="mc-tip">3/21 - 2:00 PM EDT</div>
+            <div class="mc-score">0 – 2</div>
+            <div class="mc-tip">12:47 - 2nd</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/nsh.png" alt="NSH" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1788,6 +1843,16 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   <div class="footer">NFL Model v1 · <b>AI-powered ensemble analytics</b> · 0 graded bets tracked</div>
 </div>
 <div id="sport-section-soccer" class="sport-section" style="display:none">
+  <!-- UNDER CONSTRUCTION BANNER -->
+  <div class="soccer-wip-banner">
+    <div class="soccer-wip-icon">🚧</div>
+    <div class="soccer-wip-text">
+      <div class="soccer-wip-title">UNDER CONSTRUCTION — DO NOT BET YET</div>
+      <div class="soccer-wip-sub">This model is currently in testing. Picks are for evaluation purposes only and have not been validated for real-money wagering.</div>
+    </div>
+    <div class="soccer-wip-icon">🚧</div>
+  </div>
+
   <!-- STATS BAR -->
   <div class="stats-bar">
     <div class="sc">
@@ -1879,19 +1944,19 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
               <div class="mc-team-side mc-left">
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/363.png" alt="CHE" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Chelsea</div>
-                <div class="mc-record">13-9-8</div>
+                <div class="mc-record">13-9-9</div>
               </div>
               <div class="mc-middle">
                 <div class="mc-abbr">CHE</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">EVE</div>
                 <div class="mc-score">0 – 3</div>
-                <div class="mc-tip">90'+2'</div>
+                <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/368.png" alt="EVE" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Everton</div>
-                <div class="mc-record">12-7-11</div>
+                <div class="mc-record">13-7-11</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
@@ -1961,8 +2026,8 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-abbr">OVI</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">LEV</div>
-                <div class="mc-score">2 – 3</div>
-                <div class="mc-tip">87'</div>
+                <div class="mc-score">2 – 4</div>
+                <div class="mc-tip">90'+7'</div>
               </div>
               <div class="mc-team-side mc-right">
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/1538.png" alt="LEV" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1981,7 +2046,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">OSA</div>
                 <div class="mc-score">0 – 1</div>
-                <div class="mc-tip">90'+5'</div>
+                <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/97.png" alt="OSA" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -2145,19 +2210,19 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
               <div class="mc-team-side mc-left">
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/127.png" alt="HSV" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Hamburg</div>
-                <div class="mc-record">7-9-10</div>
+                <div class="mc-record">7-9-11</div>
               </div>
               <div class="mc-middle">
                 <div class="mc-abbr">HSV</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">DOR</div>
                 <div class="mc-score">2 – 3</div>
-                <div class="mc-tip">90'+2'</div>
+                <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/124.png" alt="DOR" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Dortmund</div>
-                <div class="mc-record">17-7-2</div>
+                <div class="mc-record">18-7-2</div>
               </div>
             </div></div><div class="section-header soccer-league-header"><span>🇫🇷</span> Ligue 1 — Today's Games</div><div class="mc-scroll">
             <div class="mc-card mc-card-simple">
@@ -2190,7 +2255,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">AUX</div>
                 <div class="mc-score">0 – 2</div>
-                <div class="mc-tip">60'</div>
+                <div class="mc-tip">68'</div>
               </div>
               <div class="mc-team-side mc-right">
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/172.png" alt="AUX" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -2412,7 +2477,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
     <div>
       <div class="section-header"><span>🎯</span> Today's Picks — 2026-03-21</div>
       <div class="soccer-league-filter"><button class="league-filter-btn active" onclick="filterSoccerLeague('all', this)">🌍 All</button><button class="league-filter-btn" onclick="filterSoccerLeague('EPL', this)">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</button><button class="league-filter-btn" onclick="filterSoccerLeague('La Liga', this)">🇪🇸 La Liga</button><button class="league-filter-btn" onclick="filterSoccerLeague('Serie A', this)">🇮🇹 Serie A</button><button class="league-filter-btn" onclick="filterSoccerLeague('MLS', this)">🇺🇸 MLS</button></div>
-      <div class="soccer-league-picks" data-league="EPL"><div class="soccer-league-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</div><div class="pick low"><div class="pick-top"><div class="pick-game">Sunderland @ Newcastle United</div><div class="tier-wrap"><div class="pick-tier low">LOW ★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ML (Newcastle United  -145)</div><div class="pick-meta"><span>Home ML: -145.0</span><span>Away ML: 400.0</span><span>Model: +1.43 goal diff</span></div><button class="slip-btn" data-matchup="Sunderland @ Newcastle United" data-bet="HOME ML (Newcastle United  -145)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div></div><div class="soccer-league-picks" data-league="La Liga"><div class="soccer-league-label">🇪🇸 La Liga</div><p class="no-picks">No qualifying picks for this league today.</p></div><div class="soccer-league-picks" data-league="Serie A"><div class="soccer-league-label">🇮🇹 Serie A</div><p class="no-picks">No qualifying picks for this league today.</p></div><div class="soccer-league-picks" data-league="MLS"><div class="soccer-league-label">🇺🇸 MLS</div><div class="pick low"><div class="pick-top"><div class="pick-game">D.C. United @ Atlanta United FC</div><div class="tier-wrap"><div class="pick-tier low">LOW ★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">AWAY ML (D.C. United  +235)</div><div class="pick-meta"><span>Home ML: 105.0</span><span>Away ML: 235.0</span><span>Model: +0.09 goal diff</span></div><button class="slip-btn" data-matchup="D.C. United @ Atlanta United FC" data-bet="AWAY ML (D.C. United  +235)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div><div class="pick med"><div class="pick-top"><div class="pick-game">Houston Dynamo FC @ FC Dallas</div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ML (FC Dallas  +120)</div><div class="pick-meta"><span>Home ML: 120.0</span><span>Model: +0.75 goal diff</span></div><button class="slip-btn" data-matchup="Houston Dynamo FC @ FC Dallas" data-bet="HOME ML (FC Dallas  +120)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div></div>
+      <div class="soccer-league-picks" data-league="EPL"><div class="soccer-league-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</div><div class="pick low"><div class="pick-top"><div class="pick-game">Sunderland @ Newcastle United</div><div class="tier-wrap"><div class="pick-tier low">LOW ★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ML (Newcastle United  -145)</div><div class="pick-meta"><span>Home ML: -145</span><span>Away ML: +400</span><span>Model: +1.43 goal diff</span></div><button class="slip-btn" data-matchup="Sunderland @ Newcastle United" data-bet="HOME ML (Newcastle United  -145)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div></div><div class="soccer-league-picks" data-league="La Liga"><div class="soccer-league-label">🇪🇸 La Liga</div><p class="no-picks">No qualifying picks for this league today.</p></div><div class="soccer-league-picks" data-league="Serie A"><div class="soccer-league-label">🇮🇹 Serie A</div><p class="no-picks">No qualifying picks for this league today.</p></div><div class="soccer-league-picks" data-league="MLS"><div class="soccer-league-label">🇺🇸 MLS</div><div class="pick low"><div class="pick-top"><div class="pick-game">D.C. United @ Atlanta United FC</div><div class="tier-wrap"><div class="pick-tier low">LOW ★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">AWAY ML (D.C. United  +235)</div><div class="pick-meta"><span>Home ML: +105</span><span>Away ML: +235</span><span>Model: +0.09 goal diff</span></div><button class="slip-btn" data-matchup="D.C. United @ Atlanta United FC" data-bet="AWAY ML (D.C. United  +235)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div><div class="pick med"><div class="pick-top"><div class="pick-game">Houston Dynamo FC @ FC Dallas</div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ML (FC Dallas  +120)</div><div class="pick-meta"><span>Home ML: +120</span><span>Model: +0.75 goal diff</span></div><button class="slip-btn" data-matchup="Houston Dynamo FC @ FC Dallas" data-bet="HOME ML (FC Dallas  +120)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div></div>
     </div>
     <div>
       <div class="section-header"><span>📊</span> Recent Results</div>
