@@ -469,11 +469,56 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 /* ── ANALYTICS ── */
 .an-wrap { margin-top:1.5rem; }
 .an-grid { display:grid; grid-template-columns:1.4fr 1fr; gap:1rem; }
+.an-grid-soccer { grid-template-columns: 1fr; }
 @media(max-width:680px) { .an-grid { grid-template-columns:1fr; } }
 .an-panel { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1.1rem 1.2rem; }
+.an-panel-wide { width: 100%; }
 .an-title { font-size:0.72rem; font-weight:700; color:var(--white); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.15rem; }
 .an-subtitle { font-size:0.62rem; color:var(--muted); margin-bottom:0.75rem; }
 .an-final { font-size:0.75rem; font-weight:700; font-family:var(--mono); margin-top:0.5rem; text-align:right; }
+
+/* ── SOCCER CHART LEGEND ── */
+.soccer-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.2rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  padding: 0.65rem 0.75rem;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.soccer-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  min-width: 160px;
+}
+.soccer-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.soccer-legend-label {
+  color: var(--white);
+  font-weight: 600;
+  flex: 1;
+}
+.soccer-legend-record {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+}
+.soccer-legend-pnl {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.68rem;
+  min-width: 3.5rem;
+  text-align: right;
+}
 .tm-list { display:flex; flex-direction:column; gap:0.35rem; margin-top:0.25rem; }
 .tm-row { display:grid; grid-template-columns:2.8rem 1fr 3.2rem; align-items:center; gap:0.4rem; }
 .tm-abbr { font-size:0.65rem; font-weight:800; font-family:var(--mono); color:var(--muted); text-align:right; }
@@ -568,7 +613,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   </div>
   <div class="hdr-r">
     <div class="date-pill" id="hdr-date">2026-03-21</div>
-    <div class="upd">Updated Mar 21 · 03:38 PM</div>
+    <div class="upd">Updated Mar 21 · 03:46 PM</div>
     <a class="x-handle" href="https://x.com/iMightBetThat" target="_blank" rel="noopener">
       <svg class="x-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       @iMightBetThat
@@ -1138,7 +1183,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">BAL</div>
             <div class="mc-score">4 – 8</div>
-            <div class="mc-tip">Bot 6th</div>
+            <div class="mc-tip">Top 7th</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/bal.png" alt="BAL" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1150,38 +1195,38 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           <div class="mc-team-side mc-left">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/atl.png" alt="ATL" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Braves</div>
-            <div class="mc-record">18-6-2</div>
+            <div class="mc-record">19-6-2</div>
           </div>
           <div class="mc-middle">
             <div class="mc-abbr">ATL</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">BOS</div>
             <div class="mc-score">6 – 1</div>
-            <div class="mc-tip">Bot 9th</div>
+            <div class="mc-tip">Final</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/bos.png" alt="BOS" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Red Sox</div>
-            <div class="mc-record">12-13</div>
+            <div class="mc-record">12-14</div>
           </div>
         </div>
         <div class="mc-card mc-card-simple">
           <div class="mc-team-side mc-left">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/nyy.png" alt="NYY" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Yankees</div>
-            <div class="mc-record">17-10</div>
+            <div class="mc-record">17-11</div>
           </div>
           <div class="mc-middle">
             <div class="mc-abbr">NYY</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">DET</div>
             <div class="mc-score">1 – 3</div>
-            <div class="mc-tip">Top 9th</div>
+            <div class="mc-tip">Final</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/det.png" alt="DET" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Tigers</div>
-            <div class="mc-record">7-12-6</div>
+            <div class="mc-record">8-12-6</div>
           </div>
         </div>
         <div class="mc-card mc-card-simple">
@@ -1194,8 +1239,8 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-abbr">TOR</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">PIT</div>
-            <div class="mc-score">3 – 6</div>
-            <div class="mc-tip">Bot 8th</div>
+            <div class="mc-score">3 – 8</div>
+            <div class="mc-tip">End 8th</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/pit.png" alt="PIT" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1245,19 +1290,19 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           <div class="mc-team-side mc-left">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/nym.png" alt="NYM" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Mets</div>
-            <div class="mc-record">12-10-2</div>
+            <div class="mc-record">12-11-2</div>
           </div>
           <div class="mc-middle">
             <div class="mc-abbr">NYM</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">WSH</div>
             <div class="mc-score">1 – 3</div>
-            <div class="mc-tip">Bot 9th</div>
+            <div class="mc-tip">Final</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/wsh.png" alt="WSH" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Nationals</div>
-            <div class="mc-record">13-9-3</div>
+            <div class="mc-record">14-9-3</div>
           </div>
         </div>
         <div class="mc-card mc-card-simple">
@@ -1270,13 +1315,13 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-abbr">HOU</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">NYM</div>
-            <div class="mc-score">6 – 5</div>
+            <div class="mc-score">7 – 5</div>
             <div class="mc-tip">Top 8th</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/nym.png" alt="NYM" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Mets</div>
-            <div class="mc-record">12-10-2</div>
+            <div class="mc-record">12-11-2</div>
           </div>
         </div>
         <div class="mc-card mc-card-simple">
@@ -1290,7 +1335,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">LAD</div>
             <div class="mc-score">3 – 3</div>
-            <div class="mc-tip">End 4th</div>
+            <div class="mc-tip">Top 5th</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/lad.png" alt="LAD" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1309,7 +1354,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">KC</div>
             <div class="mc-score">0 – 0</div>
-            <div class="mc-tip">Bot 2nd</div>
+            <div class="mc-tip">Top 3rd</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/kc.png" alt="KC" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1328,7 +1373,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">SF</div>
             <div class="mc-score">0 – 0</div>
-            <div class="mc-tip">Bot 2nd</div>
+            <div class="mc-tip">Top 3rd</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/sf.png" alt="SF" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1483,7 +1528,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">PIT</div>
             <div class="mc-score">4 – 4</div>
-            <div class="mc-tip">5:38 - 3rd</div>
+            <div class="mc-tip">3:27 - 3rd</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/pit.png" alt="PIT" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1502,7 +1547,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">NSH</div>
             <div class="mc-score">0 – 2</div>
-            <div class="mc-tip">10:11 - 2nd</div>
+            <div class="mc-tip">8:04 - 2nd</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/nsh.png" alt="NSH" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -2183,7 +2228,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">AUX</div>
                 <div class="mc-score">0 – 3</div>
-                <div class="mc-tip">76'</div>
+                <div class="mc-tip">84'</div>
               </div>
               <div class="mc-team-side mc-right">
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/172.png" alt="AUX" class="mc-logo-img" onerror="this.style.display='none'"></div>
