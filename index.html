@@ -30,7 +30,6 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   background: #0a0e14;
   border-bottom: 1px solid var(--border);
   overflow-x: auto;
-  overflow-y: visible;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   position: sticky;
@@ -65,87 +64,46 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   background: rgba(255,255,255,0.02);
 }
 
-/* ── SOCCER NAV DROPDOWN ── */
-.sport-nav-soccer-wrap {
-  position: relative;
+/* ── SOCCER LEAGUE SELECT ── */
+.soccer-league-select-wrap {
   display: flex;
-  flex: 1;
-  overflow: visible;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
 }
-.sport-nav-soccer-wrap .sport-nav-btn {
-  width: 100%;
-  flex: 1;
-}
-.soccer-caret {
-  font-size: 0.55rem;
-  margin-left: 3px;
-  opacity: 0.6;
-  vertical-align: middle;
-  transition: transform 0.15s;
-}
-.sport-nav-soccer-wrap:hover .soccer-caret {
-  transform: rotate(180deg);
-}
-.soccer-dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 170px;
-  background: #0f1318;
-  border: 1px solid var(--border);
-  border-top: none;
-  border-radius: 0 0 10px 10px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-  z-index: 9999;
-  overflow: hidden;
-}
-/* Bridge gap between button and dropdown so hover doesn't break */
-.sport-nav-soccer-wrap::after {
-  content: '';
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  z-index: 9999;
-}
-.sport-nav-soccer-wrap:hover::after {
-  display: block;
-}
-.sport-nav-soccer-wrap:hover .soccer-dropdown {
-  display: block;
-  animation: dd-in 0.12s ease;
-}
-@keyframes dd-in {
-  from { opacity:0; transform:translateY(-4px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-.soccer-dd-item {
-  display: block;
-  width: 100%;
-  background: none;
-  border: none;
-  border-bottom: 1px solid rgba(48,54,61,0.5);
+.soccer-league-select-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--muted);
-  font-family: var(--font);
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.55rem 1rem;
-  text-align: left;
-  cursor: pointer;
-  transition: background 0.12s, color 0.12s;
   white-space: nowrap;
 }
-.soccer-dd-item:last-child { border-bottom: none; }
-.soccer-dd-item:hover {
-  background: rgba(192,192,192,0.08);
+.soccer-league-select {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
   color: var(--white);
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.4rem 2rem 0.4rem 0.75rem;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238B949E' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.6rem center;
+  transition: border-color 0.15s;
 }
-.soccer-dd-item.active {
-  color: var(--accent);
-  background: rgba(192,192,192,0.05);
+.soccer-league-select:hover,
+.soccer-league-select:focus {
+  border-color: var(--accent);
+}
+.soccer-league-select option {
+  background: #1C2128;
+  color: var(--white);
 }
 
 /* ── SOCCER UNDER CONSTRUCTION BANNER ── */
@@ -203,36 +161,6 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 }
 .soccer-league-picks { margin-bottom: 0.5rem; }
 .soccer-league-picks:first-child .soccer-league-label { margin-top: 0; }
-
-/* ── SOCCER LEAGUE FILTER BAR ── */
-.soccer-league-filter {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  margin-bottom: 0.85rem;
-}
-.league-filter-btn {
-  background: var(--card2);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  color: var(--muted);
-  font-family: var(--font);
-  font-size: 0.68rem;
-  font-weight: 600;
-  padding: 0.25rem 0.7rem;
-  cursor: pointer;
-  transition: border-color 0.15s, color 0.15s, background 0.15s;
-  white-space: nowrap;
-}
-.league-filter-btn:hover {
-  border-color: var(--accent);
-  color: var(--white);
-}
-.league-filter-btn.active {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: rgba(192,192,192,0.08);
-}
 
 /* ── SOCCER LEAGUE HEADER (matchup cards) ── */
 .soccer-league-header {
@@ -629,7 +557,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 
 <!-- SPORT NAV BAR -->
 <div class="sport-nav">
-  <button class="sport-nav-btn active" data-sport="nba" onclick="switchSport('nba')">🏀 NBA</button><button class="sport-nav-btn" data-sport="mlb" onclick="switchSport('mlb')">⚾ MLB</button><button class="sport-nav-btn" data-sport="nhl" onclick="switchSport('nhl')">🏒 NHL</button><button class="sport-nav-btn" data-sport="nfl" onclick="switchSport('nfl')">🏈 NFL</button><div class="sport-nav-soccer-wrap"><button class="sport-nav-btn" data-sport="soccer" onclick="switchSport('soccer')">⚽ Soccer<span class="soccer-caret">▾</span></button><div class="soccer-dropdown"><button class="soccer-dd-item" onclick="switchSportAndLeague('soccer','EPL')">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</button><button class="soccer-dd-item" onclick="switchSportAndLeague('soccer','La Liga')">🇪🇸 La Liga</button><button class="soccer-dd-item" onclick="switchSportAndLeague('soccer','Serie A')">🇮🇹 Serie A</button><button class="soccer-dd-item" onclick="switchSportAndLeague('soccer','Bundesliga')">🇩🇪 Bundesliga</button><button class="soccer-dd-item" onclick="switchSportAndLeague('soccer','Ligue 1')">🇫🇷 Ligue 1</button><button class="soccer-dd-item" onclick="switchSportAndLeague('soccer','MLS')">🇺🇸 MLS</button><button class="soccer-dd-item" onclick="switchSportAndLeague('soccer','All')">🌍 All Leagues</button></div></div>
+  <button class="sport-nav-btn active" data-sport="nba" onclick="switchSport('nba')">🏀 NBA</button><button class="sport-nav-btn" data-sport="mlb" onclick="switchSport('mlb')">⚾ MLB</button><button class="sport-nav-btn" data-sport="nhl" onclick="switchSport('nhl')">🏒 NHL</button><button class="sport-nav-btn" data-sport="nfl" onclick="switchSport('nfl')">🏈 NFL</button><button class="sport-nav-btn" data-sport="soccer" onclick="switchSport('soccer')">⚽ Soccer</button>
 </div>
 
 <!-- HEADER -->
@@ -640,7 +568,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   </div>
   <div class="hdr-r">
     <div class="date-pill" id="hdr-date">2026-03-21</div>
-    <div class="upd">Updated Mar 21 · 03:31 PM</div>
+    <div class="upd">Updated Mar 21 · 03:38 PM</div>
     <a class="x-handle" href="https://x.com/iMightBetThat" target="_blank" rel="noopener">
       <svg class="x-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       @iMightBetThat
@@ -1209,7 +1137,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-abbr">PHI</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">BAL</div>
-            <div class="mc-score">4 – 4</div>
+            <div class="mc-score">4 – 8</div>
             <div class="mc-tip">Bot 6th</div>
           </div>
           <div class="mc-team-side mc-right">
@@ -1229,7 +1157,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">BOS</div>
             <div class="mc-score">6 – 1</div>
-            <div class="mc-tip">Top 9th</div>
+            <div class="mc-tip">Bot 9th</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/bos.png" alt="BOS" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1248,7 +1176,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">DET</div>
             <div class="mc-score">1 – 3</div>
-            <div class="mc-tip">Bot 8th</div>
+            <div class="mc-tip">Top 9th</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/det.png" alt="DET" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1267,7 +1195,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">PIT</div>
             <div class="mc-score">3 – 6</div>
-            <div class="mc-tip">Top 8th</div>
+            <div class="mc-tip">Bot 8th</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/pit.png" alt="PIT" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1279,19 +1207,19 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           <div class="mc-team-side mc-left">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/mia.png" alt="MIA" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Marlins</div>
-            <div class="mc-record">10-12-3</div>
+            <div class="mc-record">10-13-3</div>
           </div>
           <div class="mc-middle">
             <div class="mc-abbr">MIA</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">STL</div>
             <div class="mc-score">4 – 7</div>
-            <div class="mc-tip">Top 9th</div>
+            <div class="mc-tip">Final</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/stl.png" alt="STL" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Cardinals</div>
-            <div class="mc-record">15-9-2</div>
+            <div class="mc-record">16-9-2</div>
           </div>
         </div>
         <div class="mc-card mc-card-simple">
@@ -1323,8 +1251,8 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-abbr">NYM</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">WSH</div>
-            <div class="mc-score">1 – 1</div>
-            <div class="mc-tip">Mid 9th</div>
+            <div class="mc-score">1 – 3</div>
+            <div class="mc-tip">Bot 9th</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/wsh.png" alt="WSH" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1342,7 +1270,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-abbr">HOU</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">NYM</div>
-            <div class="mc-score">3 – 5</div>
+            <div class="mc-score">6 – 5</div>
             <div class="mc-tip">Top 8th</div>
           </div>
           <div class="mc-team-side mc-right">
@@ -1361,8 +1289,8 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-abbr">ATH</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">LAD</div>
-            <div class="mc-score">3 – 1</div>
-            <div class="mc-tip">Bot 4th</div>
+            <div class="mc-score">3 – 3</div>
+            <div class="mc-tip">End 4th</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/lad.png" alt="LAD" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1381,7 +1309,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">KC</div>
             <div class="mc-score">0 – 0</div>
-            <div class="mc-tip">End 1st</div>
+            <div class="mc-tip">Bot 2nd</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/kc.png" alt="KC" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1400,7 +1328,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">SF</div>
             <div class="mc-score">0 – 0</div>
-            <div class="mc-tip">Top 2nd</div>
+            <div class="mc-tip">Bot 2nd</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/sf.png" alt="SF" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1554,8 +1482,8 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-abbr">WPG</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">PIT</div>
-            <div class="mc-score">4 – 3</div>
-            <div class="mc-tip">9:23 - 3rd</div>
+            <div class="mc-score">4 – 4</div>
+            <div class="mc-tip">5:38 - 3rd</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/pit.png" alt="PIT" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1574,7 +1502,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">NSH</div>
             <div class="mc-score">0 – 2</div>
-            <div class="mc-tip">12:47 - 2nd</div>
+            <div class="mc-tip">10:11 - 2nd</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/nsh.png" alt="NSH" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -2020,26 +1948,26 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
               <div class="mc-team-side mc-left">
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/92.png" alt="OVI" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Real Oviedo</div>
-                <div class="mc-record">4-9-15</div>
+                <div class="mc-record">4-9-16</div>
               </div>
               <div class="mc-middle">
                 <div class="mc-abbr">OVI</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">LEV</div>
                 <div class="mc-score">2 – 4</div>
-                <div class="mc-tip">90'+7'</div>
+                <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/1538.png" alt="LEV" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Levante</div>
-                <div class="mc-record">5-8-15</div>
+                <div class="mc-record">6-8-15</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
               <div class="mc-team-side mc-left">
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/9812.png" alt="GIR" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Girona</div>
-                <div class="mc-record">8-10-10</div>
+                <div class="mc-record">8-10-11</div>
               </div>
               <div class="mc-middle">
                 <div class="mc-abbr">GIR</div>
@@ -2051,7 +1979,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
               <div class="mc-team-side mc-right">
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/97.png" alt="OSA" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Osasuna</div>
-                <div class="mc-record">9-7-12</div>
+                <div class="mc-record">10-7-12</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
@@ -2254,8 +2182,8 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-abbr">BRE</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">AUX</div>
-                <div class="mc-score">0 – 2</div>
-                <div class="mc-tip">68'</div>
+                <div class="mc-score">0 – 3</div>
+                <div class="mc-tip">76'</div>
               </div>
               <div class="mc-team-side mc-right">
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/172.png" alt="AUX" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -2476,7 +2404,13 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   <div class="two-col">
     <div>
       <div class="section-header"><span>🎯</span> Today's Picks — 2026-03-21</div>
-      <div class="soccer-league-filter"><button class="league-filter-btn active" onclick="filterSoccerLeague('all', this)">🌍 All</button><button class="league-filter-btn" onclick="filterSoccerLeague('EPL', this)">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</button><button class="league-filter-btn" onclick="filterSoccerLeague('La Liga', this)">🇪🇸 La Liga</button><button class="league-filter-btn" onclick="filterSoccerLeague('Serie A', this)">🇮🇹 Serie A</button><button class="league-filter-btn" onclick="filterSoccerLeague('MLS', this)">🇺🇸 MLS</button></div>
+      
+        <div class="soccer-league-select-wrap">
+          <label class="soccer-league-select-label">⚽ League</label>
+          <select class="soccer-league-select" id="soccerLeagueSelect" onchange="filterSoccerLeague(this.value, null)">
+            <option value="all">🌍 All Leagues</option><option value="EPL">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</option><option value="La Liga">🇪🇸 La Liga</option><option value="Serie A">🇮🇹 Serie A</option><option value="MLS">🇺🇸 MLS</option>
+          </select>
+        </div>
       <div class="soccer-league-picks" data-league="EPL"><div class="soccer-league-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</div><div class="pick low"><div class="pick-top"><div class="pick-game">Sunderland @ Newcastle United</div><div class="tier-wrap"><div class="pick-tier low">LOW ★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ML (Newcastle United  -145)</div><div class="pick-meta"><span>Home ML: -145</span><span>Away ML: +400</span><span>Model: +1.43 goal diff</span></div><button class="slip-btn" data-matchup="Sunderland @ Newcastle United" data-bet="HOME ML (Newcastle United  -145)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div></div><div class="soccer-league-picks" data-league="La Liga"><div class="soccer-league-label">🇪🇸 La Liga</div><p class="no-picks">No qualifying picks for this league today.</p></div><div class="soccer-league-picks" data-league="Serie A"><div class="soccer-league-label">🇮🇹 Serie A</div><p class="no-picks">No qualifying picks for this league today.</p></div><div class="soccer-league-picks" data-league="MLS"><div class="soccer-league-label">🇺🇸 MLS</div><div class="pick low"><div class="pick-top"><div class="pick-game">D.C. United @ Atlanta United FC</div><div class="tier-wrap"><div class="pick-tier low">LOW ★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">AWAY ML (D.C. United  +235)</div><div class="pick-meta"><span>Home ML: +105</span><span>Away ML: +235</span><span>Model: +0.09 goal diff</span></div><button class="slip-btn" data-matchup="D.C. United @ Atlanta United FC" data-bet="AWAY ML (D.C. United  +235)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div><div class="pick med"><div class="pick-top"><div class="pick-game">Houston Dynamo FC @ FC Dallas</div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ML (FC Dallas  +120)</div><div class="pick-meta"><span>Home ML: +120</span><span>Model: +0.75 goal diff</span></div><button class="slip-btn" data-matchup="Houston Dynamo FC @ FC Dallas" data-bet="HOME ML (FC Dallas  +120)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div></div>
     </div>
     <div>
@@ -2660,38 +2594,12 @@ function switchSport(sport) {
   _activeSport = sport;
 }
 
-// ── Soccer league switcher (from dropdown or filter pills) ────────────────────
-function switchSportAndLeague(sport, league) {
-  switchSport(sport);
-  // Small timeout so the section is visible before we filter
-  setTimeout(() => {
-    filterSoccerLeague(league, null);
-    // Mark the correct dropdown item active
-    document.querySelectorAll('.soccer-dd-item').forEach(btn => {
-      const isAll    = league === 'All' && btn.textContent.trim().startsWith('🌍');
-      const isLeague = btn.textContent.includes(league);
-      btn.classList.toggle('active', isAll || isLeague);
-    });
-  }, 50);
-}
-
-function filterSoccerLeague(league, clickedBtn) {
-  // Show/hide pick groups
+// ── Soccer league filter (driven by <select> on page) ────────────────────────
+function filterSoccerLeague(league, _unused) {
   document.querySelectorAll('.soccer-league-picks').forEach(el => {
     const show = (league === 'all' || league === 'All') || el.dataset.league === league;
     el.style.display = show ? 'block' : 'none';
   });
-  // Update filter pill active state
-  document.querySelectorAll('.league-filter-btn').forEach(b => b.classList.remove('active'));
-  if (clickedBtn) {
-    clickedBtn.classList.add('active');
-  } else {
-    document.querySelectorAll('.league-filter-btn').forEach(b => {
-      const isAll    = (league === 'all' || league === 'All') && b.textContent.includes('All');
-      const isLeague = b.textContent.includes(league);
-      if (isAll || isLeague) b.classList.add('active');
-    });
-  }
 }
 function openSlip(btn) {
   _slip.matchup = btn.dataset.matchup;
