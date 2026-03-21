@@ -39,16 +39,16 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 .sport-nav::-webkit-scrollbar { display: none; }
 .sport-nav-btn {
   flex: 1;
-  min-width: 70px;
+  min-width: 0;
   background: none;
   border: none;
   border-bottom: 3px solid transparent;
   color: var(--muted);
   font-family: var(--font);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 0.75rem 1rem;
+  letter-spacing: 0.03em;
+  padding: 0.55rem 0.6rem;
   cursor: pointer;
   transition: color 0.15s, border-color 0.15s, background 0.15s;
   white-space: nowrap;
@@ -62,6 +62,15 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   color: var(--accent);
   border-bottom-color: var(--accent);
   background: rgba(255,255,255,0.02);
+}
+/* On narrow screens, hide the text label and show only the emoji */
+.sport-nav-btn .nav-label { display: inline; }
+@media (max-width: 480px) {
+  .sport-nav-btn {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+  }
+  .sport-nav-btn .nav-label { display: none; }
 }
 
 /* ── SOCCER LEAGUE SELECT ── */
@@ -171,22 +180,17 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 /* ── SOCCER PICK BADGE on matchup cards ── */
 .mc-card-picked {
   border-color: rgba(192,192,192,0.35) !important;
-  position: relative;
 }
 .mc-pick-badge {
-  position: absolute;
-  top: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.55rem;
-  font-weight: 700;
+  font-size: 0.52rem;
+  font-weight: 800;
   font-family: var(--mono);
-  letter-spacing: 0.06em;
-  padding: 0.15rem 0.5rem;
+  letter-spacing: 0.05em;
+  padding: 0.18rem 0.45rem;
   border-radius: 20px;
   white-space: nowrap;
-  z-index: 2;
-  pointer-events: none;
+  margin-bottom: 0.3rem;
+  display: inline-block;
 }
 .mc-pick-badge.pick-high {
   background: rgba(34,197,94,0.18);
@@ -384,6 +388,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   border-left:1px solid var(--border); border-right:1px solid var(--border);
   padding:0.5rem 0.15rem;
 }
+.mc-middle .mc-pick-badge { margin-bottom: 0.25rem; }
 .mc-abbr { font-size:0.68rem; font-weight:800; font-family:var(--mono); color:var(--white); }
 .mc-vs   { font-size:0.5rem; color:var(--muted); font-weight:600; letter-spacing:0.1em; padding:0.1rem 0; }
 .mc-tip  { font-size:0.52rem; color:var(--accent); font-family:var(--mono); text-align:center; margin-top:0.3rem; line-height:1.3; }
@@ -638,7 +643,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 
 <!-- SPORT NAV BAR -->
 <div class="sport-nav">
-  <button class="sport-nav-btn active" data-sport="nba" onclick="switchSport('nba')">🏀 NBA</button><button class="sport-nav-btn" data-sport="mlb" onclick="switchSport('mlb')">⚾ MLB</button><button class="sport-nav-btn" data-sport="nhl" onclick="switchSport('nhl')">🏒 NHL</button><button class="sport-nav-btn" data-sport="nfl" onclick="switchSport('nfl')">🏈 NFL</button><button class="sport-nav-btn" data-sport="soccer" onclick="switchSport('soccer')">⚽ Soccer</button>
+  <button class="sport-nav-btn active" data-sport="nba" onclick="switchSport('nba')">🏀 <span class="nav-label">NBA</span></button><button class="sport-nav-btn" data-sport="mlb" onclick="switchSport('mlb')">⚾ <span class="nav-label">MLB</span></button><button class="sport-nav-btn" data-sport="nhl" onclick="switchSport('nhl')">🏒 <span class="nav-label">NHL</span></button><button class="sport-nav-btn" data-sport="nfl" onclick="switchSport('nfl')">🏈 <span class="nav-label">NFL</span></button><button class="sport-nav-btn" data-sport="soccer" onclick="switchSport('soccer')">⚽ <span class="nav-label">Soccer</span></button>
 </div>
 
 <!-- HEADER -->
@@ -649,7 +654,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   </div>
   <div class="hdr-r">
     <div class="date-pill" id="hdr-date">2026-03-21</div>
-    <div class="upd">Updated Mar 21 · 05:32 PM</div>
+    <div class="upd">Updated Mar 21 · 05:51 PM</div>
     <a class="x-handle" href="https://x.com/iMightBetThat" target="_blank" rel="noopener">
       <svg class="x-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       @iMightBetThat
@@ -695,7 +700,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-tname">OKC</div>
             <div class="mc-pname">Ajay Mitchell <span class="mc-pos">G</span></div>
             <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">7.0</div><div class="mc-sl">PTS</div></div>
+              <div class="mc-st"><div class="mc-sv">14.0</div><div class="mc-sl">PTS</div></div>
               <div class="mc-sdiv"></div>
               <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
               <div class="mc-sdiv"></div>
@@ -706,12 +711,12 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-abbr">OKC</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">WAS</div>
-            <div class="mc-tip">1:37 - 1st</div>
+            <div class="mc-tip">6:04 - 2nd</div>
           </div>
           <div class="mc-team-side mc-right">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4845374.png" alt="Bub Carrington" onerror="this.parentNode.style.display='none'"></div>
+            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4606840.png" alt="Jamir Watkins" onerror="this.parentNode.style.display='none'"></div>
             <div class="mc-tname">Washington</div>
-            <div class="mc-pname">Bub Carrington <span class="mc-pos">G</span></div>
+            <div class="mc-pname">Jamir Watkins <span class="mc-pos">G</span></div>
             <div class="mc-stats">
               <div class="mc-st"><div class="mc-sv">10.0</div><div class="mc-sl">PTS</div></div>
               <div class="mc-sdiv"></div>
@@ -1212,19 +1217,19 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           <div class="mc-team-side mc-left">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/phi.png" alt="PHI" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Phillies</div>
-            <div class="mc-record">10-14-2</div>
+            <div class="mc-record">10-15-2</div>
           </div>
           <div class="mc-middle">
             <div class="mc-abbr">PHI</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">BAL</div>
-            <div class="mc-score">6 – 8</div>
-            <div class="mc-tip">Top 7th</div>
+            <div class="mc-score">8 – 10</div>
+            <div class="mc-tip">Final</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/bal.png" alt="BAL" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Orioles</div>
-            <div class="mc-record">10-13-3</div>
+            <div class="mc-record">11-13-3</div>
           </div>
         </div>
         <div class="mc-card mc-card-simple">
@@ -1345,38 +1350,38 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           <div class="mc-team-side mc-left">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/hou.png" alt="HOU" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Astros</div>
-            <div class="mc-record">10-13-3</div>
+            <div class="mc-record">11-13-3</div>
           </div>
           <div class="mc-middle">
             <div class="mc-abbr">HOU</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">NYM</div>
             <div class="mc-score">7 – 5</div>
-            <div class="mc-tip">Bot 8th</div>
+            <div class="mc-tip">Final</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/nym.png" alt="NYM" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Mets</div>
-            <div class="mc-record">12-11-2</div>
+            <div class="mc-record">12-12-2</div>
           </div>
         </div>
         <div class="mc-card mc-card-simple">
           <div class="mc-team-side mc-left">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/ath.png" alt="ATH" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Athletics</div>
-            <div class="mc-record">13-15</div>
+            <div class="mc-record">13-15-1</div>
           </div>
           <div class="mc-middle">
             <div class="mc-abbr">ATH</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">LAD</div>
-            <div class="mc-score">4 – 3</div>
-            <div class="mc-tip">Bot 5th</div>
+            <div class="mc-score">5 – 5</div>
+            <div class="mc-tip">Final</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/lad.png" alt="LAD" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Dodgers</div>
-            <div class="mc-record">19-8</div>
+            <div class="mc-record">19-8-1</div>
           </div>
         </div>
         <div class="mc-card mc-card-simple">
@@ -1389,8 +1394,8 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-abbr">COL</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">KC</div>
-            <div class="mc-score">0 – 0</div>
-            <div class="mc-tip">Bot 3rd</div>
+            <div class="mc-score">5 – 2</div>
+            <div class="mc-tip">Bot 8th</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/kc.png" alt="KC" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1408,8 +1413,8 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-abbr">CLE</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">SF</div>
-            <div class="mc-score">0 – 0</div>
-            <div class="mc-tip">Bot 3rd</div>
+            <div class="mc-score">6 – 10</div>
+            <div class="mc-tip">Top 9th</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/sf.png" alt="SF" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1427,8 +1432,8 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-abbr">TEX</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">ARI</div>
-            <div class="mc-score">0 – 0</div>
-            <div class="mc-tip">3/21 - 4:10 PM EDT</div>
+            <div class="mc-score">0 – 3</div>
+            <div class="mc-tip">Bot 5th</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/ari.png" alt="ARI" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1446,8 +1451,8 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-abbr">SD</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">MIL</div>
-            <div class="mc-score">0 – 0</div>
-            <div class="mc-tip">3/21 - 4:10 PM EDT</div>
+            <div class="mc-score">0 – 4</div>
+            <div class="mc-tip">End 6th</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/mil.png" alt="MIL" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1602,7 +1607,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">MIN</div>
             <div class="mc-score">1 – 0</div>
-            <div class="mc-tip">19:49 - 2nd</div>
+            <div class="mc-tip">12:07 - 2nd</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/min.png" alt="MIN" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1621,7 +1626,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">LA</div>
             <div class="mc-score">1 – 1</div>
-            <div class="mc-tip">12:07 - 2nd</div>
+            <div class="mc-tip">5:37 - 2nd</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/la.png" alt="LA" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1639,8 +1644,8 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-abbr">PHI</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">SJ</div>
-            <div class="mc-score">1 – 0</div>
-            <div class="mc-tip">11:59 - 2nd</div>
+            <div class="mc-score">1 – 1</div>
+            <div class="mc-tip">3:43 - 2nd</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/sj.png" alt="SJ" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1658,8 +1663,8 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="mc-abbr">SEA</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">CBJ</div>
-            <div class="mc-score">0 – 1</div>
-            <div class="mc-tip">13:48 - 1st</div>
+            <div class="mc-score">0 – 3</div>
+            <div class="mc-tip">4:30 - 1st</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/cbj.png" alt="CBJ" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1893,13 +1898,14 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 
   <div class="section-header soccer-league-header"><span>🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> Premier League — Today's Games</div><div class="mc-scroll">
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/364.png" alt="LIV" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Liverpool</div>
                 <div class="mc-record">14-7-10</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">LIV</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">BHA</div>
@@ -1907,19 +1913,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/331.png" alt="BHA" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Brighton</div>
                 <div class="mc-record">11-10-10</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/379.png" alt="BUR" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Burnley</div>
                 <div class="mc-record">4-8-19</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">BUR</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">FUL</div>
@@ -1927,19 +1935,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/370.png" alt="FUL" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Fulham</div>
                 <div class="mc-record">13-5-13</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/384.png" alt="CRY" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">C Palace</div>
                 <div class="mc-record">10-9-11</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">CRY</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">MNC</div>
@@ -1947,19 +1957,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">Postponed</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/382.png" alt="MNC" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Man City</div>
                 <div class="mc-record">18-7-5</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/363.png" alt="CHE" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Chelsea</div>
                 <div class="mc-record">13-9-9</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">CHE</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">EVE</div>
@@ -1967,39 +1979,109 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/368.png" alt="EVE" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Everton</div>
                 <div class="mc-record">13-7-11</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/337.png" alt="BRE" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Brentford</div>
                 <div class="mc-record">13-6-11</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">BRE</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">LEE</div>
                 <div class="mc-score">0 – 0</div>
-                <div class="mc-tip">71'</div>
+                <div class="mc-tip">90'</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/357.png" alt="LEE" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Leeds</div>
                 <div class="mc-record">7-11-12</div>
               </div>
+            </div>
+            <div class="mc-card mc-card-simple mc-card-picked">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/366.png" alt="SUN" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Sunderland</div>
+                <div class="mc-record">10-10-10</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">SUN</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">NEW</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                <div class="mc-pick-badge pick-low">🎯 ML</div>
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/361.png" alt="NEW" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Newcastle</div>
+                <div class="mc-record">12-6-12</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/371.png" alt="WHU" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">West Ham</div>
+                <div class="mc-record">7-8-15</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">WHU</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">AVL</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/362.png" alt="AVL" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Aston Villa</div>
+                <div class="mc-record">15-6-9</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/393.png" alt="NFO" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Nottm Forest</div>
+                <div class="mc-record">7-8-15</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">NFO</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">TOT</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/367.png" alt="TOT" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Spurs</div>
+                <div class="mc-record">7-9-14</div>
+              </div>
             </div></div><div class="section-header soccer-league-header"><span>🇪🇸</span> La Liga — Today's Games</div><div class="mc-scroll">
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/84.png" alt="MLL" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Mallorca</div>
                 <div class="mc-record">7-7-15</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">MLL</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">ELC</div>
@@ -2007,19 +2089,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/3751.png" alt="ELC" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Elche</div>
                 <div class="mc-record">6-11-12</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/2922.png" alt="GET" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Getafe</div>
                 <div class="mc-record">11-5-13</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">GET</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">ESP</div>
@@ -2027,19 +2111,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/88.png" alt="ESP" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Espanyol</div>
                 <div class="mc-record">10-7-12</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/92.png" alt="OVI" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Real Oviedo</div>
                 <div class="mc-record">4-9-16</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">OVI</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">LEV</div>
@@ -2047,19 +2133,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/1538.png" alt="LEV" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Levante</div>
                 <div class="mc-record">6-8-15</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/9812.png" alt="GIR" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Girona</div>
                 <div class="mc-record">8-10-11</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">GIR</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">OSA</div>
@@ -2067,39 +2155,131 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/97.png" alt="OSA" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Osasuna</div>
                 <div class="mc-record">10-7-12</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/94.png" alt="VAL" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Valencia</div>
                 <div class="mc-record">8-8-12</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">VAL</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">SEV</div>
                 <div class="mc-score">2 – 0</div>
-                <div class="mc-tip">64'</div>
+                <div class="mc-tip">84'</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/243.png" alt="SEV" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Sevilla</div>
                 <div class="mc-record">8-7-13</div>
               </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/101.png" alt="RAY" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Rayo</div>
+                <div class="mc-record">7-11-10</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">RAY</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">BAR</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/83.png" alt="BAR" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Barcelona</div>
+                <div class="mc-record">23-1-4</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/96.png" alt="ALA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Alavés</div>
+                <div class="mc-record">7-7-14</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">ALA</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">CEL</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/85.png" alt="CEL" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Celta Vigo</div>
+                <div class="mc-record">10-11-7</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/244.png" alt="BET" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Betis</div>
+                <div class="mc-record">11-11-6</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">BET</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">ATH</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/93.png" alt="ATH" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Athletic</div>
+                <div class="mc-record">10-5-13</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/1068.png" alt="ATM" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Atlético</div>
+                <div class="mc-record">17-6-5</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">ATM</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">RMA</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/86.png" alt="RMA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Real Madrid</div>
+                <div class="mc-record">21-3-4</div>
+              </div>
             </div></div><div class="section-header soccer-league-header"><span>🇮🇹</span> Serie A — Today's Games</div><div class="mc-scroll">
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/4050.png" alt="CRE" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Cremonese</div>
                 <div class="mc-record">6-9-15</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">CRE</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">PAR</div>
@@ -2107,19 +2287,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/115.png" alt="PAR" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Parma</div>
                 <div class="mc-record">8-10-12</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/239.png" alt="TOR" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Torino</div>
                 <div class="mc-record">9-6-15</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">TOR</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">MIL</div>
@@ -2127,39 +2309,153 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/103.png" alt="MIL" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Milan</div>
                 <div class="mc-record">18-9-3</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/3997.png" alt="SAS" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Sassuolo</div>
-                <div class="mc-record">11-5-13</div>
+                <div class="mc-record">11-6-13</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">SAS</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">JUV</div>
                 <div class="mc-score">1 – 1</div>
-                <div class="mc-tip">87'</div>
+                <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/111.png" alt="JUV" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Juventus</div>
-                <div class="mc-record">15-8-6</div>
+                <div class="mc-record">15-9-6</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/3956.png" alt="PIS" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Pisa</div>
+                <div class="mc-record">2-12-15</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">PIS</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">COMO</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/2572.png" alt="COMO" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Como</div>
+                <div class="mc-record">15-9-5</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/119.png" alt="VER" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Verona</div>
+                <div class="mc-record">3-9-17</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">VER</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">ATA</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/105.png" alt="ATA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Atalanta</div>
+                <div class="mc-record">12-11-6</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/112.png" alt="LAZ" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Lazio</div>
+                <div class="mc-record">10-10-9</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">LAZ</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">BOL</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/107.png" alt="BOL" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Bologna</div>
+                <div class="mc-record">12-6-11</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/113.png" alt="LEC" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Lecce</div>
+                <div class="mc-record">7-6-16</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">LEC</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">ROMA</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/104.png" alt="ROMA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">AS Roma</div>
+                <div class="mc-record">16-3-10</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/110.png" alt="INT" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Inter Milan</div>
+                <div class="mc-record">22-2-5</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">INT</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">FIO</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/109.png" alt="FIO" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Fiorentina</div>
+                <div class="mc-record">6-10-13</div>
               </div>
             </div></div><div class="section-header soccer-league-header"><span>🇩🇪</span> Bundesliga — Today's Games</div><div class="mc-scroll">
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/131.png" alt="B04" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Leverkusen</div>
                 <div class="mc-record">13-7-7</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">B04</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">HDH</div>
@@ -2167,19 +2463,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/6418.png" alt="HDH" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Heidenheim</div>
                 <div class="mc-record">3-6-18</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/598.png" alt="FCU" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Union Berlin</div>
                 <div class="mc-record">8-7-12</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">FCU</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">MUN</div>
@@ -2187,19 +2485,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/132.png" alt="MUN" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Bayern</div>
                 <div class="mc-record">22-4-1</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/268.png" alt="BMG" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Gladbach</div>
                 <div class="mc-record">7-8-12</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">BMG</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">KOE</div>
@@ -2207,19 +2507,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/122.png" alt="KOE" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Cologne</div>
                 <div class="mc-record">6-8-13</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/137.png" alt="SVW" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Bremen</div>
                 <div class="mc-record">7-7-13</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">SVW</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">WOB</div>
@@ -2227,19 +2529,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/138.png" alt="WOB" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Wolfsburg</div>
                 <div class="mc-record">5-6-16</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/127.png" alt="HSV" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Hamburg</div>
                 <div class="mc-record">7-9-11</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">HSV</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">DOR</div>
@@ -2247,19 +2551,87 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/124.png" alt="DOR" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Dortmund</div>
                 <div class="mc-record">18-7-2</div>
               </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/125.png" alt="SGE" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Frankfurt</div>
+                <div class="mc-record">10-8-8</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">SGE</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">M05</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/2950.png" alt="M05" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Mainz</div>
+                <div class="mc-record">6-9-11</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/126.png" alt="SCF" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Freiburg</div>
+                <div class="mc-record">9-7-10</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">SCF</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">STP</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/270.png" alt="STP" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">St. Pauli</div>
+                <div class="mc-record">6-6-14</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/134.png" alt="VFB" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Stuttgart</div>
+                <div class="mc-record">15-5-6</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">VFB</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">FCA</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/3841.png" alt="FCA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Augsburg</div>
+                <div class="mc-record">9-4-13</div>
+              </div>
             </div></div><div class="section-header soccer-league-header"><span>🇫🇷</span> Ligue 1 — Today's Games</div><div class="mc-scroll">
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/273.png" alt="LOR" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Lorient</div>
                 <div class="mc-record">9-10-8</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">LOR</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">TOU</div>
@@ -2267,19 +2639,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/179.png" alt="TOU" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Toulouse</div>
                 <div class="mc-record">10-7-10</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/6997.png" alt="BRE" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Brest</div>
                 <div class="mc-record">10-6-11</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">BRE</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">AUX</div>
@@ -2287,39 +2661,153 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/172.png" alt="AUX" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Auxerre</div>
                 <div class="mc-record">5-7-15</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/160.png" alt="PSG" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">PSG</div>
                 <div class="mc-record">18-3-4</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">PSG</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">NICE</div>
-                <div class="mc-score">2 – 0</div>
-                <div class="mc-tip">65'</div>
+                <div class="mc-score">3 – 0</div>
+                <div class="mc-tip">85'</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/2502.png" alt="NICE" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Nice</div>
                 <div class="mc-record">7-6-13</div>
               </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/174.png" alt="MON" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Monaco</div>
+                <div class="mc-record">13-4-9</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">MON</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">LYON</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/167.png" alt="LYON" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Lyon</div>
+                <div class="mc-record">14-5-7</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/166.png" alt="LILL" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Lille</div>
+                <div class="mc-record">13-5-8</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">LILL</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">OLM</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/176.png" alt="OLM" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Marseille</div>
+                <div class="mc-record">15-4-7</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/3236.png" alt="HAC" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Le Havre AC</div>
+                <div class="mc-record">6-9-11</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">HAC</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">PAR</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/6851.png" alt="PAR" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Paris FC</div>
+                <div class="mc-record">6-10-10</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/177.png" alt="METZ" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Metz</div>
+                <div class="mc-record">3-4-19</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">METZ</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">REN</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/169.png" alt="REN" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Rennes</div>
+                <div class="mc-record">12-7-7</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/180.png" alt="STR" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Strasbourg</div>
+                <div class="mc-record">10-7-9</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">STR</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">NAN</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/165.png" alt="NAN" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Nantes</div>
+                <div class="mc-record">4-5-16</div>
+              </div>
             </div></div><div class="section-header soccer-league-header"><span>🇺🇸</span> MLS — Today's Games</div><div class="mc-scroll">
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/183.png" alt="CLB" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Columbus</div>
                 <div class="mc-record">0-2-3</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">CLB</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">TOR</div>
@@ -2327,39 +2815,43 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">FT</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/7318.png" alt="TOR" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Toronto</div>
                 <div class="mc-record">2-1-2</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/182.png" alt="CHI" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Chicago</div>
                 <div class="mc-record">1-1-2</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">CHI</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">PHI</div>
-                <div class="mc-score">1 – 0</div>
-                <div class="mc-tip">45'+6'</div>
+                <div class="mc-score">1 – 1</div>
+                <div class="mc-tip">47'</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/10739.png" alt="PHI" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Philadelphia</div>
                 <div class="mc-record">0-0-4</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/12011.png" alt="ORL" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Orlando</div>
                 <div class="mc-record">1-0-3</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">ORL</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">NSH</div>
@@ -2367,19 +2859,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">Scheduled</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/18986.png" alt="NSH" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Nashville</div>
                 <div class="mc-record">3-1-0</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple mc-card-picked">
-              <div class="mc-pick-badge pick-low">🎯 AWAY ML</div>
               <div class="mc-team-side mc-left">
+                <div class="mc-pick-badge pick-low">🎯 ML</div>
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/193.png" alt="DC" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">D.C. United</div>
                 <div class="mc-record">2-0-2</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">DC</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">ATL</div>
@@ -2387,19 +2881,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">Scheduled</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/18418.png" alt="ATL" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Atlanta</div>
                 <div class="mc-record">1-0-3</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/190.png" alt="RBNY" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Red Bull NY</div>
                 <div class="mc-record">2-1-1</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">RBNY</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">CLT</div>
@@ -2407,19 +2903,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">Scheduled</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/21300.png" alt="CLT" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Charlotte</div>
                 <div class="mc-record">1-2-1</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple mc-card-picked">
-              <div class="mc-pick-badge pick-med">🎯 HOME ML</div>
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/6077.png" alt="HOU" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Houston</div>
                 <div class="mc-record">2-0-1</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">HOU</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">DAL</div>
@@ -2427,19 +2925,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">Scheduled</div>
               </div>
               <div class="mc-team-side mc-right">
+                <div class="mc-pick-badge pick-med">🎯 ML</div>
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/185.png" alt="DAL" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Dallas</div>
                 <div class="mc-record">1-2-1</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/184.png" alt="COL" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Colorado</div>
                 <div class="mc-record">2-0-2</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">COL</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">SKC</div>
@@ -2447,19 +2947,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">Scheduled</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/186.png" alt="SKC" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Kansas City</div>
                 <div class="mc-record">1-1-2</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/189.png" alt="NE" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">New England</div>
                 <div class="mc-record">1-0-2</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">NE</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">STL</div>
@@ -2467,19 +2969,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">Scheduled</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/21812.png" alt="STL" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">St. Louis</div>
                 <div class="mc-record">0-1-3</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/18966.png" alt="LAFC" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">LAFC</div>
                 <div class="mc-record">4-0-0</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">LAFC</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">ATX</div>
@@ -2487,19 +2991,21 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">Scheduled</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20906.png" alt="ATX" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Austin</div>
                 <div class="mc-record">1-1-2</div>
               </div>
             </div>
             <div class="mc-card mc-card-simple">
-              
               <div class="mc-team-side mc-left">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/191.png" alt="SJ" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">San Jose</div>
                 <div class="mc-record">3-0-1</div>
               </div>
               <div class="mc-middle">
+                
                 <div class="mc-abbr">SJ</div>
                 <div class="mc-vs">VS</div>
                 <div class="mc-abbr">VAN</div>
@@ -2507,9 +3013,120 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">Scheduled</div>
               </div>
               <div class="mc-team-side mc-right">
+                
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/9727.png" alt="VAN" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Vancouver</div>
                 <div class="mc-record">4-0-0</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/9720.png" alt="MTL" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">CF Montréal</div>
+                <div class="mc-record">1-0-3</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">MTL</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">CIN</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/18267.png" alt="CIN" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Cincinnati</div>
+                <div class="mc-record">1-0-3</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20232.png" alt="MIA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Miami</div>
+                <div class="mc-record">2-1-1</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">MIA</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">NYC</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/17606.png" alt="NYC" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">NYCFC</div>
+                <div class="mc-record">3-1-0</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/9726.png" alt="SEA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Seattle</div>
+                <div class="mc-record">3-0-1</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">SEA</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">MIN</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/17362.png" alt="MIN" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Minnesota</div>
+                <div class="mc-record">1-1-2</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/187.png" alt="LA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">LA Galaxy</div>
+                <div class="mc-record">1-1-2</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">LA</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">POR</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/9723.png" alt="POR" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Portland</div>
+                <div class="mc-record">1-0-3</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/4771.png" alt="RSL" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Salt Lake</div>
+                <div class="mc-record">3-0-1</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">RSL</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">SD</div>
+                <div class="mc-score">0 – 0</div>
+                <div class="mc-tip">Scheduled</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/22529.png" alt="SD" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">San Diego</div>
+                <div class="mc-record">3-1-0</div>
               </div>
             </div></div>
 
