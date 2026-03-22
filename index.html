@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sports Model Picks · 2026-03-21</title>
+<title>Sports Model Picks · 2026-03-22</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -39,16 +39,16 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 .sport-nav::-webkit-scrollbar { display: none; }
 .sport-nav-btn {
   flex: 1;
-  min-width: 70px;
+  min-width: 0;
   background: none;
   border: none;
   border-bottom: 3px solid transparent;
   color: var(--muted);
   font-family: var(--font);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 0.75rem 1rem;
+  letter-spacing: 0.03em;
+  padding: 0.55rem 0.6rem;
   cursor: pointer;
   transition: color 0.15s, border-color 0.15s, background 0.15s;
   white-space: nowrap;
@@ -62,6 +62,161 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   color: var(--accent);
   border-bottom-color: var(--accent);
   background: rgba(255,255,255,0.02);
+}
+/* On narrow screens, hide the text label and show only the emoji */
+.sport-nav-btn .nav-label { display: inline; }
+@media (max-width: 480px) {
+  .sport-nav-btn {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+  }
+  .sport-nav-btn .nav-label { display: none; }
+}
+
+/* ── SOCCER LEAGUE SELECT ── */
+.soccer-league-select-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+.soccer-league-select-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.soccer-league-select {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--white);
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.4rem 2rem 0.4rem 0.75rem;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238B949E' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.6rem center;
+  transition: border-color 0.15s;
+}
+.soccer-league-select:hover,
+.soccer-league-select:focus {
+  border-color: var(--accent);
+}
+.soccer-league-select option {
+  background: #1C2128;
+  color: var(--white);
+}
+
+/* ── SOCCER UNDER CONSTRUCTION BANNER ── */
+.soccer-wip-banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(234,179,8,0.07),
+    rgba(234,179,8,0.07) 10px,
+    rgba(0,0,0,0) 10px,
+    rgba(0,0,0,0) 20px
+  );
+  border: 2px solid var(--gold);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.soccer-wip-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+.soccer-wip-text {
+  flex: 1;
+}
+.soccer-wip-title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+.soccer-wip-sub {
+  font-size: 0.68rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── SOCCER LEAGUE PICKS ── */
+.soccer-league-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.45rem 0.6rem;
+  background: rgba(192,192,192,0.05);
+  border: 1px solid rgba(192,192,192,0.12);
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  margin-top: 0.75rem;
+}
+.soccer-league-picks { margin-bottom: 0.5rem; }
+.soccer-league-picks:first-child .soccer-league-label { margin-top: 0; }
+
+/* ── SOCCER LEAGUE HEADER (matchup cards) ── */
+.soccer-league-header {
+  margin-top: 0.75rem;
+}
+.soccer-league-header:first-of-type { margin-top: 0; }
+
+/* ── SOCCER PICK BADGE on matchup cards ── */
+.mc-card-picked {
+  border-color: rgba(192,192,192,0.35) !important;
+}
+.mc-pick-badge {
+  font-size: 0.52rem;
+  font-weight: 800;
+  font-family: var(--mono);
+  letter-spacing: 0.05em;
+  padding: 0.18rem 0.45rem;
+  border-radius: 20px;
+  white-space: nowrap;
+  margin-bottom: 0.3rem;
+  display: inline-block;
+}
+.mc-pick-badge.pick-high {
+  background: rgba(34,197,94,0.18);
+  border: 1px solid rgba(34,197,94,0.45);
+  color: #22C55E;
+}
+.mc-pick-badge.pick-med {
+  background: rgba(234,179,8,0.15);
+  border: 1px solid rgba(234,179,8,0.4);
+  color: #EAB308;
+}
+.mc-pick-badge.pick-low {
+  background: rgba(192,192,192,0.1);
+  border: 1px solid rgba(192,192,192,0.3);
+  color: #C0C0C0;
+}
+
+/* ── RESULT LEAGUE BADGE ── */
+.rr-league {
+  font-size: 0.55rem;
+  font-family: var(--mono);
+  color: var(--muted);
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  padding: 0.1rem 0.3rem;
+  margin-left: 0.3rem;
 }
 
 /* ── HEADER ── */
@@ -192,7 +347,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   transition:border-color 0.18s, transform 0.15s;
 }
 .mc-card:hover { border-color:rgba(249,115,22,0.4); transform:translateY(-2px); }
-.mc-card-simple { flex:0 0 220px; }
+.mc-card-simple { flex:0 0 220px; position: relative; }
 .mc-team-side {
   display:flex; flex-direction:column; align-items:center;
   padding:1rem 0.55rem 0.85rem; text-align:center; gap:0.28rem;
@@ -233,6 +388,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   border-left:1px solid var(--border); border-right:1px solid var(--border);
   padding:0.5rem 0.15rem;
 }
+.mc-middle .mc-pick-badge { margin-bottom: 0.25rem; }
 .mc-abbr { font-size:0.68rem; font-weight:800; font-family:var(--mono); color:var(--white); }
 .mc-vs   { font-size:0.5rem; color:var(--muted); font-weight:600; letter-spacing:0.1em; padding:0.1rem 0; }
 .mc-tip  { font-size:0.52rem; color:var(--accent); font-family:var(--mono); text-align:center; margin-top:0.3rem; line-height:1.3; }
@@ -354,11 +510,56 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 /* ── ANALYTICS ── */
 .an-wrap { margin-top:1.5rem; }
 .an-grid { display:grid; grid-template-columns:1.4fr 1fr; gap:1rem; }
+.an-grid-soccer { grid-template-columns: 1fr; }
 @media(max-width:680px) { .an-grid { grid-template-columns:1fr; } }
 .an-panel { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1.1rem 1.2rem; }
+.an-panel-wide { width: 100%; }
 .an-title { font-size:0.72rem; font-weight:700; color:var(--white); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.15rem; }
 .an-subtitle { font-size:0.62rem; color:var(--muted); margin-bottom:0.75rem; }
 .an-final { font-size:0.75rem; font-weight:700; font-family:var(--mono); margin-top:0.5rem; text-align:right; }
+
+/* ── SOCCER CHART LEGEND ── */
+.soccer-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.2rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  padding: 0.65rem 0.75rem;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.soccer-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  min-width: 160px;
+}
+.soccer-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.soccer-legend-label {
+  color: var(--white);
+  font-weight: 600;
+  flex: 1;
+}
+.soccer-legend-record {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+}
+.soccer-legend-pnl {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.68rem;
+  min-width: 3.5rem;
+  text-align: right;
+}
 .tm-list { display:flex; flex-direction:column; gap:0.35rem; margin-top:0.25rem; }
 .tm-row { display:grid; grid-template-columns:2.8rem 1fr 3.2rem; align-items:center; gap:0.4rem; }
 .tm-abbr { font-size:0.65rem; font-weight:800; font-family:var(--mono); color:var(--muted); text-align:right; }
@@ -442,7 +643,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 
 <!-- SPORT NAV BAR -->
 <div class="sport-nav">
-  <button class="sport-nav-btn active" data-sport="nba" onclick="switchSport('nba')">🏀 NBA</button><button class="sport-nav-btn" data-sport="mlb" onclick="switchSport('mlb')">⚾ MLB</button><button class="sport-nav-btn" data-sport="nhl" onclick="switchSport('nhl')">🏒 NHL</button><button class="sport-nav-btn" data-sport="nfl" onclick="switchSport('nfl')">🏈 NFL</button>
+  <button class="sport-nav-btn active" data-sport="nba" onclick="switchSport('nba')">🏀 <span class="nav-label">NBA</span></button><button class="sport-nav-btn" data-sport="mlb" onclick="switchSport('mlb')">⚾ <span class="nav-label">MLB</span></button><button class="sport-nav-btn" data-sport="nhl" onclick="switchSport('nhl')">🏒 <span class="nav-label">NHL</span></button><button class="sport-nav-btn" data-sport="nfl" onclick="switchSport('nfl')">🏈 <span class="nav-label">NFL</span></button><button class="sport-nav-btn" data-sport="soccer" onclick="switchSport('soccer')">⚽ <span class="nav-label">Soccer</span></button>
 </div>
 
 <!-- HEADER -->
@@ -452,8 +653,8 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
     <div class="tagline" id="hdr-tagline">Machine Learning · Daily Picks · Full Transparency</div>
   </div>
   <div class="hdr-r">
-    <div class="date-pill" id="hdr-date">2026-03-21</div>
-    <div class="upd">Updated Mar 21 · 11:59 PM</div>
+    <div class="date-pill" id="hdr-date">2026-03-22</div>
+    <div class="upd">Updated Mar 22 · 12:09 AM</div>
     <a class="x-handle" href="https://x.com/iMightBetThat" target="_blank" rel="noopener">
       <svg class="x-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       @iMightBetThat
@@ -493,331 +694,106 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   </div>
 
   <div class="section-header"><span>🏀</span> Tonight's Games</div><div class="mc-scroll">
-        <div class="mc-card">
+        <div class="mc-card mc-card-simple">
           <div class="mc-team-side mc-left">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4278073.png" alt="Shai Gilgeous-Alexander" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">OKC</div>
-            <div class="mc-pname">Shai Gilgeous-Alexander <span class="mc-pos">G</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">40.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">4.7</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">6.4</div><div class="mc-sl">AST</div></div>
-            </div>
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/por.png" alt="POR" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Portland</div>
+            <div class="mc-record">35-36</div>
           </div>
           <div class="mc-middle">
-            <div class="mc-abbr">OKC</div>
+            <div class="mc-abbr">POR</div>
             <div class="mc-vs">VS</div>
-            <div class="mc-abbr">WAS</div>
-            <div class="mc-tip">Final</div>
+            <div class="mc-abbr">DEN</div>
+            
+            <div class="mc-tip">5:00 PM ET</div>
           </div>
           <div class="mc-team-side mc-right">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/5104155.png" alt="Bilal Coulibaly" onerror="this.parentNode.style.display='none'"></div>
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/den.png" alt="DEN" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Denver</div>
+            <div class="mc-record">43-28</div>
+          </div>
+        </div>
+        <div class="mc-card mc-card-simple">
+          <div class="mc-team-side mc-left">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/bkn.png" alt="BKN" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Brooklyn</div>
+            <div class="mc-record">17-53</div>
+          </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">BKN</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">SAC</div>
+            
+            <div class="mc-tip">6:00 PM ET</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/sac.png" alt="SAC" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Sacramento</div>
+            <div class="mc-record">18-53</div>
+          </div>
+        </div>
+        <div class="mc-card mc-card-simple">
+          <div class="mc-team-side mc-left">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/wsh.png" alt="WAS" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Washington</div>
-            <div class="mc-pname">Bilal Coulibaly <span class="mc-pos">G</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">21.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="mc-card">
-          <div class="mc-team-side mc-left">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/5105550.png" alt="GG Jackson" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Memphis</div>
-            <div class="mc-pname">GG Jackson <span class="mc-pos">F</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">19.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
-            </div>
+            <div class="mc-record">16-54</div>
           </div>
           <div class="mc-middle">
-            <div class="mc-abbr">MEM</div>
+            <div class="mc-abbr">WAS</div>
             <div class="mc-vs">VS</div>
-            <div class="mc-abbr">CHA</div>
-            <div class="mc-tip">Final</div>
+            <div class="mc-abbr">NYK</div>
+            
+            <div class="mc-tip">7:30 PM ET</div>
           </div>
           <div class="mc-team-side mc-right">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4432816.png" alt="LaMelo Ball" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Charlotte</div>
-            <div class="mc-pname">LaMelo Ball <span class="mc-pos">G</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">29.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">4.2</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">6.8</div><div class="mc-sl">AST</div></div>
-            </div>
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/ny.png" alt="NYK" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">New York</div>
+            <div class="mc-record">46-25</div>
           </div>
         </div>
-        <div class="mc-card">
+        <div class="mc-card mc-card-simple">
           <div class="mc-team-side mc-left">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/3945274.png" alt="Luka Doncic" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">LA Lakers</div>
-            <div class="mc-pname">Luka Doncic <span class="mc-pos">G</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">33.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">7.8</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">7.5</div><div class="mc-sl">AST</div></div>
-            </div>
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/min.png" alt="MIN" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Minnesota</div>
+            <div class="mc-record">43-28</div>
           </div>
           <div class="mc-middle">
-            <div class="mc-abbr">LAL</div>
+            <div class="mc-abbr">MIN</div>
             <div class="mc-vs">VS</div>
-            <div class="mc-abbr">ORL</div>
-            <div class="mc-tip">Final</div>
+            <div class="mc-abbr">BOS</div>
+            
+            <div class="mc-tip">8:00 PM ET</div>
           </div>
           <div class="mc-team-side mc-right">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4432573.png" alt="Paolo Banchero" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Orlando</div>
-            <div class="mc-pname">Paolo Banchero <span class="mc-pos">F</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">16.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">8.5</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">4.6</div><div class="mc-sl">AST</div></div>
-            </div>
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/bos.png" alt="BOS" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Boston</div>
+            <div class="mc-record">47-23</div>
           </div>
         </div>
-        <div class="mc-card">
+        <div class="mc-card mc-card-simple">
           <div class="mc-team-side mc-left">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/3908809.png" alt="Donovan Mitchell" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Cleveland</div>
-            <div class="mc-pname">Donovan Mitchell <span class="mc-pos">G</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">27.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">4.5</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">6.1</div><div class="mc-sl">AST</div></div>
-            </div>
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/tor.png" alt="TOR" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Toronto</div>
+            <div class="mc-record">39-30</div>
           </div>
           <div class="mc-middle">
-            <div class="mc-abbr">CLE</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">NOP</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4395628.png" alt="Zion Williamson" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">New Orleans</div>
-            <div class="mc-pname">Zion Williamson <span class="mc-pos">F</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">25.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">5.8</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">4.2</div><div class="mc-sl">AST</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="mc-card">
-          <div class="mc-team-side mc-left">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4066436.png" alt="De'Anthony Melton" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Golden State</div>
-            <div class="mc-pname">De'Anthony Melton <span class="mc-pos">G</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">20.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
-            </div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">GSW</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">ATL</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4869342.png" alt="Dyson Daniels" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Atlanta</div>
-            <div class="mc-pname">Dyson Daniels <span class="mc-pos">G</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">28.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="mc-card">
-          <div class="mc-team-side mc-left">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4066261.png" alt="Bam Adebayo" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Miami</div>
-            <div class="mc-pname">Bam Adebayo <span class="mc-pos">C</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">32.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">9.8</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">3.5</div><div class="mc-sl">AST</div></div>
-            </div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">MIA</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">HOU</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/3202.png" alt="Kevin Durant" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Houston</div>
-            <div class="mc-pname">Kevin Durant <span class="mc-pos">F</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">27.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">6.0</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">4.1</div><div class="mc-sl">AST</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="mc-card">
-          <div class="mc-team-side mc-left">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4395712.png" alt="Andrew Nembhard" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Indiana</div>
-            <div class="mc-pname">Andrew Nembhard <span class="mc-pos">G</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">25.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">3.8</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">5.4</div><div class="mc-sl">AST</div></div>
-            </div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">IND</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">SAS</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4395723.png" alt="Keldon Johnson" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">San Antonio</div>
-            <div class="mc-pname">Keldon Johnson <span class="mc-pos">F</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">24.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="mc-card">
-          <div class="mc-team-side mc-left">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4396907.png" alt="Darius Garland" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">LA Clippers</div>
-            <div class="mc-pname">Darius Garland <span class="mc-pos">G</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">41.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
-            </div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">LAC</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">DAL</div>
-            <div class="mc-tip">Final/OT</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4278594.png" alt="Naji Marshall" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Dallas</div>
-            <div class="mc-pname">Naji Marshall <span class="mc-pos">F</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">28.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="mc-card">
-          <div class="mc-team-side mc-left">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4397014.png" alt="Quentin Grimes" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Philadelphia</div>
-            <div class="mc-pname">Quentin Grimes <span class="mc-pos">G</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">25.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
-            </div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">PHI</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">UTA</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4873138.png" alt="Ace Bailey" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Utah</div>
-            <div class="mc-pname">Ace Bailey <span class="mc-pos">G</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">25.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="mc-card">
-          <div class="mc-team-side mc-left">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/3134907.png" alt="Kyle Kuzma" onerror="this.parentNode.style.display='none'"></div>
-            <div class="mc-tname">Milwaukee</div>
-            <div class="mc-pname">Kyle Kuzma <span class="mc-pos">F</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">20.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
-            </div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">MIL</div>
+            <div class="mc-abbr">TOR</div>
             <div class="mc-vs">VS</div>
             <div class="mc-abbr">PHX</div>
-            <div class="mc-tip">7:26 - 4th</div>
+            
+            <div class="mc-tip">9:00 PM ET</div>
           </div>
           <div class="mc-team-side mc-right">
-            <div class="mc-photo-ring"><img src="https://a.espncdn.com/i/headshots/nba/players/full/4437244.png" alt="Jalen Green" onerror="this.parentNode.style.display='none'"></div>
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nba/500/scoreboard/phx.png" alt="PHX" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Phoenix</div>
-            <div class="mc-pname">Jalen Green <span class="mc-pos">G</span></div>
-            <div class="mc-stats">
-              <div class="mc-st"><div class="mc-sv">22.0</div><div class="mc-sl">PTS</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">REB</div></div>
-              <div class="mc-sdiv"></div>
-              <div class="mc-st"><div class="mc-sv">0.0</div><div class="mc-sl">AST</div></div>
-            </div>
+            <div class="mc-record">39-31</div>
           </div>
         </div></div>
 
   <div class="two-col">
     <div>
-      <div class="section-header"><span>🎯</span> Today's Picks — 2026-03-21</div>
-      <div class="pick med"><div class="pick-top"><div class="pick-game">OKC @ WAS</div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★ ★★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Spread edge &gt;5.5pts + ML edge &gt;6% in same direction. Strongest signal — rare.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Spread edge 4–5.5pts + both models agree. Solid edge, normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Spread edge 4–5pts, weaker ML confirmation. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ATS (WAS +21.5)</div><div class="pick-meta"><span>Line: 21.5</span><span>Edge: 7.4</span><span>Model: -19.3 pts</span></div><div class="inj-pill home">🏠 OUT: Leaky Black, Anthony Davis, Kyshawn George, Trae Young, D'Angelo Russell, Cam Whitmore · DTD: Tre Johnson, Will Riley</div><div class="inj-pill away">✈ OUT: Jalen Williams, Branden Carlson, Thomas Sorber</div><button class="slip-btn" data-matchup="OKC @ WAS" data-bet="HOME ATS (WAS +21.5)" data-line="21.5" data-sport="nba" onclick="openSlip(this)">＋ Add to Bet Slip</button></div><div class="pick low"><div class="pick-top"><div class="pick-game">LAC @ DAL</div><div class="tier-wrap"><div class="pick-tier low">LOW    ★ ★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Spread edge &gt;5.5pts + ML edge &gt;6% in same direction. Strongest signal — rare.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Spread edge 4–5.5pts + both models agree. Solid edge, normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Spread edge 4–5pts, weaker ML confirmation. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ATS (DAL +6.5)</div><div class="pick-meta"><span>Line: 6.5</span><span>Edge: 5.53</span><span>Model: -4.8 pts</span></div><div class="inj-pill home">🏠 OUT: Brandon Williams, Dereck Lively II, Kyrie Irving · DTD: Caleb Martin</div><div class="inj-pill away">✈ OUT: Bennedict Mathurin, Bradley Beal, Yanic Konan Niederhauser · DTD: Kawhi Leonard</div><button class="slip-btn" data-matchup="LAC @ DAL" data-bet="HOME ATS (DAL +6.5)" data-line="6.5" data-sport="nba" onclick="openSlip(this)">＋ Add to Bet Slip</button></div><div class="pick med"><div class="pick-top"><div class="pick-game">PHI @ UTA</div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★ ★★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Spread edge &gt;5.5pts + ML edge &gt;6% in same direction. Strongest signal — rare.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Spread edge 4–5.5pts + both models agree. Solid edge, normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Spread edge 4–5pts, weaker ML confirmation. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ATS (UTA +5.5)</div><div class="pick-meta"><span>Line: 5.5</span><span>Edge: 8.64</span><span>Model: -2.9 pts</span></div><div class="inj-pill home">🏠 OUT: Lauri Markkanen, Keyonte George, Walker Kessler, Jaren Jackson Jr., Jusuf Nurkic, Isaiah Collier, Brice Sensabaugh · DTD: John Konchar</div><div class="inj-pill away">✈ OUT: Tyrese Maxey, Kelly Oubre Jr., Joel Embiid, Johni Broome</div><button class="slip-btn" data-matchup="PHI @ UTA" data-bet="HOME ATS (UTA +5.5)" data-line="5.5" data-sport="nba" onclick="openSlip(this)">＋ Add to Bet Slip</button></div>
+      <div class="section-header"><span>🎯</span> Today's Picks — 2026-03-22</div>
+      <div class="pick med"><div class="pick-top"><div class="pick-game">POR @ DEN</div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★ ★★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Spread edge &gt;5.5pts + ML edge &gt;6% in same direction. Strongest signal — rare.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Spread edge 4–5.5pts + both models agree. Solid edge, normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Spread edge 4–5pts, weaker ML confirmation. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">AWAY ATS (POR +9.0)</div><div class="pick-meta"><span>Line: -9.0</span><span>Edge: -4.27</span><span>Model: +7.7 pts</span></div><div class="inj-pill home">🏠 OUT: Peyton Watson</div><div class="inj-pill away">✈ OUT: Shaedon Sharpe, Vit Krejci, Damian Lillard · DTD: Jerami Grant</div><button class="slip-btn" data-matchup="POR @ DEN" data-bet="AWAY ATS (POR +9.0)" data-line="-9.0" data-sport="nba" onclick="openSlip(this)">＋ Add to Bet Slip</button></div>
     </div>
     <div>
       <div class="section-header"><span>📊</span> Recent Results</div>
@@ -831,7 +807,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
     </div>
   </div>
 
-  <div class="section-header"><span>📋</span> Other Games — No Edge</div><div class="chips"><div class="chip">MEM @ CHA<span class="chip-line">-16.5</span></div><div class="chip">CLE @ NOP<span class="chip-line">4.5</span></div><div class="chip">LAL @ ORL<span class="chip-line">2.5</span></div><div class="chip">GSW @ ATL<span class="chip-line">-9.5</span></div><div class="chip">IND @ SAS<span class="chip-line">-18.5</span></div><div class="chip">MIA @ HOU<span class="chip-line">-2.5</span></div><div class="chip">MIL @ PHX<span class="chip-line">-11.5</span></div></div>
+  <div class="section-header"><span>📋</span> Other Games — No Edge</div><div class="chips"><div class="chip">BKN @ SAC<span class="chip-line">-4.5</span></div><div class="chip">WAS @ NYK<span class="chip-line">-20.5</span></div><div class="chip">MIN @ BOS<span class="chip-line">-9.5</span></div><div class="chip">TOR @ PHX<span class="chip-line">1.5</span></div></div>
 
   
 
@@ -1014,6 +990,25 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   <div class="section-header"><span>⚾</span> Today's Games</div><div class="mc-scroll">
         <div class="mc-card mc-card-simple">
           <div class="mc-team-side mc-left">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/stl.png" alt="STL" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Cardinals</div>
+            <div class="mc-record">16-9-2</div>
+          </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">STL</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">HOU</div>
+            
+            <div class="mc-tip">12:05 PM ET</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/hou.png" alt="HOU" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Astros</div>
+            <div class="mc-record">11-13-3</div>
+          </div>
+        </div>
+        <div class="mc-card mc-card-simple">
+          <div class="mc-team-side mc-left">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/phi.png" alt="PHI" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Phillies</div>
             <div class="mc-record">10-15-2</div>
@@ -1021,14 +1016,33 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           <div class="mc-middle">
             <div class="mc-abbr">PHI</div>
             <div class="mc-vs">VS</div>
-            <div class="mc-abbr">BAL</div>
-            <div class="mc-score">8 – 10</div>
-            <div class="mc-tip">Final</div>
+            <div class="mc-abbr">NYY</div>
+            
+            <div class="mc-tip">1:05 PM ET</div>
           </div>
           <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/bal.png" alt="BAL" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Orioles</div>
-            <div class="mc-record">11-13-3</div>
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/nyy.png" alt="NYY" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Yankees</div>
+            <div class="mc-record">17-11</div>
+          </div>
+        </div>
+        <div class="mc-card mc-card-simple">
+          <div class="mc-team-side mc-left">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/bos.png" alt="BOS" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Red Sox</div>
+            <div class="mc-record">12-14</div>
+          </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">BOS</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">PIT</div>
+            
+            <div class="mc-tip">1:05 PM ET</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/pit.png" alt="PIT" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Pirates</div>
+            <div class="mc-record">17-11</div>
           </div>
         </div>
         <div class="mc-card mc-card-simple">
@@ -1040,128 +1054,109 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           <div class="mc-middle">
             <div class="mc-abbr">ATL</div>
             <div class="mc-vs">VS</div>
-            <div class="mc-abbr">BOS</div>
-            <div class="mc-score">6 – 1</div>
-            <div class="mc-tip">Final</div>
+            <div class="mc-abbr">MIN</div>
+            
+            <div class="mc-tip">1:05 PM ET</div>
           </div>
           <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/bos.png" alt="BOS" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Red Sox</div>
-            <div class="mc-record">12-14</div>
-          </div>
-        </div>
-        <div class="mc-card mc-card-simple">
-          <div class="mc-team-side mc-left">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/nyy.png" alt="NYY" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Yankees</div>
-            <div class="mc-record">17-11</div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">NYY</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">DET</div>
-            <div class="mc-score">1 – 3</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/det.png" alt="DET" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Tigers</div>
-            <div class="mc-record">8-12-6</div>
-          </div>
-        </div>
-        <div class="mc-card mc-card-simple">
-          <div class="mc-team-side mc-left">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/tor.png" alt="TOR" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Blue Jays</div>
-            <div class="mc-record">11-14-2</div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">TOR</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">PIT</div>
-            <div class="mc-score">3 – 8</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/pit.png" alt="PIT" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Pirates</div>
-            <div class="mc-record">17-11</div>
-          </div>
-        </div>
-        <div class="mc-card mc-card-simple">
-          <div class="mc-team-side mc-left">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/mia.png" alt="MIA" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Marlins</div>
-            <div class="mc-record">10-13-3</div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">MIA</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">STL</div>
-            <div class="mc-score">4 – 7</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/stl.png" alt="STL" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Cardinals</div>
-            <div class="mc-record">16-9-2</div>
-          </div>
-        </div>
-        <div class="mc-card mc-card-simple">
-          <div class="mc-team-side mc-left">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/min.png" alt="MIN" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Twins</div>
             <div class="mc-record">8-18-1</div>
           </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">MIN</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">TB</div>
-            <div class="mc-score">2 – 3</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
+        </div>
+        <div class="mc-card mc-card-simple">
+          <div class="mc-team-side mc-left">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/tb.png" alt="TB" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Rays</div>
             <div class="mc-record">10-16-1</div>
           </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">TB</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">TOR</div>
+            
+            <div class="mc-tip">1:07 PM ET</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/tor.png" alt="TOR" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Blue Jays</div>
+            <div class="mc-record">11-14-2</div>
+          </div>
         </div>
         <div class="mc-card mc-card-simple">
           <div class="mc-team-side mc-left">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/nym.png" alt="NYM" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Mets</div>
-            <div class="mc-record">12-11-2</div>
+            <div class="mc-record">12-12-2</div>
           </div>
           <div class="mc-middle">
             <div class="mc-abbr">NYM</div>
             <div class="mc-vs">VS</div>
-            <div class="mc-abbr">WSH</div>
-            <div class="mc-score">1 – 3</div>
-            <div class="mc-tip">Final</div>
+            <div class="mc-abbr">MIA</div>
+            
+            <div class="mc-tip">1:10 PM ET</div>
           </div>
           <div class="mc-team-side mc-right">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/mia.png" alt="MIA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Marlins</div>
+            <div class="mc-record">10-13-3</div>
+          </div>
+        </div>
+        <div class="mc-card mc-card-simple">
+          <div class="mc-team-side mc-left">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/wsh.png" alt="WSH" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Nationals</div>
             <div class="mc-record">14-9-3</div>
           </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">WSH</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">BAL</div>
+            
+            <div class="mc-tip">1:35 PM ET</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/bal.png" alt="BAL" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Orioles</div>
+            <div class="mc-record">11-13-3</div>
+          </div>
         </div>
         <div class="mc-card mc-card-simple">
           <div class="mc-team-side mc-left">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/hou.png" alt="HOU" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Astros</div>
-            <div class="mc-record">11-13-3</div>
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/mil.png" alt="MIL" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Brewers</div>
+            <div class="mc-record">12-15</div>
           </div>
           <div class="mc-middle">
-            <div class="mc-abbr">HOU</div>
+            <div class="mc-abbr">MIL</div>
             <div class="mc-vs">VS</div>
-            <div class="mc-abbr">NYM</div>
-            <div class="mc-score">7 – 5</div>
-            <div class="mc-tip">Final</div>
+            <div class="mc-abbr">CHC</div>
+            
+            <div class="mc-tip">3:05 PM ET</div>
           </div>
           <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/nym.png" alt="NYM" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Mets</div>
-            <div class="mc-record">12-12-2</div>
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/chc.png" alt="CHC" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Cubs</div>
+            <div class="mc-record">12-16</div>
+          </div>
+        </div>
+        <div class="mc-card mc-card-simple">
+          <div class="mc-team-side mc-left">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/cin.png" alt="CIN" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Reds</div>
+            <div class="mc-record">14-14</div>
+          </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">CIN</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">CLE</div>
+            
+            <div class="mc-tip">3:05 PM ET</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/cle.png" alt="CLE" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Guardians</div>
+            <div class="mc-record">13-14-1</div>
           </div>
         </div>
         <div class="mc-card mc-card-simple">
@@ -1173,134 +1168,77 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           <div class="mc-middle">
             <div class="mc-abbr">ATH</div>
             <div class="mc-vs">VS</div>
-            <div class="mc-abbr">LAD</div>
-            <div class="mc-score">5 – 5</div>
-            <div class="mc-tip">Final</div>
+            <div class="mc-abbr">COL</div>
+            
+            <div class="mc-tip">4:10 PM ET</div>
           </div>
           <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/lad.png" alt="LAD" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Dodgers</div>
-            <div class="mc-record">19-8-1</div>
-          </div>
-        </div>
-        <div class="mc-card mc-card-simple">
-          <div class="mc-team-side mc-left">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/col.png" alt="COL" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Rockies</div>
             <div class="mc-record">13-14-1</div>
           </div>
+        </div>
+        <div class="mc-card mc-card-simple">
+          <div class="mc-team-side mc-left">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/sea.png" alt="SEA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Mariners</div>
+            <div class="mc-record">10-18-1</div>
+          </div>
           <div class="mc-middle">
-            <div class="mc-abbr">COL</div>
+            <div class="mc-abbr">SEA</div>
             <div class="mc-vs">VS</div>
-            <div class="mc-abbr">KC</div>
-            <div class="mc-score">5 – 6</div>
-            <div class="mc-tip">Final</div>
+            <div class="mc-abbr">CHW</div>
+            
+            <div class="mc-tip">9:05 PM ET</div>
           </div>
           <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/kc.png" alt="KC" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Royals</div>
-            <div class="mc-record">9-19-1</div>
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/chw.png" alt="CHW" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">White Sox</div>
+            <div class="mc-record">15-14-1</div>
           </div>
         </div>
         <div class="mc-card mc-card-simple">
           <div class="mc-team-side mc-left">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/cle.png" alt="CLE" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Guardians</div>
-            <div class="mc-record">13-14-1</div>
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/lad.png" alt="LAD" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Dodgers</div>
+            <div class="mc-record">19-8-1</div>
           </div>
           <div class="mc-middle">
-            <div class="mc-abbr">CLE</div>
+            <div class="mc-abbr">LAD</div>
             <div class="mc-vs">VS</div>
-            <div class="mc-abbr">SF</div>
-            <div class="mc-score">7 – 10</div>
-            <div class="mc-tip">Final</div>
+            <div class="mc-abbr">LAA</div>
+            
+            <div class="mc-tip">9:07 PM ET</div>
           </div>
           <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/sf.png" alt="SF" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Giants</div>
-            <div class="mc-record">19-9-1</div>
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/laa.png" alt="LAA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Angels</div>
+            <div class="mc-record">16-14</div>
           </div>
         </div>
         <div class="mc-card mc-card-simple">
           <div class="mc-team-side mc-left">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/tex.png" alt="TEX" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Rangers</div>
-            <div class="mc-record">16-12</div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">TEX</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">ARI</div>
-            <div class="mc-score">2 – 5</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/ari.png" alt="ARI" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Diamondbacks</div>
             <div class="mc-record">14-13-1</div>
           </div>
-        </div>
-        <div class="mc-card mc-card-simple">
-          <div class="mc-team-side mc-left">
+          <div class="mc-middle">
+            <div class="mc-abbr">ARI</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">SD</div>
+            
+            <div class="mc-tip">9:10 PM ET</div>
+          </div>
+          <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/sd.png" alt="SD" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Padres</div>
             <div class="mc-record">14-14-1</div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">SD</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">MIL</div>
-            <div class="mc-score">1 – 6</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/mil.png" alt="MIL" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Brewers</div>
-            <div class="mc-record">12-15</div>
-          </div>
-        </div>
-        <div class="mc-card mc-card-simple">
-          <div class="mc-team-side mc-left">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/chw.png" alt="CHW" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">White Sox</div>
-            <div class="mc-record">15-13-1</div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">CHW</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">CIN</div>
-            <div class="mc-score">7 – 7</div>
-            <div class="mc-tip">Bot 9th</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/cin.png" alt="CIN" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Reds</div>
-            <div class="mc-record">13-14</div>
-          </div>
-        </div>
-        <div class="mc-card mc-card-simple">
-          <div class="mc-team-side mc-left">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/chc.png" alt="CHC" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Cubs</div>
-            <div class="mc-record">12-16</div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">CHC</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">SEA</div>
-            <div class="mc-score">7 – 1</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/sea.png" alt="SEA" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Mariners</div>
-            <div class="mc-record">10-18-1</div>
           </div>
         </div></div>
 
   <div class="two-col">
     <div>
-      <div class="section-header"><span>🎯</span> Today's Picks — 2026-03-21</div>
+      <div class="section-header"><span>🎯</span> Today's Picks — 2026-03-22</div>
       <p class="no-picks">No qualifying picks today.</p>
     </div>
     <div>
@@ -1366,14 +1304,90 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           <div class="mc-middle">
             <div class="mc-abbr">WPG</div>
             <div class="mc-vs">VS</div>
+            <div class="mc-abbr">NYR</div>
+            
+            <div class="mc-tip">12:00 PM ET</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/nyr.png" alt="NYR" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Rangers</div>
+            <div class="mc-record">28-33-8</div>
+          </div>
+        </div>
+        <div class="mc-card mc-card-simple">
+          <div class="mc-team-side mc-left">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/col.png" alt="COL" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Avalanche</div>
+            <div class="mc-record">45-13-10</div>
+          </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">COL</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">WSH</div>
+            
+            <div class="mc-tip">12:30 PM ET</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/wsh.png" alt="WSH" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Capitals</div>
+            <div class="mc-record">35-27-8</div>
+          </div>
+        </div>
+        <div class="mc-card mc-card-simple">
+          <div class="mc-team-side mc-left">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/car.png" alt="CAR" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Hurricanes</div>
+            <div class="mc-record">44-19-6</div>
+          </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">CAR</div>
+            <div class="mc-vs">VS</div>
             <div class="mc-abbr">PIT</div>
-            <div class="mc-score">4 – 5</div>
-            <div class="mc-tip">Final/SO</div>
+            
+            <div class="mc-tip">3:00 PM ET</div>
           </div>
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/pit.png" alt="PIT" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Penguins</div>
             <div class="mc-record">35-18-16</div>
+          </div>
+        </div>
+        <div class="mc-card mc-card-simple">
+          <div class="mc-team-side mc-left">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/nsh.png" alt="NSH" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Predators</div>
+            <div class="mc-record">32-28-9</div>
+          </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">NSH</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">CHI</div>
+            
+            <div class="mc-tip">3:00 PM ET</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/chi.png" alt="CHI" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Blackhawks</div>
+            <div class="mc-record">26-31-12</div>
+          </div>
+        </div>
+        <div class="mc-card mc-card-simple">
+          <div class="mc-team-side mc-left">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/cbj.png" alt="CBJ" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Blue Jackets</div>
+            <div class="mc-record">37-21-11</div>
+          </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">CBJ</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">NYI</div>
+            
+            <div class="mc-tip">7:00 PM ET</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/nyi.png" alt="NYI" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Islanders</div>
+            <div class="mc-record">39-26-5</div>
           </div>
         </div>
         <div class="mc-card mc-card-simple">
@@ -1385,166 +1399,14 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           <div class="mc-middle">
             <div class="mc-abbr">VGK</div>
             <div class="mc-vs">VS</div>
-            <div class="mc-abbr">NSH</div>
-            <div class="mc-score">1 – 4</div>
-            <div class="mc-tip">Final</div>
+            <div class="mc-abbr">DAL</div>
+            
+            <div class="mc-tip">7:00 PM ET</div>
           </div>
           <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/nsh.png" alt="NSH" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Predators</div>
-            <div class="mc-record">32-28-9</div>
-          </div>
-        </div>
-        <div class="mc-card mc-card-simple">
-          <div class="mc-team-side mc-left">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/dal.png" alt="DAL" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Stars</div>
             <div class="mc-record">43-15-11</div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">DAL</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">MIN</div>
-            <div class="mc-score">1 – 2</div>
-            <div class="mc-tip">Final/OT</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/min.png" alt="MIN" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Wild</div>
-            <div class="mc-record">40-19-12</div>
-          </div>
-        </div>
-        <div class="mc-card mc-card-simple">
-          <div class="mc-team-side mc-left">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/buf.png" alt="BUF" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Sabres</div>
-            <div class="mc-record">44-20-6</div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">BUF</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">LA</div>
-            <div class="mc-score">4 – 1</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/la.png" alt="LA" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Kings</div>
-            <div class="mc-record">28-25-16</div>
-          </div>
-        </div>
-        <div class="mc-card mc-card-simple">
-          <div class="mc-team-side mc-left">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/phi.png" alt="PHI" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Flyers</div>
-            <div class="mc-record">34-23-12</div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">PHI</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">SJ</div>
-            <div class="mc-score">4 – 1</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/sj.png" alt="SJ" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Sharks</div>
-            <div class="mc-record">32-30-6</div>
-          </div>
-        </div>
-        <div class="mc-card mc-card-simple">
-          <div class="mc-team-side mc-left">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/sea.png" alt="SEA" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Kraken</div>
-            <div class="mc-record">31-29-9</div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">SEA</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">CBJ</div>
-            <div class="mc-score">2 – 5</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/cbj.png" alt="CBJ" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Blue Jackets</div>
-            <div class="mc-record">37-21-11</div>
-          </div>
-        </div>
-        <div class="mc-card mc-card-simple">
-          <div class="mc-team-side mc-left">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/nyi.png" alt="NYI" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Islanders</div>
-            <div class="mc-record">39-26-5</div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">NYI</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">MTL</div>
-            <div class="mc-score">3 – 7</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/mtl.png" alt="MTL" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Canadiens</div>
-            <div class="mc-record">38-21-10</div>
-          </div>
-        </div>
-        <div class="mc-card mc-card-simple">
-          <div class="mc-team-side mc-left">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/tor.png" alt="TOR" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Maple Leafs</div>
-            <div class="mc-record">29-29-13</div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">TOR</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">OTT</div>
-            <div class="mc-score">2 – 5</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/ott.png" alt="OTT" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Senators</div>
-            <div class="mc-record">36-24-9</div>
-          </div>
-        </div>
-        <div class="mc-card mc-card-simple">
-          <div class="mc-team-side mc-left">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/stl.png" alt="STL" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Blues</div>
-            <div class="mc-record">28-30-11</div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">STL</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">VAN</div>
-            <div class="mc-score">3 – 1</div>
-            <div class="mc-tip">Final</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/van.png" alt="VAN" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Canucks</div>
-            <div class="mc-record">21-40-8</div>
-          </div>
-        </div>
-        <div class="mc-card mc-card-simple">
-          <div class="mc-team-side mc-left">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/bos.png" alt="BOS" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Bruins</div>
-            <div class="mc-record">38-23-8</div>
-          </div>
-          <div class="mc-middle">
-            <div class="mc-abbr">BOS</div>
-            <div class="mc-vs">VS</div>
-            <div class="mc-abbr">DET</div>
-            <div class="mc-score">3 – 2</div>
-            <div class="mc-tip">5:19 - 3rd</div>
-          </div>
-          <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/det.png" alt="DET" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Red Wings</div>
-            <div class="mc-record">38-23-8</div>
           </div>
         </div>
         <div class="mc-card mc-card-simple">
@@ -1556,20 +1418,58 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           <div class="mc-middle">
             <div class="mc-abbr">TB</div>
             <div class="mc-vs">VS</div>
-            <div class="mc-abbr">EDM</div>
-            <div class="mc-score">0 – 0</div>
-            <div class="mc-tip">5:54 - 1st</div>
+            <div class="mc-abbr">CGY</div>
+            
+            <div class="mc-tip">8:00 PM ET</div>
           </div>
           <div class="mc-team-side mc-right">
-            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/edm.png" alt="EDM" class="mc-logo-img" onerror="this.style.display='none'"></div>
-            <div class="mc-tname">Oilers</div>
-            <div class="mc-record">34-27-9</div>
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/cgy.png" alt="CGY" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Flames</div>
+            <div class="mc-record">28-34-7</div>
+          </div>
+        </div>
+        <div class="mc-card mc-card-simple">
+          <div class="mc-team-side mc-left">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/buf.png" alt="BUF" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Sabres</div>
+            <div class="mc-record">44-20-6</div>
+          </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">BUF</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">ANA</div>
+            
+            <div class="mc-tip">8:00 PM ET</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/ana.png" alt="ANA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Ducks</div>
+            <div class="mc-record">38-27-4</div>
+          </div>
+        </div>
+        <div class="mc-card mc-card-simple">
+          <div class="mc-team-side mc-left">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/la.png" alt="LA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Kings</div>
+            <div class="mc-record">28-25-16</div>
+          </div>
+          <div class="mc-middle">
+            <div class="mc-abbr">LA</div>
+            <div class="mc-vs">VS</div>
+            <div class="mc-abbr">UTA</div>
+            
+            <div class="mc-tip">9:00 PM ET</div>
+          </div>
+          <div class="mc-team-side mc-right">
+            <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/nhl/500/scoreboard/uta.png" alt="UTA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+            <div class="mc-tname">Mammoth</div>
+            <div class="mc-record">36-28-6</div>
           </div>
         </div></div>
 
   <div class="two-col">
     <div>
-      <div class="section-header"><span>🎯</span> Today's Picks — 2026-03-21</div>
+      <div class="section-header"><span>🎯</span> Today's Picks — 2026-03-22</div>
       <p class="no-picks">No qualifying picks today.</p>
     </div>
     <div>
@@ -1629,7 +1529,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 
   <div class="two-col">
     <div>
-      <div class="section-header"><span>🎯</span> Today's Picks — 2026-03-21</div>
+      <div class="section-header"><span>🎯</span> Today's Picks — 2026-03-22</div>
       <p class="no-picks">No qualifying picks today.</p>
     </div>
     <div>
@@ -1654,6 +1554,631 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 
   <div class="disc">⚠️ For entertainment only. Past performance does not guarantee future results. Bet responsibly.</div>
   <div class="footer">NFL Model v1 · <b>AI-powered ensemble analytics</b> · 0 graded bets tracked</div>
+</div>
+<div id="sport-section-soccer" class="sport-section" style="display:none">
+  <!-- UNDER CONSTRUCTION BANNER -->
+  <div class="soccer-wip-banner">
+    <div class="soccer-wip-icon">🚧</div>
+    <div class="soccer-wip-text">
+      <div class="soccer-wip-title">UNDER CONSTRUCTION — DO NOT BET YET</div>
+      <div class="soccer-wip-sub">This model is currently in testing. Picks are for evaluation purposes only and have not been validated for real-money wagering.</div>
+    </div>
+    <div class="soccer-wip-icon">🚧</div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="sc">
+      <span class="sc-icon">🏆</span>
+      <div class="sv sv-sm">0W - 0L</div>
+      <div class="sl">All-Time Record</div>
+    </div>
+    <div class="sc sc-accent">
+      <span class="sc-icon">💰</span>
+      <div class="sv" style="color:#22C55E">+0.00u</div>
+      <div class="sl">Total P&amp;L</div>
+    </div>
+    <div class="sc">
+      <span class="sc-icon">🎯</span>
+      <div class="sv">0.0%</div>
+      <div class="sl">Win Rate</div>
+    </div>
+    <div class="sc sc-gold">
+      <span class="sc-icon">📅</span>
+      <div class="sv sv-sm" style="color:var(--green)">—</div>
+      <div class="sl">March</div>
+    </div>
+    <div class="sc">
+      <span class="sc-icon">📊</span>
+      <div class="sv sv-sm">—</div>
+      <div class="sl">Last 10 Bets</div>
+    </div>
+  </div>
+
+  <div class="section-header soccer-league-header"><span>🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> Premier League — 3/22 Games</div><div class="mc-scroll">
+            <div class="mc-card mc-card-simple mc-card-picked">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/366.png" alt="SUN" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Sunderland</div>
+                <div class="mc-record">10-10-10</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">SUN</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">NEW</div>
+                
+                <div class="mc-tip">8:00 AM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                <div class="mc-pick-badge pick-low">🎯 ML</div>
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/361.png" alt="NEW" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Newcastle</div>
+                <div class="mc-record">12-6-12</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/371.png" alt="WHU" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">West Ham</div>
+                <div class="mc-record">7-8-15</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">WHU</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">AVL</div>
+                
+                <div class="mc-tip">10:15 AM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/362.png" alt="AVL" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Aston Villa</div>
+                <div class="mc-record">15-6-9</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/393.png" alt="NFO" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Nottm Forest</div>
+                <div class="mc-record">7-8-15</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">NFO</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">TOT</div>
+                
+                <div class="mc-tip">10:15 AM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/367.png" alt="TOT" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Spurs</div>
+                <div class="mc-record">7-9-14</div>
+              </div>
+            </div></div><div class="section-header soccer-league-header"><span>🇪🇸</span> La Liga — 3/22 Games</div><div class="mc-scroll">
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/101.png" alt="RAY" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Rayo</div>
+                <div class="mc-record">7-11-10</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">RAY</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">BAR</div>
+                
+                <div class="mc-tip">9:00 AM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/83.png" alt="BAR" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Barcelona</div>
+                <div class="mc-record">23-1-4</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/96.png" alt="ALA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Alavés</div>
+                <div class="mc-record">7-7-14</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">ALA</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">CEL</div>
+                
+                <div class="mc-tip">11:15 AM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/85.png" alt="CEL" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Celta Vigo</div>
+                <div class="mc-record">10-11-7</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/244.png" alt="BET" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Betis</div>
+                <div class="mc-record">11-11-6</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">BET</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">ATH</div>
+                
+                <div class="mc-tip">1:30 PM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/93.png" alt="ATH" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Athletic</div>
+                <div class="mc-record">10-5-13</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/1068.png" alt="ATM" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Atlético</div>
+                <div class="mc-record">17-6-5</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">ATM</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">RMA</div>
+                
+                <div class="mc-tip">4:00 PM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/86.png" alt="RMA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Real Madrid</div>
+                <div class="mc-record">21-3-4</div>
+              </div>
+            </div></div><div class="section-header soccer-league-header"><span>🇮🇹</span> Serie A — 3/22 Games</div><div class="mc-scroll">
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/3956.png" alt="PIS" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Pisa</div>
+                <div class="mc-record">2-12-15</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">PIS</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">COMO</div>
+                
+                <div class="mc-tip">7:30 AM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/2572.png" alt="COMO" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Como</div>
+                <div class="mc-record">15-9-5</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/119.png" alt="VER" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Verona</div>
+                <div class="mc-record">3-9-17</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">VER</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">ATA</div>
+                
+                <div class="mc-tip">10:00 AM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/105.png" alt="ATA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Atalanta</div>
+                <div class="mc-record">12-11-6</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/112.png" alt="LAZ" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Lazio</div>
+                <div class="mc-record">10-10-9</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">LAZ</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">BOL</div>
+                
+                <div class="mc-tip">10:00 AM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/107.png" alt="BOL" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Bologna</div>
+                <div class="mc-record">12-6-11</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/113.png" alt="LEC" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Lecce</div>
+                <div class="mc-record">7-6-16</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">LEC</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">ROMA</div>
+                
+                <div class="mc-tip">1:00 PM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/104.png" alt="ROMA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">AS Roma</div>
+                <div class="mc-record">16-3-10</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/110.png" alt="INT" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Inter Milan</div>
+                <div class="mc-record">22-2-5</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">INT</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">FIO</div>
+                
+                <div class="mc-tip">3:45 PM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/109.png" alt="FIO" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Fiorentina</div>
+                <div class="mc-record">6-10-13</div>
+              </div>
+            </div></div><div class="section-header soccer-league-header"><span>🇩🇪</span> Bundesliga — 3/22 Games</div><div class="mc-scroll">
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/125.png" alt="SGE" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Frankfurt</div>
+                <div class="mc-record">10-8-8</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">SGE</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">M05</div>
+                
+                <div class="mc-tip">10:30 AM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/2950.png" alt="M05" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Mainz</div>
+                <div class="mc-record">6-9-11</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/126.png" alt="SCF" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Freiburg</div>
+                <div class="mc-record">9-7-10</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">SCF</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">STP</div>
+                
+                <div class="mc-tip">12:30 PM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/270.png" alt="STP" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">St. Pauli</div>
+                <div class="mc-record">6-6-14</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/134.png" alt="VFB" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Stuttgart</div>
+                <div class="mc-record">15-5-6</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">VFB</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">FCA</div>
+                
+                <div class="mc-tip">2:30 PM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/3841.png" alt="FCA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Augsburg</div>
+                <div class="mc-record">9-4-13</div>
+              </div>
+            </div></div><div class="section-header soccer-league-header"><span>🇫🇷</span> Ligue 1 — 3/22 Games</div><div class="mc-scroll">
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/174.png" alt="MON" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Monaco</div>
+                <div class="mc-record">13-4-9</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">MON</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">LYON</div>
+                
+                <div class="mc-tip">10:00 AM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/167.png" alt="LYON" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Lyon</div>
+                <div class="mc-record">14-5-7</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/166.png" alt="LILL" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Lille</div>
+                <div class="mc-record">13-5-8</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">LILL</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">OLM</div>
+                
+                <div class="mc-tip">12:15 PM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/176.png" alt="OLM" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Marseille</div>
+                <div class="mc-record">15-4-7</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/3236.png" alt="HAC" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Le Havre AC</div>
+                <div class="mc-record">6-9-11</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">HAC</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">PAR</div>
+                
+                <div class="mc-tip">12:15 PM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/6851.png" alt="PAR" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Paris FC</div>
+                <div class="mc-record">6-10-10</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/177.png" alt="METZ" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Metz</div>
+                <div class="mc-record">3-4-19</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">METZ</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">REN</div>
+                
+                <div class="mc-tip">12:15 PM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/169.png" alt="REN" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Rennes</div>
+                <div class="mc-record">12-7-7</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/180.png" alt="STR" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Strasbourg</div>
+                <div class="mc-record">10-7-9</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">STR</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">NAN</div>
+                
+                <div class="mc-tip">3:45 PM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/165.png" alt="NAN" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Nantes</div>
+                <div class="mc-record">4-5-16</div>
+              </div>
+            </div></div><div class="section-header soccer-league-header"><span>🇺🇸</span> MLS — 3/22 Games</div><div class="mc-scroll">
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/9720.png" alt="MTL" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">CF Montréal</div>
+                <div class="mc-record">1-0-3</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">MTL</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">CIN</div>
+                
+                <div class="mc-tip">1:00 PM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/18267.png" alt="CIN" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Cincinnati</div>
+                <div class="mc-record">1-0-3</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/20232.png" alt="MIA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Miami</div>
+                <div class="mc-record">2-1-1</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">MIA</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">NYC</div>
+                
+                <div class="mc-tip">1:00 PM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/17606.png" alt="NYC" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">NYCFC</div>
+                <div class="mc-record">3-1-0</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/9726.png" alt="SEA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Seattle</div>
+                <div class="mc-record">3-0-1</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">SEA</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">MIN</div>
+                
+                <div class="mc-tip">2:30 PM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/17362.png" alt="MIN" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Minnesota</div>
+                <div class="mc-record">1-1-2</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/187.png" alt="LA" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">LA Galaxy</div>
+                <div class="mc-record">1-1-2</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">LA</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">POR</div>
+                
+                <div class="mc-tip">4:45 PM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/9723.png" alt="POR" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Portland</div>
+                <div class="mc-record">1-0-3</div>
+              </div>
+            </div>
+            <div class="mc-card mc-card-simple">
+              <div class="mc-team-side mc-left">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/4771.png" alt="RSL" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">Salt Lake</div>
+                <div class="mc-record">3-0-1</div>
+              </div>
+              <div class="mc-middle">
+                
+                <div class="mc-abbr">RSL</div>
+                <div class="mc-vs">VS</div>
+                <div class="mc-abbr">SD</div>
+                
+                <div class="mc-tip">7:00 PM ET</div>
+              </div>
+              <div class="mc-team-side mc-right">
+                
+                <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/22529.png" alt="SD" class="mc-logo-img" onerror="this.style.display='none'"></div>
+                <div class="mc-tname">San Diego</div>
+                <div class="mc-record">3-1-0</div>
+              </div>
+            </div></div>
+
+  <div class="two-col">
+    <div>
+      <div class="section-header"><span>🎯</span> Today's Picks — 2026-03-21</div>
+      
+        <div class="soccer-league-select-wrap">
+          <label class="soccer-league-select-label">⚽ League</label>
+          <select class="soccer-league-select" id="soccerLeagueSelect" onchange="filterSoccerLeague(this.value, null)">
+            <option value="all">🌍 All Leagues</option><option value="EPL">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</option><option value="Serie A">🇮🇹 Serie A</option><option value="MLS">🇺🇸 MLS</option>
+          </select>
+        </div>
+      <div class="soccer-league-picks" data-league="EPL"><div class="soccer-league-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</div><div class="pick low"><div class="pick-top"><div class="pick-game">Sunderland @ Newcastle United</div><div class="tier-wrap"><div class="pick-tier low">LOW ★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ML (Newcastle United  -145)</div><div class="pick-meta"><span>Home ML: -145</span><span>Away ML: +400</span><span>Model: +1.25 goal diff</span></div><button class="slip-btn" data-matchup="Sunderland @ Newcastle United" data-bet="HOME ML (Newcastle United  -145)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div></div><div class="soccer-league-picks" data-league="Serie A"><div class="soccer-league-label">🇮🇹 Serie A</div><p class="no-picks">No qualifying picks for this league today.</p></div><div class="soccer-league-picks" data-league="MLS"><div class="soccer-league-label">🇺🇸 MLS</div><div class="pick med"><div class="pick-top"><div class="pick-game">D.C. United @ Atlanta United FC</div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">AWAY ML (D.C. United  +235)</div><div class="pick-meta"><span>Home ML: +105</span><span>Away ML: +235</span><span>Model: -0.11 goal diff</span></div><button class="slip-btn" data-matchup="D.C. United @ Atlanta United FC" data-bet="AWAY ML (D.C. United  +235)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div><div class="pick low"><div class="pick-top"><div class="pick-game">Red Bull New York @ Charlotte FC</div><div class="tier-wrap"><div class="pick-tier low">LOW ★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ML (Charlotte FC  +110)</div><div class="pick-meta"><span>Home ML: +110</span><span>Model: +0.97 goal diff</span></div><button class="slip-btn" data-matchup="Red Bull New York @ Charlotte FC" data-bet="HOME ML (Charlotte FC  +110)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div><div class="pick med"><div class="pick-top"><div class="pick-game">Colorado Rapids @ Sporting Kansas City</div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">AWAY ML (Colorado Rapids  +155)</div><div class="pick-meta"><span>Home ML: +160</span><span>Away ML: +155</span><span>Model: -0.56 goal diff</span></div><button class="slip-btn" data-matchup="Colorado Rapids @ Sporting Kansas City" data-bet="AWAY ML (Colorado Rapids  +155)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div><div class="pick low"><div class="pick-top"><div class="pick-game">Houston Dynamo FC @ FC Dallas</div><div class="tier-wrap"><div class="pick-tier low">LOW ★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ML (FC Dallas  +125)</div><div class="pick-meta"><span>Home ML: +125</span><span>Model: +0.65 goal diff</span></div><button class="slip-btn" data-matchup="Houston Dynamo FC @ FC Dallas" data-bet="HOME ML (FC Dallas  +125)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div><div class="pick med"><div class="pick-top"><div class="pick-game">New England Revolution @ St. Louis CITY SC</div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">AWAY ML (New England Revolution  +250)</div><div class="pick-meta"><span>Away ML: +250</span><span>Model: -0.10 goal diff</span></div><button class="slip-btn" data-matchup="New England Revolution @ St. Louis CITY SC" data-bet="AWAY ML (New England Revolution  +250)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div></div>
+    </div>
+    <div>
+      <div class="section-header"><span>📊</span> Recent Results</div>
+      <button class="results-toggle" onclick="var b=this.nextElementSibling;var c=b.style.display==='none';b.style.display=c?'block':'none';this.querySelector('.rt-arrow').style.transform=c?'':'rotate(180deg)';">
+        Last 0 bets &nbsp;·&nbsp; 0W - 0L all-time
+        <span class="rt-arrow" style="transform:rotate(180deg)">▾</span>
+      </button>
+      <div class="results-body">
+        <p class="no-picks">No graded bets yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header"><span>📋</span> Other Games — No Edge</div><div class="chips"><div class="chip">Pisa @ Como</div><div class="chip">LAFC @ Austin FC</div><div class="chip">San Jose Earthquakes @ Vancouver Whitecaps</div></div>
+
+  <div class="an-wrap">
+    
+  </div>
+
+  <div class="disc">⚠️ For entertainment only. Past performance does not guarantee future results. Bet responsibly.</div>
+  <div class="footer">Soccer Model v1 · <b>AI-powered ensemble analytics</b> · 0 graded bets tracked</div>
 </div>
 
 </div><!-- /wrap -->
@@ -1706,13 +2231,14 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 
 <script>
 // ── Sport metadata ────────────────────────────────────────────────────────────
-const SPORT_ACCENTS   = { "nba": "#F97316", "mlb": "#EF4444", "nhl": "#3B82F6", "nfl": "#22C55E" };
-const SPORT_GRADIENTS = { "nba": "linear-gradient(135deg, #161B22, #0D1117 55%, #1d0d02)", "mlb": "linear-gradient(135deg, #161B22, #0D1117 55%, #1c0808)", "nhl": "linear-gradient(135deg, #161B22, #0D1117 55%, #070f1d)", "nfl": "linear-gradient(135deg, #161B22, #0D1117 55%, #04170b)" };
+const SPORT_ACCENTS   = { "nba": "#F97316", "mlb": "#EF4444", "nhl": "#3B82F6", "nfl": "#22C55E", "soccer": "#C0C0C0" };
+const SPORT_GRADIENTS = { "nba": "linear-gradient(135deg, #161B22, #0D1117 55%, #1d0d02)", "mlb": "linear-gradient(135deg, #161B22, #0D1117 55%, #1c0808)", "nhl": "linear-gradient(135deg, #161B22, #0D1117 55%, #070f1d)", "nfl": "linear-gradient(135deg, #161B22, #0D1117 55%, #04170b)", "soccer": "linear-gradient(135deg, #161B22, #0D1117 55%, #171717)" };
 const SPORT_META = {
-  nba: { label:"NBA", emoji:"🏀", title:"NBA MODEL", tagline:"Machine Learning · Daily Picks · Full Transparency" },
-  mlb: { label:"MLB", emoji:"⚾", title:"MLB MODEL", tagline:"Machine Learning · Daily Picks · Full Transparency" },
-  nhl: { label:"NHL", emoji:"🏒", title:"NHL MODEL", tagline:"Machine Learning · Daily Picks · Full Transparency" },
-  nfl: { label:"NFL", emoji:"🏈", title:"NFL MODEL", tagline:"Machine Learning · Daily Picks · Full Transparency" },
+  nba:    { label:"NBA",    emoji:"🏀", title:"NBA MODEL",    tagline:"Machine Learning · Daily Picks · Full Transparency" },
+  mlb:    { label:"MLB",    emoji:"⚾", title:"MLB MODEL",    tagline:"Machine Learning · Daily Picks · Full Transparency" },
+  nhl:    { label:"NHL",    emoji:"🏒", title:"NHL MODEL",    tagline:"Machine Learning · Daily Picks · Full Transparency" },
+  nfl:    { label:"NFL",    emoji:"🏈", title:"NFL MODEL",    tagline:"Machine Learning · Daily Picks · Full Transparency" },
+  soccer: { label:"Soccer", emoji:"⚽", title:"SOCCER MODEL", tagline:"Machine Learning · Daily Picks · Full Transparency" },
 };
 
 // ── Per-sport sportsbook deep links ───────────────────────────────────────────
@@ -1748,6 +2274,14 @@ const BOOKS_BY_SPORT = {
     caesars:    { name:'Caesars',   url:'https://sportsbook.caesars.com/us/mi/bet/football/nfl' },
     pointsbet:  { name:'PointsBet', url:'https://mi.pointsbet.com/sports/americanfootball/NFL' },
     barstool:   { name:'ESPN Bet',  url:'https://espnbet.com/sport/football/league/nfl' },
+  },
+  soccer: {
+    draftkings: { name:'DraftKings', url:'https://sportsbook.draftkings.com/leagues/soccer' },
+    fanduel:    { name:'FanDuel',    url:'https://sportsbook.fanduel.com/navigation/soccer' },
+    betmgm:     { name:'BetMGM',    url:'https://sports.betmgm.com/en/sports/soccer-4' },
+    caesars:    { name:'Caesars',   url:'https://sportsbook.caesars.com/us/mi/bet/soccer' },
+    pointsbet:  { name:'PointsBet', url:'https://mi.pointsbet.com/sports/soccer' },
+    barstool:   { name:'ESPN Bet',  url:'https://espnbet.com/sport/soccer' },
   },
 };
 
@@ -1806,7 +2340,13 @@ function switchSport(sport) {
   _activeSport = sport;
 }
 
-// ── Bet slip ──────────────────────────────────────────────────────────────────
+// ── Soccer league filter (driven by <select> on page) ────────────────────────
+function filterSoccerLeague(league, _unused) {
+  document.querySelectorAll('.soccer-league-picks').forEach(el => {
+    const show = (league === 'all' || league === 'All') || el.dataset.league === league;
+    el.style.display = show ? 'block' : 'none';
+  });
+}
 function openSlip(btn) {
   _slip.matchup = btn.dataset.matchup;
   _slip.bet     = btn.dataset.bet;
