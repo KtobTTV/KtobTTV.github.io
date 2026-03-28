@@ -518,48 +518,103 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 .an-subtitle { font-size:0.62rem; color:var(--muted); margin-bottom:0.75rem; }
 .an-final { font-size:0.75rem; font-weight:700; font-family:var(--mono); margin-top:0.5rem; text-align:right; }
 
-/* ── SOCCER CHART LEGEND ── */
-.soccer-chart-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 1.2rem;
-  margin-top: 0.75rem;
-  margin-bottom: 0.25rem;
-  padding: 0.65rem 0.75rem;
-  background: rgba(0,0,0,0.2);
+/* ── SOCCER LEAGUE STAT CARDS ── */
+.slc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+.slc-card {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-top: 2px solid var(--league-col, var(--border));
   border-radius: 8px;
-  border: 1px solid var(--border);
+  padding: 0.65rem 0.75rem 0.5rem;
+  transition: border-color 0.15s, background 0.15s;
 }
-.soccer-legend-row {
-  display: flex;
+.slc-card:hover {
+  background: rgba(255,255,255,0.03);
+  border-color: var(--league-col, var(--border));
+}
+.slc-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+.slc-flag { font-size: 0.9rem; }
+.slc-name {
   font-size: 0.68rem;
-  min-width: 160px;
-}
-.soccer-legend-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.soccer-legend-label {
+  font-weight: 700;
   color: var(--white);
-  font-weight: 600;
-  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.soccer-legend-record {
+.slc-record {
+  font-size: 0.6rem;
+  font-family: var(--mono);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.slc-pnl {
+  font-size: 0.68rem;
+  font-weight: 800;
+  font-family: var(--mono);
+  white-space: nowrap;
+}
+/* Win/loss split bar */
+.slc-winbar-wrap {
+  display: flex;
+  height: 5px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  margin-bottom: 0.35rem;
+  gap: 1px;
+}
+.slc-winbar-green {
+  background: #22C55E;
+  border-radius: 3px 0 0 3px;
+  transition: width 0.5s ease;
+  min-width: 2px;
+}
+.slc-winbar-red {
+  background: #EF4444;
+  border-radius: 0 3px 3px 0;
+  transition: width 0.5s ease;
+  min-width: 2px;
+}
+/* P&L horizontal bar */
+.slc-pnlbar-wrap {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.05);
+  overflow: hidden;
+  margin-bottom: 0.35rem;
+}
+.slc-pnlbar {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--bar-col, #22C55E);
+  transition: width 0.5s ease;
+  opacity: 0.75;
+  min-width: 2px;
+}
+.slc-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.55rem;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 0.62rem;
 }
-.soccer-legend-pnl {
-  font-family: var(--mono);
-  font-weight: 700;
-  font-size: 0.68rem;
-  min-width: 3.5rem;
-  text-align: right;
-}
+/* Keep old classes for backwards compat if any templates reference them */
+.soccer-chart-legend { display: none; }
+.soccer-legend-row, .soccer-legend-dot, .soccer-legend-label,
+.soccer-legend-record, .soccer-legend-pnl { display: none; }
 .tm-list { display:flex; flex-direction:column; gap:0.35rem; margin-top:0.25rem; }
 .tm-row { display:grid; grid-template-columns:2.8rem 1fr 3.2rem; align-items:center; gap:0.4rem; }
 .tm-abbr { font-size:0.65rem; font-weight:800; font-family:var(--mono); color:var(--muted); text-align:right; }
@@ -654,7 +709,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   </div>
   <div class="hdr-r">
     <div class="date-pill" id="hdr-date">2026-03-28</div>
-    <div class="upd">Updated Mar 28 · 02:47 AM</div>
+    <div class="upd">Updated Mar 28 · 02:53 AM</div>
     <a class="x-handle" href="https://x.com/iMightBetThat" target="_blank" rel="noopener">
       <svg class="x-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       @iMightBetThat
@@ -1826,12 +1881,93 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
         <div class="an-title">📈 Running P&amp;L by League</div>
         <div class="an-subtitle">Cumulative units per league over the season</div>
         
-    <svg viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:160px;overflow:visible">
-      <defs><linearGradient id="soccerGrad_0" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#06B6D4" stop-opacity="0.18"/><stop offset="100%" stop-color="#06B6D4" stop-opacity="0.0"/></linearGradient><linearGradient id="soccerGrad_1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3B82F6" stop-opacity="0.18"/><stop offset="100%" stop-color="#3B82F6" stop-opacity="0.0"/></linearGradient><linearGradient id="soccerGrad_2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#22C55E" stop-opacity="0.18"/><stop offset="100%" stop-color="#22C55E" stop-opacity="0.0"/></linearGradient><linearGradient id="soccerGrad_3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EF4444" stop-opacity="0.18"/><stop offset="100%" stop-color="#EF4444" stop-opacity="0.0"/></linearGradient></defs>
-      <line x1="0" y1="129.0" x2="560" y2="129.0" stroke="rgba(48,54,61,0.6)" stroke-width="1" stroke-dasharray="3,4"/><text x="4" y="126.0" fill="#8B949E" font-size="8" font-family="monospace">-1.6u</text><line x1="0" y1="97.6" x2="560" y2="97.6" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="none"/><text x="4" y="94.6" fill="#8B949E" font-size="8" font-family="monospace">+0.0u</text><line x1="0" y1="48.7" x2="560" y2="48.7" stroke="rgba(48,54,61,0.6)" stroke-width="1" stroke-dasharray="3,4"/><text x="4" y="45.7" fill="#8B949E" font-size="8" font-family="monospace">+2.5u</text>
-      <polygon points="0,97.6 0.0,117.2 46.7,95.7 93.3,65.3 140.0,40.8 186.7,60.4 466.7,23.2 513.3,42.8 560.0,62.4 560.0,97.6" fill="url(#soccerGrad_0)" opacity="0.6"/><path d="M0.0,117.2 L46.7,95.7 L93.3,65.3 L140.0,40.8 L186.7,60.4 L466.7,23.2 L513.3,42.8 L560.0,62.4" fill="none" stroke="#06B6D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/><circle cx="560.0" cy="62.4" r="3.5" fill="#06B6D4" stroke="#0D1117" stroke-width="1.5"/><polygon points="0,97.6 233.3,117.2 280.0,136.8 326.7,96.7 326.7,97.6" fill="url(#soccerGrad_1)" opacity="0.6"/><path d="M233.3,117.2 L280.0,136.8 L326.7,96.7" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/><circle cx="326.7" cy="96.7" r="3.5" fill="#3B82F6" stroke="#0D1117" stroke-width="1.5"/><polygon points="0,97.6 373.3,117.2 373.3,97.6" fill="url(#soccerGrad_2)" opacity="0.6"/><path d="M373.3,117.2" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/><circle cx="373.3" cy="117.2" r="3.5" fill="#22C55E" stroke="#0D1117" stroke-width="1.5"/><polygon points="0,97.6 420.0,117.2 420.0,97.6" fill="url(#soccerGrad_3)" opacity="0.6"/><path d="M420.0,117.2" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/><circle cx="420.0" cy="117.2" r="3.5" fill="#EF4444" stroke="#0D1117" stroke-width="1.5"/>
+    <svg viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg"
+         style="width:100%;height:160px;overflow:visible;display:block">
+      <defs><filter id="glow_0" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="glow_1" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="glow_2" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="glow_3" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <line x1="0" y1="129.0" x2="560" y2="129.0" stroke="rgba(48,54,61,0.55)" stroke-width="1" stroke-dasharray="3,4"/><text x="4" y="126.0" fill="#8B949E" font-size="8" font-family="monospace">-1.6u</text><line x1="0" y1="97.6" x2="560" y2="97.6" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="none"/><text x="4" y="94.6" fill="#8B949E" font-size="8" font-family="monospace">+0.0u</text><line x1="0" y1="48.7" x2="560" y2="48.7" stroke="rgba(48,54,61,0.55)" stroke-width="1" stroke-dasharray="3,4"/><text x="4" y="45.7" fill="#8B949E" font-size="8" font-family="monospace">+2.5u</text>
+      <path d="M0.0,117.2 L46.7,95.7 L93.3,65.3 L140.0,40.8 L186.7,60.4 L466.7,23.2 L513.3,42.8 L560.0,62.4" fill="none" stroke="#06B6D4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95" filter="url(#glow_0)"/><circle cx="560.0" cy="62.4" r="4.5" fill="#06B6D4" stroke="#0D1117" stroke-width="2"/><path d="M233.3,117.2 L280.0,136.8 L326.7,96.7" fill="none" stroke="#3B82F6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95" filter="url(#glow_1)"/><circle cx="326.7" cy="96.7" r="4.5" fill="#3B82F6" stroke="#0D1117" stroke-width="2"/><path d="M373.3,117.2" fill="none" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95" filter="url(#glow_2)"/><circle cx="373.3" cy="117.2" r="4.5" fill="#22C55E" stroke="#0D1117" stroke-width="2"/><path d="M420.0,117.2" fill="none" stroke="#EF4444" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95" filter="url(#glow_3)"/><circle cx="420.0" cy="117.2" r="4.5" fill="#EF4444" stroke="#0D1117" stroke-width="2"/>
     </svg>
-        <div class="soccer-chart-legend"><div class="soccer-legend-row"><span class="soccer-legend-dot" style="background:#06B6D4"></span><span class="soccer-legend-label">🇺🇸 MLS</span><span class="soccer-legend-record">4W-4L</span><span class="soccer-legend-pnl" style="color:#22C55E">+1.80u</span></div><div class="soccer-legend-row"><span class="soccer-legend-dot" style="background:#3B82F6"></span><span class="soccer-legend-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</span><span class="soccer-legend-record">1W-2L</span><span class="soccer-legend-pnl" style="color:#22C55E">+0.05u</span></div><div class="soccer-legend-row"><span class="soccer-legend-dot" style="background:#22C55E"></span><span class="soccer-legend-label">🇮🇹 Serie A</span><span class="soccer-legend-record">0W-1L</span><span class="soccer-legend-pnl" style="color:#EF4444">-1.00u</span></div><div class="soccer-legend-row"><span class="soccer-legend-dot" style="background:#EF4444"></span><span class="soccer-legend-label">🇪🇸 La Liga</span><span class="soccer-legend-record">0W-1L</span><span class="soccer-legend-pnl" style="color:#EF4444">-1.00u</span></div></div>
+        <div class="slc-grid">
+        <div class="slc-card" style="--league-col:#06B6D4">
+          <div class="slc-header">
+            <span class="slc-flag">🇺🇸</span>
+            <span class="slc-name">MLS</span>
+            <span class="slc-record">4W · 4L</span>
+            <span class="slc-pnl" style="color:#22C55E">+1.80u</span>
+          </div>
+          <div class="slc-winbar-wrap" title="50% win rate">
+            <div class="slc-winbar-green" style="width:50.0%"></div>
+            <div class="slc-winbar-red"   style="width:50.0%"></div>
+          </div>
+          <div class="slc-pnlbar-wrap">
+            <div class="slc-pnlbar slc-pnlbar-pos"
+                 style="width:100.0%;--bar-col:#22C55E"></div>
+          </div>
+          <div class="slc-meta">
+            <span>50% win rate</span>
+            <span>8 bets</span>
+          </div>
+        </div>
+        <div class="slc-card" style="--league-col:#3B82F6">
+          <div class="slc-header">
+            <span class="slc-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+            <span class="slc-name">Premier League</span>
+            <span class="slc-record">1W · 2L</span>
+            <span class="slc-pnl" style="color:#22C55E">+0.05u</span>
+          </div>
+          <div class="slc-winbar-wrap" title="33% win rate">
+            <div class="slc-winbar-green" style="width:33.3%"></div>
+            <div class="slc-winbar-red"   style="width:66.7%"></div>
+          </div>
+          <div class="slc-pnlbar-wrap">
+            <div class="slc-pnlbar slc-pnlbar-pos"
+                 style="width:2.8%;--bar-col:#22C55E"></div>
+          </div>
+          <div class="slc-meta">
+            <span>33% win rate</span>
+            <span>3 bets</span>
+          </div>
+        </div>
+        <div class="slc-card" style="--league-col:#22C55E">
+          <div class="slc-header">
+            <span class="slc-flag">🇮🇹</span>
+            <span class="slc-name">Serie A</span>
+            <span class="slc-record">0W · 1L</span>
+            <span class="slc-pnl" style="color:#EF4444">-1.00u</span>
+          </div>
+          <div class="slc-winbar-wrap" title="0% win rate">
+            <div class="slc-winbar-green" style="width:0.0%"></div>
+            <div class="slc-winbar-red"   style="width:100.0%"></div>
+          </div>
+          <div class="slc-pnlbar-wrap">
+            <div class="slc-pnlbar slc-pnlbar-neg"
+                 style="width:55.6%;--bar-col:#EF4444"></div>
+          </div>
+          <div class="slc-meta">
+            <span>0% win rate</span>
+            <span>1 bets</span>
+          </div>
+        </div>
+        <div class="slc-card" style="--league-col:#EF4444">
+          <div class="slc-header">
+            <span class="slc-flag">🇪🇸</span>
+            <span class="slc-name">La Liga</span>
+            <span class="slc-record">0W · 1L</span>
+            <span class="slc-pnl" style="color:#EF4444">-1.00u</span>
+          </div>
+          <div class="slc-winbar-wrap" title="0% win rate">
+            <div class="slc-winbar-green" style="width:0.0%"></div>
+            <div class="slc-winbar-red"   style="width:100.0%"></div>
+          </div>
+          <div class="slc-pnlbar-wrap">
+            <div class="slc-pnlbar slc-pnlbar-neg"
+                 style="width:55.6%;--bar-col:#EF4444"></div>
+          </div>
+          <div class="slc-meta">
+            <span>0% win rate</span>
+            <span>1 bets</span>
+          </div>
+        </div></div>
         <div class="an-final" style="color:#EF4444">
           -0.15u overall &nbsp;·&nbsp; 5W-8L across all leagues
         </div>
