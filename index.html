@@ -170,6 +170,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 }
 .soccer-league-picks { margin-bottom: 0.5rem; }
 .soccer-league-picks:first-child .soccer-league-label { margin-top: 0; }
+.pick-kickoff { font-size:0.72em; color:#8B949E; font-weight:400; margin-left:0.4em; }
 
 /* ── SOCCER LEAGUE HEADER (matchup cards) ── */
 .soccer-league-header {
@@ -709,7 +710,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   </div>
   <div class="hdr-r">
     <div class="date-pill" id="hdr-date">2026-04-03</div>
-    <div class="upd">Updated Apr 03 · 12:31 AM</div>
+    <div class="upd">Updated Apr 03 · 12:42 AM</div>
     <a class="x-handle" href="https://x.com/iMightBetThat" target="_blank" rel="noopener">
       <svg class="x-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       @iMightBetThat
@@ -1360,7 +1361,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           <div class="mc-team-side mc-left">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/atl.png" alt="ATL" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Braves</div>
-            <div class="mc-record">4-2</div>
+            <div class="mc-record">5-2</div>
           </div>
           <div class="mc-middle">
             <div class="mc-abbr">ATL</div>
@@ -1372,7 +1373,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
           <div class="mc-team-side mc-right">
             <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/mlb/500/scoreboard/ari.png" alt="ARI" class="mc-logo-img" onerror="this.style.display='none'"></div>
             <div class="mc-tname">Diamondbacks</div>
-            <div class="mc-record">3-3</div>
+            <div class="mc-record">3-4</div>
           </div>
         </div>
         <div class="mc-card mc-card-simple">
@@ -1864,7 +1865,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-record">10-8-11</div>
               </div>
             </div>
-            <div class="mc-card mc-card-simple">
+            <div class="mc-card mc-card-simple mc-card-picked">
               <div class="mc-team-side mc-left">
                 
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/86.png" alt="RMA" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -1880,7 +1881,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">10:15 AM ET</div>
               </div>
               <div class="mc-team-side mc-right">
-                
+                <div class="mc-pick-badge pick-med">🎯 ML</div>
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/84.png" alt="MLL" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Mallorca</div>
                 <div class="mc-record">7-7-15</div>
@@ -2106,7 +2107,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-record">15-5-7</div>
               </div>
             </div>
-            <div class="mc-card mc-card-simple">
+            <div class="mc-card mc-card-simple mc-card-picked">
               <div class="mc-team-side mc-left">
                 
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/11420.png" alt="RBL" class="mc-logo-img" onerror="this.style.display='none'"></div>
@@ -2122,7 +2123,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
                 <div class="mc-tip">9:30 AM ET</div>
               </div>
               <div class="mc-team-side mc-right">
-                
+                <div class="mc-pick-badge pick-med">🎯 ML</div>
                 <div class="mc-logo-ring"><img src="https://a.espncdn.com/i/teamlogos/soccer/500/137.png" alt="SVW" class="mc-logo-img" onerror="this.style.display='none'"></div>
                 <div class="mc-tname">Bremen</div>
                 <div class="mc-record">7-7-13</div>
@@ -2571,15 +2572,15 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 
   <div class="two-col">
     <div>
-      <div class="section-header"><span>🎯</span> Today's Picks — 2026-03-22</div>
+      <div class="section-header"><span>🎯</span> Upcoming Picks — Apr 3–4</div>
       
         <div class="soccer-league-select-wrap">
           <label class="soccer-league-select-label">⚽ League</label>
           <select class="soccer-league-select" id="soccerLeagueSelect" onchange="filterSoccerLeague(this.value, null)">
-            <option value="all">🌍 All Leagues</option><option value="EPL">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</option><option value="La Liga">🇪🇸 La Liga</option><option value="Serie A">🇮🇹 Serie A</option><option value="MLS">🇺🇸 MLS</option>
+            <option value="all">🌍 All Leagues</option><option value="La Liga">🇪🇸 La Liga</option><option value="Bundesliga">🇩🇪 Bundesliga</option><option value="Serie A">🇮🇹 Serie A</option>
           </select>
         </div>
-      <div class="soccer-league-picks" data-league="EPL"><div class="soccer-league-label">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</div><div class="pick med"><div class="pick-top"><div class="pick-game">West Ham United @ Aston Villa</div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">AWAY ML (West Ham United  +310)</div><div class="pick-meta"><span>Home ML: -120</span><span>Away ML: +310</span><span>Model: +0.02 goal diff</span></div><button class="slip-btn" data-matchup="West Ham United @ Aston Villa" data-bet="AWAY ML (West Ham United  +310)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div><div class="pick low"><div class="pick-top"><div class="pick-game">Nottingham Forest @ Tottenham Hotspur</div><div class="tier-wrap"><div class="pick-tier low">LOW ★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">AWAY ML (Nottingham Forest  +205)</div><div class="pick-meta"><span>Home ML: +140</span><span>Away ML: +205</span><span>Model: -0.14 goal diff</span></div><button class="slip-btn" data-matchup="Nottingham Forest @ Tottenham Hotspur" data-bet="AWAY ML (Nottingham Forest  +205)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div></div><div class="soccer-league-picks" data-league="La Liga"><div class="soccer-league-label">🇪🇸 La Liga</div><div class="pick low"><div class="pick-top"><div class="pick-game">Alavés @ Celta Vigo</div><div class="tier-wrap"><div class="pick-tier low">LOW ★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ML (Celta Vigo  -105)</div><div class="pick-meta"><span>Home ML: -105</span><span>Away ML: +330</span><span>Model: +0.79 goal diff</span></div><button class="slip-btn" data-matchup="Alavés @ Celta Vigo" data-bet="HOME ML (Celta Vigo  -105)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div></div><div class="soccer-league-picks" data-league="Serie A"><div class="soccer-league-label">🇮🇹 Serie A</div><div class="pick med"><div class="pick-top"><div class="pick-game">Hellas Verona @ Atalanta</div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">AWAY ML (Hellas Verona  +650)</div><div class="pick-meta"><span>Away ML: +650</span><span>Model: +0.95 goal diff</span></div><button class="slip-btn" data-matchup="Hellas Verona @ Atalanta" data-bet="AWAY ML (Hellas Verona  +650)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div></div><div class="soccer-league-picks" data-league="MLS"><div class="soccer-league-label">🇺🇸 MLS</div><div class="pick low"><div class="pick-top"><div class="pick-game">Inter Miami CF @ New York City FC</div><div class="tier-wrap"><div class="pick-tier low">LOW ★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">AWAY ML (Inter Miami CF  +190)</div><div class="pick-meta"><span>Home ML: +120</span><span>Away ML: +190</span><span>Model: +0.11 goal diff</span></div><button class="slip-btn" data-matchup="Inter Miami CF @ New York City FC" data-bet="AWAY ML (Inter Miami CF  +190)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div><div class="pick med"><div class="pick-top"><div class="pick-game">Seattle Sounders FC @ Minnesota United FC</div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">AWAY ML (Seattle Sounders FC  +155)</div><div class="pick-meta"><span>Home ML: +165</span><span>Away ML: +155</span><span>Model: -0.48 goal diff</span></div><button class="slip-btn" data-matchup="Seattle Sounders FC @ Minnesota United FC" data-bet="AWAY ML (Seattle Sounders FC  +155)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div><div class="pick med"><div class="pick-top"><div class="pick-game">Real Salt Lake @ San Diego FC</div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ML (San Diego FC  -125)</div><div class="pick-meta"><span>Home ML: -125</span><span>Away ML: +280</span><span>Model: +1.10 goal diff</span></div><button class="slip-btn" data-matchup="Real Salt Lake @ San Diego FC" data-bet="HOME ML (San Diego FC  -125)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div></div>
+      <div class="soccer-league-picks" data-league="La Liga"><div class="soccer-league-label">🇪🇸 La Liga</div><div class="pick med"><div class="pick-top"><div class="pick-game">Real Madrid @ Mallorca<span class="pick-kickoff"> · Apr 04 10:15 AM ET</span></div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ML (Mallorca  +450)</div><div class="pick-meta"><span>Home ML: +450</span><span>Away ML: -175</span><span>Model: -0.33 goal diff</span></div><button class="slip-btn" data-matchup="Real Madrid @ Mallorca" data-bet="HOME ML (Mallorca  +450)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div></div><div class="soccer-league-picks" data-league="Bundesliga"><div class="soccer-league-label">🇩🇪 Bundesliga</div><div class="pick med"><div class="pick-top"><div class="pick-game">RB Leipzig @ Werder Bremen<span class="pick-kickoff"> · Apr 04 9:30 AM ET</span></div><div class="tier-wrap"><div class="pick-tier med">MEDIUM ★★<i class="tier-info">ⓘ</i></div><div class="conf-tip"><div class="conf-tip-title">Confidence Levels</div><div class="conf-row"><span class="conf-dot high"></span><div class="conf-text"><b>HIGH ★★★</b><span>Strongest ML edge + model agreement. Rare signal.</span></div></div><div class="conf-row"><span class="conf-dot med"></span><div class="conf-text"><b>MEDIUM ★★</b><span>Solid ML edge, models agree. Normal sizing.</span></div></div><div class="conf-row"><span class="conf-dot low"></span><div class="conf-text"><b>LOW ★</b><span>Weaker edge or less agreement. Proceed with caution.</span></div></div></div></div></div><div class="pick-bet">HOME ML (Werder Bremen  +235)</div><div class="pick-meta"><span>Home ML: +235</span><span>Away ML: -110</span><span>Model: +0.34 goal diff</span></div><button class="slip-btn" data-matchup="RB Leipzig @ Werder Bremen" data-bet="HOME ML (Werder Bremen  +235)" data-line="nan" data-sport="soccer" onclick="openSlip(this)">＋ Add to Bet Slip</button></div></div><div class="soccer-league-picks" data-league="Serie A"><div class="soccer-league-label">🇮🇹 Serie A</div><p class="no-picks">No qualifying picks for this league today.</p></div>
     </div>
     <div>
       <div class="section-header"><span>📊</span> Recent Results</div>
@@ -2593,7 +2594,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
     </div>
   </div>
 
-  <div class="section-header"><span>📋</span> Other Games — No Edge</div><div class="chips"><div class="chip">Sunderland @ Newcastle United</div><div class="chip">Rayo Vallecano @ Barcelona</div><div class="chip">Real Betis @ Athletic Club</div><div class="chip">Atlético Madrid @ Real Madrid</div><div class="chip">Pisa @ Como</div><div class="chip">Lazio @ Bologna</div><div class="chip">CF Montréal @ FC Cincinnati</div><div class="chip">LA Galaxy @ Portland Timbers</div></div>
+  <div class="section-header"><span>📋</span> Other Games — No Edge</div><div class="chips"><div class="chip">Elche @ Rayo Vallecano</div><div class="chip">Levante @ Real Sociedad</div><div class="chip">Espanyol @ Real Betis</div><div class="chip">Cagliari @ Sassuolo</div></div>
 
   <div class="an-wrap">
     
