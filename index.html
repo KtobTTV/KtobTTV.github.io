@@ -920,7 +920,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
 /* ── RECENT RESULTS ── */
 .rr {
   display:grid; grid-template-columns:auto 1fr auto auto;
-  gap:0.5rem; align-items:center;
+  gap:0.5rem; align-items:center; justify-items:center;
   padding:0.5rem 0; border-bottom:1px solid rgba(48,54,61,0.5); font-size:0.75rem;
 }
 /* Full-width results row: date | matchup | market | odds | edge | book | units | badge | pnl */
@@ -936,18 +936,18 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   .rr-mkt, .rr-odds, .rr-edge, .rr-book, .rr-units { display:none; }
 }
 .rr:last-child { border-bottom:none; }
-.rr-date  { color:var(--muted); font-family:var(--mono); font-size:0.65rem; white-space:nowrap; }
-.rr-match { font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.rr-mkt   { font-family:var(--mono); font-size:0.6rem; font-weight:700; white-space:nowrap; }
-.rr-odds  { font-family:var(--mono); font-size:0.62rem; color:var(--muted); white-space:nowrap; text-align:right; }
-.rr-edge  { font-family:var(--mono); font-size:0.62rem; color:var(--muted); white-space:nowrap; text-align:right; }
-.rr-book  { font-family:var(--mono); font-size:0.55rem; color:var(--muted); white-space:nowrap; text-align:right; }
-.rr-units { font-family:var(--mono); font-size:0.6rem; color:var(--muted); white-space:nowrap; text-align:right; }
-.rr-badge { padding:0.1rem 0.35rem; border-radius:4px; font-size:0.62rem; font-weight:700; font-family:var(--mono); white-space:nowrap; }
+.rr-date  { color:var(--muted); font-family:var(--mono); font-size:0.65rem; white-space:nowrap; text-align:center; }
+.rr-match { font-weight:500; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; justify-self:start; }
+.rr-mkt   { font-family:var(--mono); font-size:0.6rem; font-weight:700; white-space:nowrap; text-align:center; }
+.rr-odds  { font-family:var(--mono); font-size:0.62rem; color:var(--muted); white-space:nowrap; text-align:center; }
+.rr-edge  { font-family:var(--mono); font-size:0.62rem; color:var(--muted); white-space:nowrap; text-align:center; }
+.rr-book  { font-family:var(--mono); font-size:0.55rem; color:var(--muted); white-space:nowrap; text-align:center; }
+.rr-units { font-family:var(--mono); font-size:0.6rem; color:var(--muted); white-space:nowrap; text-align:center; }
+.rr-badge { padding:0.1rem 0.35rem; border-radius:4px; font-size:0.62rem; font-weight:700; font-family:var(--mono); white-space:nowrap; text-align:center; }
 .rr-badge.win  { background:rgba(34,197,94,0.15);  color:var(--green); }
 .rr-badge.loss { background:rgba(239,68,68,0.15);  color:var(--red); }
 .rr-badge.push { background:rgba(234,179,8,0.15);  color:var(--gold); }
-.rr-pnl { font-family:var(--mono); font-size:0.72rem; font-weight:600; text-align:right; white-space:nowrap; }
+.rr-pnl { font-family:var(--mono); font-size:0.72rem; font-weight:600; text-align:center; white-space:nowrap; }
 .rr-pnl.pos { color:var(--green); }
 .rr-pnl.neg { color:var(--red); }
 /* Header row */
@@ -988,7 +988,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   </div>
   <div class="hdr-r">
     <div class="date-pill" id="hdr-date">2026-04-06</div>
-    <div class="upd">Updated Apr 06 · 12:51 AM</div>
+    <div class="upd">Updated Apr 06 · 12:56 AM</div>
     <a class="x-handle" href="https://x.com/iMightBetThat" target="_blank" rel="noopener">
       <svg class="x-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       @iMightBetThat
@@ -1594,14 +1594,14 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
         <div class="section-header"><span>🎯</span> Beat the Streak <span class="prop-date-note">Generated 2026-04-06</span></div>
         
         <div class="prop-pick-hero">
-          <div class="prop-hero-name">Justin Crawford</div>
+          <div class="prop-hero-name">Vladimir Guerrero Jr.</div>
           <div class="prop-hero-sub"> · vs TBD</div>
           <div class="prop-hero-stats">
-            <span>.412 AVG</span>
+            <span>.295 AVG</span>
             <span>·</span>
-            <span>38.9% H/PA</span>
+            <span>25.9% H/PA</span>
             <span>·</span>
-            <span>Streak: 1G</span>
+            <span>Streak: 16G</span>
           </div>
           <div class="prop-streak-badge">BTS Streak: 0 &nbsp;(best: 0)</div>
         </div>
@@ -1610,142 +1610,62 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="prop-row">
               <span class="prop-rank" style="color:#EF4444">#1</span>
               <div class="prop-row-main">
-                <span class="prop-name">Justin Crawford</span>
-                <span class="prop-team"></span>
-              </div>
-              <div class="prop-bar-wrap">
-                <div class="prop-bar" style="width:66%"></div>
-              </div>
-              <span class="prop-val">0.663</span>
-            </div>
-            <div class="prop-row">
-              <span class="prop-rank" style="color:#EAB308">#2</span>
-              <div class="prop-row-main">
-                <span class="prop-name">Sal Stewart</span>
-                <span class="prop-team"></span>
-              </div>
-              <div class="prop-bar-wrap">
-                <div class="prop-bar" style="width:64%"></div>
-              </div>
-              <span class="prop-val">0.649</span>
-            </div>
-            <div class="prop-row">
-              <span class="prop-rank" style="color:#8B949E">#3</span>
-              <div class="prop-row-main">
                 <span class="prop-name">Vladimir Guerrero Jr.</span>
                 <span class="prop-team"></span>
               </div>
               <div class="prop-bar-wrap">
-                <div class="prop-bar" style="width:64%"></div>
+                <div class="prop-bar" style="width:77%"></div>
               </div>
-              <span class="prop-val">0.646</span>
+              <span class="prop-val">0.775</span>
             </div>
             <div class="prop-row">
-              <span class="prop-rank" style="color:#8B949E">#4</span>
-              <div class="prop-row-main">
-                <span class="prop-name">Kazuma Okamoto</span>
-                <span class="prop-team"></span>
-              </div>
-              <div class="prop-bar-wrap">
-                <div class="prop-bar" style="width:63%"></div>
-              </div>
-              <span class="prop-val">0.630</span>
-            </div>
-            <div class="prop-row">
-              <span class="prop-rank" style="color:#8B949E">#5</span>
+              <span class="prop-rank" style="color:#EAB308">#2</span>
               <div class="prop-row-main">
                 <span class="prop-name">Jonathan Aranda</span>
                 <span class="prop-team"></span>
               </div>
               <div class="prop-bar-wrap">
-                <div class="prop-bar" style="width:59%"></div>
+                <div class="prop-bar" style="width:72%"></div>
               </div>
-              <span class="prop-val">0.594</span>
-            </div>
-      </div>
-      <div class="prop-panel">
-        <div class="section-header"><span>💣</span> HR Probability Rankings</div>
-        
-            <div class="prop-row">
-              <span class="prop-rank" style="color:#EF4444">#1</span>
-              <div class="prop-row-main">
-                <span class="prop-name">Munetaka Murakami</span>
-                <span class="prop-team">Baltimore Orioles · vs Grant Taylor</span>
-              </div>
-              <div class="prop-bar-wrap">
-                <div class="prop-bar prop-bar-red" style="width:100%"></div>
-              </div>
-              <span class="prop-val">23.1%</span>
-            </div>
-            <div class="prop-subrow">
-              5 HR / 21 PA &nbsp;·&nbsp;
-              Pitcher mult: <span style="color:#EAB308">1.00×</span> &nbsp;·&nbsp;
-              Park: 0.97×
-            </div>
-            <div class="prop-row">
-              <span class="prop-rank" style="color:#8B949E">#2</span>
-              <div class="prop-row-main">
-                <span class="prop-name">Carson Benge</span>
-                <span class="prop-team"> · vs TBD</span>
-              </div>
-              <div class="prop-bar-wrap">
-                <div class="prop-bar prop-bar-red" style="width:90%"></div>
-              </div>
-              <span class="prop-val">13.6%</span>
-            </div>
-            <div class="prop-subrow">
-              3 HR / 22 PA &nbsp;·&nbsp;
-              Pitcher mult: <span style="color:#EAB308">1.00×</span> &nbsp;·&nbsp;
-              Park: 1.00×
+              <span class="prop-val">0.724</span>
             </div>
             <div class="prop-row">
               <span class="prop-rank" style="color:#8B949E">#3</span>
               <div class="prop-row-main">
-                <span class="prop-name">JJ Wetherholt</span>
-                <span class="prop-team"> · vs TBD</span>
+                <span class="prop-name">Bobby Witt Jr.</span>
+                <span class="prop-team"></span>
               </div>
               <div class="prop-bar-wrap">
-                <div class="prop-bar prop-bar-red" style="width:80%"></div>
+                <div class="prop-bar" style="width:71%"></div>
               </div>
-              <span class="prop-val">12.0%</span>
-            </div>
-            <div class="prop-subrow">
-              3 HR / 25 PA &nbsp;·&nbsp;
-              Pitcher mult: <span style="color:#EAB308">1.00×</span> &nbsp;·&nbsp;
-              Park: 1.00×
+              <span class="prop-val">0.713</span>
             </div>
             <div class="prop-row">
               <span class="prop-rank" style="color:#8B949E">#4</span>
               <div class="prop-row-main">
                 <span class="prop-name">Sal Stewart</span>
-                <span class="prop-team"> · vs TBD</span>
+                <span class="prop-team"></span>
               </div>
               <div class="prop-bar-wrap">
-                <div class="prop-bar prop-bar-red" style="width:47%"></div>
+                <div class="prop-bar" style="width:71%"></div>
               </div>
-              <span class="prop-val">7.1%</span>
-            </div>
-            <div class="prop-subrow">
-              6 HR / 84 PA &nbsp;·&nbsp;
-              Pitcher mult: <span style="color:#EAB308">1.00×</span> &nbsp;·&nbsp;
-              Park: 1.00×
+              <span class="prop-val">0.713</span>
             </div>
             <div class="prop-row">
               <span class="prop-rank" style="color:#8B949E">#5</span>
               <div class="prop-row-main">
-                <span class="prop-name">Nick Kurtz</span>
-                <span class="prop-team"> · vs TBD</span>
+                <span class="prop-name">Xavier Edwards</span>
+                <span class="prop-team"></span>
               </div>
               <div class="prop-bar-wrap">
-                <div class="prop-bar prop-bar-red" style="width:47%"></div>
+                <div class="prop-bar" style="width:70%"></div>
               </div>
-              <span class="prop-val">7.1%</span>
+              <span class="prop-val">0.708</span>
             </div>
-            <div class="prop-subrow">
-              36 HR / 506 PA &nbsp;·&nbsp;
-              Pitcher mult: <span style="color:#EAB308">1.00×</span> &nbsp;·&nbsp;
-              Park: 1.00×
-            </div>
+      </div>
+      <div class="prop-panel">
+        <div class="section-header"><span>💣</span> HR Probability Rankings</div>
+        <p class="prop-empty">No HR props yet — more PA data needed.</p>
       </div>
     </div>
 
@@ -1758,6 +1678,19 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
       </div>
       
             <div class="nrfi-row">
+              <div class="nrfi-matchup">BAL @ CHI </div>
+              <div class="nrfi-pitchers">
+                <div>TBD <span style="color:#8B949E;font-size:0.7rem">No history</span></div>
+                <div style="margin-top:2px">G. Taylor <span style="color:#8B949E;font-size:0.7rem">No history</span></div>
+              </div>
+              <div class="nrfi-bar-row">
+                <div class="nrfi-bar-wrap">
+                  <div class="nrfi-bar" style="width:50%;background:#8B949E"></div>
+                </div>
+                <span class="nrfi-pct" style="color:#8B949E">56%</span>
+              </div>
+            </div>
+            <div class="nrfi-row">
               <div class="nrfi-matchup">SAN @ PIT </div>
               <div class="nrfi-pitchers">
                 <div>G. Marquez <span style="color:#8B949E;font-size:0.7rem">No history</span></div>
@@ -1766,19 +1699,6 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
               <div class="nrfi-bar-row">
                 <div class="nrfi-bar-wrap">
                   <div class="nrfi-bar" style="width:49%;background:#8B949E"></div>
-                </div>
-                <span class="nrfi-pct" style="color:#8B949E">55%</span>
-              </div>
-            </div>
-            <div class="nrfi-row">
-              <div class="nrfi-matchup">BAL @ CHI </div>
-              <div class="nrfi-pitchers">
-                <div>TBD <span style="color:#8B949E;font-size:0.7rem">No history</span></div>
-                <div style="margin-top:2px">G. Taylor <span style="color:#8B949E;font-size:0.7rem">No history</span></div>
-              </div>
-              <div class="nrfi-bar-row">
-                <div class="nrfi-bar-wrap">
-                  <div class="nrfi-bar" style="width:48%;background:#8B949E"></div>
                 </div>
                 <span class="nrfi-pct" style="color:#8B949E">55%</span>
               </div>
@@ -1930,23 +1850,23 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
     <div class="stats-bar">
     <div class="sc">
       <span class="sc-icon">🏆</span>
-      <div class="sv sv-sm">12W - 16L</div>
+      <div class="sv sv-sm">14W - 16L</div>
       <div class="sl">All-Time Record</div>
     </div>
     <div class="sc ">
       <span class="sc-icon">💰</span>
-      <div class="sv" style="color:#EF4444">-3.17u</div>
+      <div class="sv" style="color:#EF4444">-0.56u</div>
       <div class="sl">Total P&amp;L</div>
     </div>
     <div class="sc">
       <span class="sc-icon">🎯</span>
-      <div class="sv">42.9%</div>
+      <div class="sv">46.7%</div>
       <div class="sl">Win Rate</div>
     </div>
     <div class="sc sc-gold">
       <span class="sc-icon">📅</span>
-      <div class="sv sv-sm" style="color:var(--red)">-5.05u</div>
-      <div class="sl">April (17 bets)</div>
+      <div class="sv sv-sm" style="color:var(--red)">-2.44u</div>
+      <div class="sl">April (19 bets)</div>
     </div>
     <div class="sc">
       <span class="sc-icon">📊</span>
@@ -2041,10 +1961,10 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
     <div>
       <div class="section-header"><span>📊</span> Recent Results</div>
       <button class="results-toggle" onclick="var b=this.nextElementSibling;var c=b.style.display==='none';b.style.display=c?'block':'none';this.querySelector('.rt-arrow').style.transform=c?'':'rotate(180deg)';">
-        Last 28 bets &nbsp;·&nbsp; 12W - 16L all-time
+        Last 30 bets &nbsp;·&nbsp; 14W - 16L all-time
         <span class="rt-arrow" style="transform:rotate(180deg)">▾</span>
       </button>
-      <div class="results-body"><div class="rr"><span class="rr-date">2026-04-05</span><span class="rr-match">FLA @ PIT</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-04</span><span class="rr-match">DET @ NYR</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.200u</span></div><div class="rr"><span class="rr-date">2026-04-04</span><span class="rr-match">MIN @ OTT</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.000u</span></div><div class="rr"><span class="rr-date">2026-04-04</span><span class="rr-match">FLA @ PIT</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+0.488u</span></div><div class="rr"><span class="rr-date">2026-04-04</span><span class="rr-match">BUF @ WSH</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-04</span><span class="rr-match">NYI @ CAR</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-04</span><span class="rr-match">TOR @ LAK</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-04</span><span class="rr-match">MTL @ NJD</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+0.820u</span></div><div class="rr"><span class="rr-date">2026-04-03</span><span class="rr-match">PHI @ NYI</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.300u</span></div><div class="rr"><span class="rr-date">2026-04-03</span><span class="rr-match">STL @ ANA</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.140u</span></div><div class="rr"><span class="rr-date">2026-04-02</span><span class="rr-match">BUF @ OTT</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-02</span><span class="rr-match">CBJ @ CAR</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-02</span><span class="rr-match">WPG @ DAL</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-02</span><span class="rr-match">CHI @ EDM</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-02</span><span class="rr-match">CGY @ VGK</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-02</span><span class="rr-match">CGY @ VGK</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-02</span><span class="rr-match">UTA @ SEA</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-03-31</span><span class="rr-match">DAL @ BOS</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.050u</span></div><div class="rr"><span class="rr-date">2026-03-31</span><span class="rr-match">NYI @ BUF</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-03-31</span><span class="rr-match">MTL @ TBL</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.420u</span></div><div class="rr"><span class="rr-date">2026-03-31</span><span class="rr-match">NJD @ NYR</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.000u</span></div><div class="rr"><span class="rr-date">2026-03-31</span><span class="rr-match">CAR @ CBJ</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-03-30</span><span class="rr-match">CGY @ COL</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-03-30</span><span class="rr-match">STL @ SJS</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-03-30</span><span class="rr-match">VAN @ VGK</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-03-29</span><span class="rr-match">MTL @ CAR</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.500u</span></div><div class="rr"><span class="rr-date">2026-03-29</span><span class="rr-match">DAL @ PHI</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.300u</span></div><div class="rr"><span class="rr-date">2026-03-29</span><span class="rr-match">CHI @ NJD</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+0.617u</span></div></div>
+      <div class="results-body"><div class="rr"><span class="rr-date">2026-04-05</span><span class="rr-match">FLA @ PIT</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-05</span><span class="rr-match">STL @ COL</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.700u</span></div><div class="rr"><span class="rr-date">2026-04-05</span><span class="rr-match">STL @ COL</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+0.909u</span></div><div class="rr"><span class="rr-date">2026-04-04</span><span class="rr-match">DET @ NYR</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.200u</span></div><div class="rr"><span class="rr-date">2026-04-04</span><span class="rr-match">MIN @ OTT</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.000u</span></div><div class="rr"><span class="rr-date">2026-04-04</span><span class="rr-match">FLA @ PIT</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+0.488u</span></div><div class="rr"><span class="rr-date">2026-04-04</span><span class="rr-match">BUF @ WSH</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-04</span><span class="rr-match">NYI @ CAR</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-04</span><span class="rr-match">TOR @ LAK</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-04</span><span class="rr-match">MTL @ NJD</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+0.820u</span></div><div class="rr"><span class="rr-date">2026-04-03</span><span class="rr-match">PHI @ NYI</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.300u</span></div><div class="rr"><span class="rr-date">2026-04-03</span><span class="rr-match">STL @ ANA</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.140u</span></div><div class="rr"><span class="rr-date">2026-04-02</span><span class="rr-match">BUF @ OTT</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-02</span><span class="rr-match">CBJ @ CAR</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-02</span><span class="rr-match">WPG @ DAL</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-02</span><span class="rr-match">CHI @ EDM</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-02</span><span class="rr-match">CGY @ VGK</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-02</span><span class="rr-match">CGY @ VGK</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-04-02</span><span class="rr-match">UTA @ SEA</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-03-31</span><span class="rr-match">DAL @ BOS</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.050u</span></div><div class="rr"><span class="rr-date">2026-03-31</span><span class="rr-match">NYI @ BUF</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-03-31</span><span class="rr-match">MTL @ TBL</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.420u</span></div><div class="rr"><span class="rr-date">2026-03-31</span><span class="rr-match">NJD @ NYR</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.000u</span></div><div class="rr"><span class="rr-date">2026-03-31</span><span class="rr-match">CAR @ CBJ</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-03-30</span><span class="rr-match">CGY @ COL</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-03-30</span><span class="rr-match">STL @ SJS</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-03-30</span><span class="rr-match">VAN @ VGK</span><span class="rr-badge loss">LOSS</span><span class="rr-pnl neg">-1.000u</span></div><div class="rr"><span class="rr-date">2026-03-29</span><span class="rr-match">MTL @ CAR</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.500u</span></div><div class="rr"><span class="rr-date">2026-03-29</span><span class="rr-match">DAL @ PHI</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+1.300u</span></div><div class="rr"><span class="rr-date">2026-03-29</span><span class="rr-match">CHI @ NJD</span><span class="rr-badge win">WIN</span><span class="rr-pnl pos">+0.617u</span></div></div>
     </div>
   </div>
 
@@ -2056,7 +1976,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
     
     <div class="an-grid">
       <div class="an-panel">
-        <div class="an-title">📈 Running P&amp;L — All 28 Bets</div>
+        <div class="an-title">📈 Running P&amp;L — All 30 Bets</div>
         <div class="an-subtitle">Units won/lost cumulatively over the season</div>
         
     <svg viewBox="0 0 560 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:130px;overflow:visible">
@@ -2069,14 +1989,14 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
       <line x1="0" y1="55.0" x2="560" y2="55.0" stroke="rgba(48,54,61,0.6)" stroke-width="1" stroke-dasharray="3,4"/><text x="4" y="52.0" fill="#8B949E" font-size="8" font-family="monospace">+0.0u</text><line x1="0" y1="28.0" x2="560" y2="28.0" stroke="rgba(48,54,61,0.6)" stroke-width="1" stroke-dasharray="3,4"/><text x="4" y="25.0" fill="#8B949E" font-size="8" font-family="monospace">+2.3u</text>
       <line x1="0" y1="55.0" x2="560" y2="55.0"
             stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
-      <polygon points="0,55.0395071860417 0.0,37.4 20.7,22.1 41.5,14.9 62.2,26.6 83.0,38.4 103.7,50.1 124.4,37.8 145.2,49.5 165.9,32.9 186.7,21.1 207.4,32.9 228.1,44.6 248.9,56.4 269.6,68.1 290.4,79.9 311.1,91.6 331.9,103.4 352.6,115.1 373.3,99.8 394.1,86.4 414.8,72.3 435.6,60.6 456.3,54.9 477.0,66.6 497.8,78.4 518.5,90.1 539.3,80.5 560.0,92.2 560.0,55.0395071860417" fill="url(#pnlGrad_nhl)"/>
-      <path d="M0.0,37.4 L20.7,22.1 L41.5,14.9 L62.2,26.6 L83.0,38.4 L103.7,50.1 L124.4,37.8 L145.2,49.5 L165.9,32.9 L186.7,21.1 L207.4,32.9 L228.1,44.6 L248.9,56.4 L269.6,68.1 L290.4,79.9 L311.1,91.6 L331.9,103.4 L352.6,115.1 L373.3,99.8 L394.1,86.4 L414.8,72.3 L435.6,60.6 L456.3,54.9 L477.0,66.6 L497.8,78.4 L518.5,90.1 L539.3,80.5 L560.0,92.2" fill="none" stroke="#EF4444" stroke-width="2.2"
+      <polygon points="0,55.0395071860417 0.0,37.4 19.3,22.1 38.6,14.9 57.9,26.6 77.2,38.4 96.6,50.1 115.9,37.8 135.2,49.5 154.5,32.9 173.8,21.1 193.1,32.9 212.4,44.6 231.7,56.4 251.0,68.1 270.3,79.9 289.7,91.6 309.0,103.4 328.3,115.1 347.6,99.8 366.9,86.4 386.2,72.3 405.5,60.6 424.8,54.9 444.1,66.6 463.4,78.4 482.8,90.1 502.1,80.5 521.4,92.2 540.7,72.3 560.0,61.6 560.0,55.0395071860417" fill="url(#pnlGrad_nhl)"/>
+      <path d="M0.0,37.4 L19.3,22.1 L38.6,14.9 L57.9,26.6 L77.2,38.4 L96.6,50.1 L115.9,37.8 L135.2,49.5 L154.5,32.9 L173.8,21.1 L193.1,32.9 L212.4,44.6 L231.7,56.4 L251.0,68.1 L270.3,79.9 L289.7,91.6 L309.0,103.4 L328.3,115.1 L347.6,99.8 L366.9,86.4 L386.2,72.3 L405.5,60.6 L424.8,54.9 L444.1,66.6 L463.4,78.4 L482.8,90.1 L502.1,80.5 L521.4,92.2 L540.7,72.3 L560.0,61.6" fill="none" stroke="#EF4444" stroke-width="2.2"
             stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="560.0" cy="92.2" r="4"
+      <circle cx="560.0" cy="61.6" r="4"
               fill="#EF4444" stroke="var(--bg)" stroke-width="1.5"/>
     </svg>
         <div class="an-final" style="color:#EF4444">
-          -3.17u total &nbsp;·&nbsp; 12W-16L
+          -0.56u total &nbsp;·&nbsp; 14W-16L
         </div>
       </div>
       <div class="an-panel">
@@ -2084,9 +2004,18 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
         <div class="an-subtitle">Where the model has found the most edge</div>
         <div class="tm-list">
             <div class="tm-row">
-              <span class="tm-abbr">MTL</span>
+              <span class="tm-abbr">STL</span>
               <div class="tm-bar-wrap">
                 <div class="tm-bar" style="width:100%;background:#22C55E">
+                  <span class="tm-bar-label">3W-1L</span>
+                </div>
+              </div>
+              <span class="tm-pnl" style="color:#22C55E">+2.75u</span>
+            </div>
+            <div class="tm-row">
+              <span class="tm-abbr">MTL</span>
+              <div class="tm-bar-wrap">
+                <div class="tm-bar" style="width:75%;background:#22C55E">
                   <span class="tm-bar-label">3W-0L</span>
                 </div>
               </div>
@@ -2095,7 +2024,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="tm-row">
               <span class="tm-abbr">CGY</span>
               <div class="tm-bar-wrap">
-                <div class="tm-bar" style="width:100%;background:#EF4444">
+                <div class="tm-bar" style="width:75%;background:#EF4444">
                   <span class="tm-bar-label">0W-3L</span>
                 </div>
               </div>
@@ -2104,7 +2033,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="tm-row">
               <span class="tm-abbr">PHI</span>
               <div class="tm-bar-wrap">
-                <div class="tm-bar" style="width:67%;background:#22C55E">
+                <div class="tm-bar" style="width:50%;background:#22C55E">
                   <span class="tm-bar-label">2W-0L</span>
                 </div>
               </div>
@@ -2113,25 +2042,16 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="tm-row">
               <span class="tm-abbr">NYR</span>
               <div class="tm-bar-wrap">
-                <div class="tm-bar" style="width:67%;background:#22C55E">
+                <div class="tm-bar" style="width:50%;background:#22C55E">
                   <span class="tm-bar-label">2W-0L</span>
                 </div>
               </div>
               <span class="tm-pnl" style="color:#22C55E">+2.20u</span>
             </div>
             <div class="tm-row">
-              <span class="tm-abbr">STL</span>
-              <div class="tm-bar-wrap">
-                <div class="tm-bar" style="width:67%;background:#22C55E">
-                  <span class="tm-bar-label">1W-1L</span>
-                </div>
-              </div>
-              <span class="tm-pnl" style="color:#22C55E">+0.14u</span>
-            </div>
-            <div class="tm-row">
               <span class="tm-abbr">NYI</span>
               <div class="tm-bar-wrap">
-                <div class="tm-bar" style="width:67%;background:#EF4444">
+                <div class="tm-bar" style="width:50%;background:#EF4444">
                   <span class="tm-bar-label">0W-2L</span>
                 </div>
               </div>
@@ -2140,7 +2060,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="tm-row">
               <span class="tm-abbr">CBJ</span>
               <div class="tm-bar-wrap">
-                <div class="tm-bar" style="width:67%;background:#EF4444">
+                <div class="tm-bar" style="width:50%;background:#EF4444">
                   <span class="tm-bar-label">0W-2L</span>
                 </div>
               </div>
@@ -2149,7 +2069,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="tm-row">
               <span class="tm-abbr">BUF</span>
               <div class="tm-bar-wrap">
-                <div class="tm-bar" style="width:67%;background:#EF4444">
+                <div class="tm-bar" style="width:50%;background:#EF4444">
                   <span class="tm-bar-label">0W-2L</span>
                 </div>
               </div>
@@ -2158,7 +2078,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="tm-row">
               <span class="tm-abbr">BOS</span>
               <div class="tm-bar-wrap">
-                <div class="tm-bar" style="width:33%;background:#22C55E">
+                <div class="tm-bar" style="width:25%;background:#22C55E">
                   <span class="tm-bar-label">1W-0L</span>
                 </div>
               </div>
@@ -2167,7 +2087,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="tm-row">
               <span class="tm-abbr">MIN</span>
               <div class="tm-bar-wrap">
-                <div class="tm-bar" style="width:33%;background:#22C55E">
+                <div class="tm-bar" style="width:25%;background:#22C55E">
                   <span class="tm-bar-label">1W-0L</span>
                 </div>
               </div>
@@ -2176,7 +2096,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="tm-row">
               <span class="tm-abbr">NJD</span>
               <div class="tm-bar-wrap">
-                <div class="tm-bar" style="width:33%;background:#22C55E">
+                <div class="tm-bar" style="width:25%;background:#22C55E">
                   <span class="tm-bar-label">1W-0L</span>
                 </div>
               </div>
@@ -2185,7 +2105,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
             <div class="tm-row">
               <span class="tm-abbr">PIT</span>
               <div class="tm-bar-wrap">
-                <div class="tm-bar" style="width:33%;background:#22C55E">
+                <div class="tm-bar" style="width:25%;background:#22C55E">
                   <span class="tm-bar-label">1W-0L</span>
                 </div>
               </div>
@@ -2196,7 +2116,7 @@ body { background:var(--bg); color:var(--white); font-family:var(--font); }
   </div>
 
     <div class="disc">⚠️ For entertainment only. Past performance does not guarantee future results. Bet responsibly.</div>
-  <div class="footer">NHL Model v1 · <b>AI-powered ensemble analytics</b> · 28 graded bets tracked</div>
+  <div class="footer">NHL Model v1 · <b>AI-powered ensemble analytics</b> · 30 graded bets tracked</div>
 </div>
 <div id="sport-section-nfl" class="sport-section" style="display:none">
   <!-- STATS BAR -->
